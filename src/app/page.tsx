@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/sections/hero-section"
+import { COMPANY } from "@/data/company"
 import { Container } from "@/components/ui/container"
 import { ParallaxLayer } from "@/components/ui/parallax-layer"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
@@ -101,7 +102,7 @@ export default function Home() {
               <h2 className="max-w-xl">Ready to build something extraordinary?</h2>
               <p className="mt-4 max-w-md text-canvas-dim">
                 Let&apos;s talk about your next project. We&apos;re currently
-                accepting new engagements for Q3 2026.
+                accepting new engagements for {COMPANY.availability}.
               </p>
               <a
                 href="/contact"

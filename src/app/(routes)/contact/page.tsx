@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
+import { COMPANY, SOCIAL_LINKS } from "@/data/company"
 import { ContactForm } from "@/components/sections/contact-form"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
 
 export const metadata: Metadata = {
-  title: "Contact — Foundry Tech",
+  title: `Contact — ${COMPANY.name}`,
   description:
-    "Get in touch with Foundry Tech — let's discuss your next Mobile, Web, TV, or IoT project.",
+    `Get in touch with ${COMPANY.name} — let's discuss your next Mobile, Web, TV, or IoT project.`,
 }
 
 // ---------------------------------------------------------------------------
@@ -17,23 +18,17 @@ export const metadata: Metadata = {
 const CONTACT_INFO = [
   {
     heading: "Email",
-    content: "hello@foundrytech.dev",
-    href: "mailto:hello@foundrytech.dev",
+    content: COMPANY.email,
+    href: `mailto:${COMPANY.email}`,
   },
   {
     heading: "Based In",
-    content: "San Francisco, CA",
+    content: COMPANY.location,
   },
   {
     heading: "Availability",
-    content: "Currently accepting new projects for Q3 2026.",
+    content: `Currently accepting new projects for ${COMPANY.availability}.`,
   },
-] as const
-
-const SOCIAL_LINKS = [
-  { label: "GitHub", href: "https://github.com/foundrytech" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/foundrytech" },
-  { label: "X / Twitter", href: "https://x.com/foundrytech" },
 ] as const
 
 const FAQ = [
@@ -123,7 +118,7 @@ export default function ContactPage() {
                   {SOCIAL_LINKS.map((link) => (
                     <a
                       key={link.label}
-                      href={link.href}
+                      href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-mono text-[0.6875rem] uppercase tracking-[0.15em] text-canvas-dim transition-colors duration-300 hover:text-copper"

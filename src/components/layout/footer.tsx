@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { COMPANY, SOCIAL_LINKS } from "@/data/company"
 import type { NavItem } from "@/types"
 
 // ---------------------------------------------------------------------------
@@ -10,12 +11,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ]
-
-const SOCIAL_LINKS = [
-  { label: "GitHub", href: "https://github.com/foundrytech" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/foundrytech" },
-  { label: "X / Twitter", href: "https://x.com/foundrytech" },
-] as const
 
 // ---------------------------------------------------------------------------
 // Footer
@@ -51,7 +46,7 @@ export function Footer() {
         <div className="col-span-full mb-10 md:col-span-4 md:mb-0 lg:col-span-5">
           <Link
             href="/"
-            aria-label="Foundry Tech — Home"
+            aria-label={`${COMPANY.name} — Home`}
             className="group mb-4 inline-flex items-baseline gap-2"
           >
             <span className="font-headline text-[1.35rem] font-bold uppercase tracking-[0.08em] text-canvas transition-colors duration-300 group-hover:text-copper">
@@ -92,9 +87,9 @@ export function Footer() {
           </h3>
           <ul className="flex flex-col gap-3">
             {SOCIAL_LINKS.map((link) => (
-              <li key={link.href}>
+              <li key={link.url}>
                 <a
-                  href={link.href}
+                  href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-canvas/70 transition-colors duration-300 hover:text-copper"
@@ -118,7 +113,7 @@ export function Footer() {
       <div className="border-t border-canvas/6">
         <div className="grid-architect mx-auto max-w-[1440px] py-6">
           <p className="col-span-full text-center font-mono text-[0.6875rem] tracking-[0.1em] text-canvas-dim/60 md:text-left">
-            &copy; {currentYear} Foundry Tech. All rights reserved.
+            &copy; {currentYear} {COMPANY.name}. All rights reserved.
           </p>
         </div>
       </div>

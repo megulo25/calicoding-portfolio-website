@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { COMPANY } from "@/data/company"
 import { TEAM } from "@/data/team"
 import { Container } from "@/components/ui/container"
 import { getAboutStats } from "@/lib/utils/project-stats"
@@ -9,9 +10,9 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
 
 export const metadata: Metadata = {
-  title: "About — Foundry Tech",
+  title: `About — ${COMPANY.name}`,
   description:
-    "The team, philosophy, and process behind Foundry Tech — forging digital experiences across every screen.",
+    `The team, philosophy, and process behind ${COMPANY.name} — forging digital experiences across every screen.`,
 }
 
 // ---------------------------------------------------------------------------
@@ -94,7 +95,7 @@ export default function AboutPage() {
               Forged in precision. Built to last.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-canvas-dim">
-              Foundry Tech is a digital product studio specializing in
+              {COMPANY.name} is a digital product studio specializing in
               Mobile, Web, TV, and IoT experiences. We combine rigorous
               engineering with intentional design to build software that
               performs — and endures.

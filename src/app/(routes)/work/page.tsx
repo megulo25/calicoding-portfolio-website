@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { COMPANY } from "@/data/company"
 import { WorkGallery } from "@/components/sections/work-gallery"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
 
 export const metadata: Metadata = {
-  title: "Work — Foundry Tech",
+  title: `Work — ${COMPANY.name}`,
   description:
     "Selected projects spanning Mobile, Web, TV, and IoT — engineered at the intersection of design and technology.",
 }

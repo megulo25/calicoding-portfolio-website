@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next"
+import { COMPANY } from "@/data/company"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Foundry Tech",
-    short_name: "Foundry",
+    name: COMPANY.name,
+    short_name: COMPANY.name.split(" ")[0],
     description:
-      "We Build What's Next — Mobile, Web, TV & IoT digital experiences.",
+      `${COMPANY.tagline} — Mobile, Web, TV & IoT digital experiences.`,
     start_url: "/",
     display: "standalone",
     background_color: "#0a0a0a",

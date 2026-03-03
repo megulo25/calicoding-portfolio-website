@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Playfair_Display, Space_Grotesk, JetBrains_Mono } from "next/font/google"
+import { COMPANY } from "@/data/company"
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/json-ld"
 import "./globals.css"
 import { Providers } from "./providers"
@@ -40,18 +41,15 @@ const jetbrainsMono = JetBrains_Mono({
 // Global Metadata
 // ---------------------------------------------------------------------------
 
-const BASE_URL = "https://foundrytech.dev"
-
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(COMPANY.url),
   title: {
-    default: "Foundry Tech — We Build What's Next",
-    template: "%s | Foundry Tech",
+    default: `${COMPANY.name} — ${COMPANY.tagline}`,
+    template: `%s | ${COMPANY.name}`,
   },
-  description:
-    "Foundry Tech is a digital product studio specializing in Mobile, Web, TV, and IoT experiences. Precision engineering meets intentional design.",
+  description: `${COMPANY.description} Precision engineering meets intentional design.`,
   keywords: [
-    "Foundry Tech",
+    COMPANY.name,
     "digital product studio",
     "mobile development",
     "web development",
@@ -61,23 +59,23 @@ export const metadata: Metadata = {
     "Next.js",
     "React Native",
   ],
-  authors: [{ name: "Foundry Tech", url: BASE_URL }],
-  creator: "Foundry Tech",
+  authors: [{ name: COMPANY.name, url: COMPANY.url }],
+  creator: COMPANY.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: BASE_URL,
-    siteName: "Foundry Tech",
-    title: "Foundry Tech — We Build What's Next",
+    url: COMPANY.url,
+    siteName: COMPANY.name,
+    title: `${COMPANY.name} — ${COMPANY.tagline}`,
     description:
       "Digital product studio specializing in Mobile, Web, TV, and IoT experiences.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foundry Tech — We Build What's Next",
+    title: `${COMPANY.name} — ${COMPANY.tagline}`,
     description:
       "Digital product studio specializing in Mobile, Web, TV, and IoT experiences.",
-    creator: "@foundrytech",
+    creator: COMPANY.twitter,
   },
   robots: {
     index: true,

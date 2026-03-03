@@ -1,10 +1,11 @@
 import Link from "next/link"
 import type { Metadata } from "next"
+import { COMPANY } from "@/data/company"
 import { Container } from "@/components/ui/container"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
 
 export const metadata: Metadata = {
-  title: "404 — Page Not Found | Foundry Tech",
+  title: `404 — Page Not Found | ${COMPANY.name}`,
   description: "The page you're looking for doesn't exist or has been moved.",
 }
 

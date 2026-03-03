@@ -4,6 +4,7 @@ import { useRef } from "react"
 import dynamic from "next/dynamic"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
+import { COMPANY } from "@/data/company"
 
 // Lazy-load the 3D canvas — skip SSR (Three.js needs the DOM)
 const HeroCanvas = dynamic(
@@ -115,7 +116,7 @@ export function HeroSection() {
             variants={itemVariants}
             className="mt-6 max-w-lg text-lg leading-relaxed text-canvas-dim"
           >
-            Foundry Tech crafts digital experiences that perform across every
+            {COMPANY.name} crafts digital experiences that perform across every
             screen — from pocket to wall-sized, from wearable to industrial.
           </motion.p>
 
