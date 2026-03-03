@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { Container } from "@/components/ui/container"
+import { ParallaxLayer } from "@/components/ui/parallax-layer"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
 
@@ -9,10 +11,87 @@ export const metadata: Metadata = {
     "The team, philosophy, and process behind Foundry Tech — forging digital experiences across every screen.",
 }
 
+// ---------------------------------------------------------------------------
+// Data
+// ---------------------------------------------------------------------------
+
+const PHILOSOPHY = [
+  {
+    title: "Precision First",
+    body: "Every pixel, every interaction, every line of code is deliberate. We don't ship rough edges.",
+  },
+  {
+    title: "Cross-Platform Fluency",
+    body: "From 4-inch screens to 85-inch displays, from wearables to industrial IoT — we speak every platform's language.",
+  },
+  {
+    title: "Lasting Architecture",
+    body: "We build systems, not throwaway prototypes. Our code is designed to scale, evolve, and endure.",
+  },
+] as const
+
+const PROCESS = [
+  {
+    step: "01",
+    title: "Discover",
+    body: "We start by listening — deep diving into your business goals, user needs, technical constraints, and market landscape to build a strategic foundation.",
+  },
+  {
+    step: "02",
+    title: "Design",
+    body: "Systems-driven design from wireframe to interactive prototype. Every component is built for reuse, every interaction mapped to a user goal.",
+  },
+  {
+    step: "03",
+    title: "Develop",
+    body: "Clean architecture, rigorous code review, and iterative builds. We ship early, ship often, and never compromise on quality.",
+  },
+  {
+    step: "04",
+    title: "Deploy",
+    body: "Launch with confidence — robust CI/CD, monitoring, and performance optimization. Then we stay on to support, iterate, and grow.",
+  },
+] as const
+
+const TEAM = [
+  {
+    name: "Alex Chen",
+    role: "Founder & Lead Engineer",
+    bio: "12 years building digital products across startups and Fortune 500s. Obsessed with systems thinking and clean architecture.",
+  },
+  {
+    name: "Maya Rodriguez",
+    role: "Design Director",
+    bio: "From graphic design to interaction systems — Maya brings a rare blend of visual craft and technical fluency to every project.",
+  },
+  {
+    name: "Sam Okafor",
+    role: "Platform Engineering Lead",
+    bio: "Specialist in cross-platform architecture — from React Native to embedded IoT. Champion of developer experience.",
+  },
+] as const
+
+const CAPABILITIES = [
+  { label: "React / Next.js", category: "Web" },
+  { label: "React Native", category: "Mobile" },
+  { label: "Swift / SwiftUI", category: "Mobile" },
+  { label: "Kotlin / Jetpack", category: "Mobile" },
+  { label: "Three.js / WebGL", category: "Web" },
+  { label: "Node.js", category: "Backend" },
+  { label: "TypeScript", category: "Language" },
+  { label: "Tizen / webOS", category: "TV" },
+  { label: "AWS IoT", category: "IoT" },
+  { label: "MQTT / OPC-UA", category: "IoT" },
+  { label: "PostgreSQL", category: "Backend" },
+  { label: "Figma / Design Systems", category: "Design" },
+] as const
+
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
+
 /**
  * /about — Company story, team, philosophy, and process.
- *
- * Phase 14 will flesh this out with full content sections.
  */
 export default function AboutPage() {
   return (
@@ -34,6 +113,26 @@ export default function AboutPage() {
               performs — and endures.
             </p>
           </ScrollReveal>
+
+          {/* Key stats inline */}
+          <div className="col-full mt-16 grid gap-px overflow-hidden rounded-[var(--radius-lg)] border border-canvas/6 sm:grid-cols-3 lg:col-span-8">
+            {([
+              { value: "12+", label: "Years of Experience" },
+              { value: "50+", label: "Projects Delivered" },
+              { value: "4", label: "Platform Specialties" },
+            ] as const).map((stat, i) => (
+              <ScrollReveal key={stat.label} delay={0.15 + i * 0.1}>
+                <div className="flex flex-col items-center justify-center bg-obsidian-light px-6 py-8 text-center">
+                  <span className="font-headline text-[clamp(2rem,4vw,2.75rem)] font-bold text-copper">
+                    {stat.value}
+                  </span>
+                  <span className="mt-1 font-mono text-[0.625rem] uppercase tracking-[0.15em] text-canvas-dim">
+                    {stat.label}
+                  </span>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </Container>
       </SectionWrapper>
 
@@ -44,26 +143,9 @@ export default function AboutPage() {
             <h2>Our Philosophy</h2>
           </ScrollReveal>
           <div className="col-full grid gap-8 md:grid-cols-3 lg:col-span-8">
-            {(
-              [
-                {
-                  title: "Precision First",
-                  body: "Every pixel, every interaction, every line of code is deliberate. We don't ship rough edges.",
-                },
-                {
-                  title: "Cross-Platform Fluency",
-                  body: "From 4-inch screens to 85-inch displays, from wearables to industrial IoT — we speak every platform's language.",
-                },
-                {
-                  title: "Lasting Architecture",
-                  body: "We build systems, not throwaway prototypes. Our code is designed to scale, evolve, and endure.",
-                },
-              ] as const
-            ).map((item, i) => (
+            {PHILOSOPHY.map((item, i) => (
               <ScrollReveal key={item.title} delay={0.1 + i * 0.1}>
-                <div
-                  className="h-full rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6"
-                >
+                <div className="h-full rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6">
                   <h3 className="mb-3 text-base font-semibold">{item.title}</h3>
                   <p className="text-sm leading-relaxed text-canvas-dim">
                     {item.body}
@@ -75,21 +157,60 @@ export default function AboutPage() {
         </Container>
       </SectionWrapper>
 
+      {/* Team */}
+      <SectionWrapper id="team" ariaLabel="Our Team" className="py-24 md:py-32">
+        <Container>
+          <ScrollReveal className="col-full mb-4">
+            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+              The Team
+            </p>
+          </ScrollReveal>
+          <ScrollReveal className="col-full mb-12 lg:col-span-8" delay={0.1}>
+            <h2 className="max-w-2xl">
+              Small team. Big reach.
+            </h2>
+            <p className="mt-4 max-w-xl text-canvas-dim">
+              We&apos;re a tight-knit crew of engineers, designers, and
+              strategists who believe the best work comes from deep
+              collaboration and shared ownership.
+            </p>
+          </ScrollReveal>
+
+          <div className="col-full grid gap-6 md:grid-cols-3">
+            {TEAM.map((member, i) => (
+              <ScrollReveal key={member.name} delay={0.15 + i * 0.1}>
+                <div className="group flex h-full flex-col rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6 transition-colors duration-300 hover:border-copper/20">
+                  {/* Avatar placeholder */}
+                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-copper/20 to-safety-orange/10">
+                    <span className="font-headline text-xl font-bold text-copper">
+                      {member.name.split(" ").map((n) => n[0]).join("")}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-semibold">{member.name}</h3>
+                  <p className="mt-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper">
+                    {member.role}
+                  </p>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-canvas-dim">
+                    {member.bio}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </Container>
+      </SectionWrapper>
+
       {/* Process */}
-      <SectionWrapper id="process" ariaLabel="Our Process" className="pb-24 md:pb-32">
+      <SectionWrapper id="process" ariaLabel="Our Process">
         <Container>
           <ScrollReveal className="col-full mb-12">
+            <p className="mb-4 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+              Our Process
+            </p>
             <h2>How We Work</h2>
           </ScrollReveal>
-          <div className="col-full grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {(
-              [
-                { step: "01", title: "Discover", body: "Deep dive into goals, users, and constraints." },
-                { step: "02", title: "Design", body: "Systems-driven design from wireframe to prototype." },
-                { step: "03", title: "Develop", body: "Clean architecture, rigorous code, iterative builds." },
-                { step: "04", title: "Deploy", body: "Launch, monitor, optimize, and support." },
-              ] as const
-            ).map((item, i) => (
+          <div className="col-full grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {PROCESS.map((item, i) => (
               <ScrollReveal key={item.step} delay={0.1 + i * 0.1} direction="left">
                 <div className="group">
                   <span className="font-mono text-[2rem] font-bold text-copper/30 transition-colors duration-300 group-hover:text-copper">
@@ -103,6 +224,57 @@ export default function AboutPage() {
               </ScrollReveal>
             ))}
           </div>
+        </Container>
+      </SectionWrapper>
+
+      {/* Capabilities / Toolkit */}
+      <SectionWrapper id="capabilities" ariaLabel="Our Toolkit" className="py-24 md:py-32">
+        <Container>
+          <ScrollReveal className="col-full mb-4">
+            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+              Toolkit
+            </p>
+          </ScrollReveal>
+          <ScrollReveal className="col-full mb-12 lg:col-span-8" delay={0.1}>
+            <h2 className="max-w-2xl">Technologies we work with</h2>
+          </ScrollReveal>
+          <ParallaxLayer speed={0.08} className="col-full">
+            <ScrollReveal delay={0.2}>
+              <div className="flex flex-wrap gap-3">
+                {CAPABILITIES.map((cap) => (
+                  <span
+                    key={cap.label}
+                    className="rounded-full border border-canvas/10 bg-obsidian-light px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.15em] text-canvas-dim transition-colors duration-300 hover:border-copper/30 hover:text-canvas"
+                  >
+                    {cap.label}
+                  </span>
+                ))}
+              </div>
+            </ScrollReveal>
+          </ParallaxLayer>
+        </Container>
+      </SectionWrapper>
+
+      {/* CTA band */}
+      <SectionWrapper id="about-cta" className="pb-24 md:pb-32">
+        <Container>
+          <ScrollReveal className="col-full" direction="none">
+            <div className="flex flex-col items-center rounded-[var(--radius-lg)] border border-canvas/6 bg-obsidian-light px-8 py-16 text-center md:px-16 md:py-20">
+              <h2 className="max-w-xl">Want to work with us?</h2>
+              <p className="mt-4 max-w-md text-canvas-dim">
+                We&apos;re always looking for ambitious projects and
+                like-minded collaborators. Let&apos;s talk.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-[var(--radius-md)] bg-copper px-8 py-3.5 font-mono text-[0.8125rem] uppercase tracking-[0.15em] text-obsidian transition-all duration-300 hover:bg-copper-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper"
+                data-cursor="hover"
+              >
+                Get In Touch
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </ScrollReveal>
         </Container>
       </SectionWrapper>
     </>

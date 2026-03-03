@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { ContactForm } from "@/components/sections/contact-form"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
@@ -9,10 +10,53 @@ export const metadata: Metadata = {
     "Get in touch with Foundry Tech — let's discuss your next Mobile, Web, TV, or IoT project.",
 }
 
+// ---------------------------------------------------------------------------
+// Data
+// ---------------------------------------------------------------------------
+
+const CONTACT_INFO = [
+  {
+    heading: "Email",
+    content: "hello@foundrytech.dev",
+    href: "mailto:hello@foundrytech.dev",
+  },
+  {
+    heading: "Based In",
+    content: "San Francisco, CA",
+  },
+  {
+    heading: "Availability",
+    content: "Currently accepting new projects for Q3 2026.",
+  },
+] as const
+
+const SOCIAL_LINKS = [
+  { label: "GitHub", href: "https://github.com/foundrytech" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/foundrytech" },
+  { label: "X / Twitter", href: "https://x.com/foundrytech" },
+] as const
+
+const FAQ = [
+  {
+    q: "What's your typical project timeline?",
+    a: "Most projects run 8–16 weeks from kickoff to launch, depending on scope and platform complexity.",
+  },
+  {
+    q: "Do you work with startups?",
+    a: "Absolutely. We've partnered with early-stage startups and established enterprises alike. The common thread is ambition.",
+  },
+  {
+    q: "What's your pricing model?",
+    a: "We offer fixed-price project scoping and monthly retainers. We'll recommend the best fit during our initial discussion.",
+  },
+] as const
+
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
+
 /**
- * /contact — Contact form and information.
- *
- * Phase 14 will add a functional form + validation.
+ * /contact — Contact form with validation, info sidebar, and FAQ.
  */
 export default function ContactPage() {
   return (
@@ -41,102 +85,81 @@ export default function ContactPage() {
         <Container>
           {/* Form column */}
           <ScrollReveal className="col-full lg:col-span-7" delay={0.1}>
-            <form className="flex flex-col gap-6">
-              {/* Name */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Your name"
-                  className="w-full border-b border-canvas/10 bg-transparent py-3 text-canvas outline-none transition-colors duration-300 placeholder:text-canvas-dim/30 focus:border-copper"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@company.com"
-                  className="w-full border-b border-canvas/10 bg-transparent py-3 text-canvas outline-none transition-colors duration-300 placeholder:text-canvas-dim/30 focus:border-copper"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label
-                  htmlFor="message"
-                  className="mb-2 block font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="Tell us about your project…"
-                  className="w-full resize-none border-b border-canvas/10 bg-transparent py-3 text-canvas outline-none transition-colors duration-300 placeholder:text-canvas-dim/30 focus:border-copper"
-                />
-              </div>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                className="mt-4 inline-flex w-fit items-center gap-2 rounded-[var(--radius-md)] border border-copper bg-transparent px-8 py-3 font-mono text-[0.8125rem] uppercase tracking-[0.15em] text-copper transition-all duration-300 hover:bg-copper hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper"
-              >
-                Send Message
-                <span aria-hidden="true">→</span>
-              </button>
-            </form>
+            <ContactForm />
           </ScrollReveal>
 
           {/* Info column */}
-          <ScrollReveal className="col-full mt-16 lg:col-span-4 lg:col-start-9 lg:mt-0" delay={0.2} direction="right">
+          <ScrollReveal
+            className="col-full mt-16 lg:col-span-4 lg:col-start-9 lg:mt-0"
+            delay={0.2}
+            direction="right"
+          >
             <div className="flex flex-col gap-8">
+              {CONTACT_INFO.map((item) => (
+                <div key={item.heading}>
+                  <h3 className="mb-2 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim">
+                    {item.heading}
+                  </h3>
+                  {"href" in item ? (
+                    <a
+                      href={item.href}
+                      className="text-canvas transition-colors duration-300 hover:text-copper"
+                      data-cursor="hover"
+                    >
+                      {item.content}
+                    </a>
+                  ) : (
+                    <p className="text-canvas">{item.content}</p>
+                  )}
+                </div>
+              ))}
+
+              {/* Social links */}
               <div>
-                <h3 className="mb-2 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim">
-                  Email
+                <h3 className="mb-3 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim">
+                  Connect
                 </h3>
-                <a
-                  href="mailto:hello@foundrytech.dev"
-                  className="text-canvas transition-colors duration-300 hover:text-copper"
-                >
-                  hello@foundrytech.dev
-                </a>
-              </div>
-              <div>
-                <h3 className="mb-2 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim">
-                  Based In
-                </h3>
-                <p className="text-canvas">San Francisco, CA</p>
-              </div>
-              <div>
-                <h3 className="mb-2 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim">
-                  Availability
-                </h3>
-                <p className="text-canvas">
-                  Currently accepting new projects for Q3 2026.
-                </p>
+                <div className="flex gap-4">
+                  {SOCIAL_LINKS.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-[0.6875rem] uppercase tracking-[0.15em] text-canvas-dim transition-colors duration-300 hover:text-copper"
+                      data-cursor="hover"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </ScrollReveal>
+        </Container>
+      </SectionWrapper>
+
+      {/* FAQ */}
+      <SectionWrapper id="faq" ariaLabel="Frequently Asked Questions" className="pb-24 md:pb-32">
+        <Container>
+          <ScrollReveal className="col-full mb-12 lg:col-span-4">
+            <p className="mb-4 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+              FAQ
+            </p>
+            <h2>Common Questions</h2>
+          </ScrollReveal>
+          <div className="col-full flex flex-col gap-6 lg:col-span-7 lg:col-start-6">
+            {FAQ.map((item, i) => (
+              <ScrollReveal key={item.q} delay={0.1 + i * 0.08}>
+                <div className="rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6">
+                  <h3 className="text-base font-semibold">{item.q}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-canvas-dim">
+                    {item.a}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </Container>
       </SectionWrapper>
     </>
