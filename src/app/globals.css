@@ -258,6 +258,20 @@ hr {
   border-top: 0.5px solid var(--color-grid-line);
 }
 
+/* Custom cursor — hide native cursor on fine-pointer (desktop) devices */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Utility: hide on coarse-pointer (touch) devices */
+@media (pointer: coarse) {
+  .coarse-pointer\:hidden {
+    display: none !important;
+  }
+}
+
 /* -----------------------------------------------------------------------------
    5. Layout — The Architect's Grid System
    ----------------------------------------------------------------------------- */
