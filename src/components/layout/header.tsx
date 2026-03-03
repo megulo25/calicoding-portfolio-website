@@ -5,6 +5,8 @@ import type { NavItem } from "@/types"
 import { Logo } from "@/components/ui/logo"
 import { NavLink } from "@/components/ui/nav-link"
 import { DevModeToggle } from "@/components/ui/dev-mode-toggle"
+import { MenuToggle } from "@/components/ui/menu-toggle"
+import { MobileNav } from "@/components/layout/mobile-nav"
 
 // ---------------------------------------------------------------------------
 // Navigation items
@@ -41,6 +43,7 @@ export function Header() {
     if (typeof window === "undefined") return false
     return window.scrollY > SCROLL_THRESHOLD
   })
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
@@ -86,8 +89,18 @@ export function Header() {
         {/* Right side controls */}
         <div className="flex items-center gap-4">
           <DevModeToggle />
+          <MenuToggle
+            isOpen={isMobileMenuOpen}
+            onToggle={() => setIsMobileMenuOpen((prev) => !prev)}
+          />
         </div>
       </nav>
+
+      {/* Mobile navigation overlay */}
+      <MobileNav
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
     </header>
   )
 }
