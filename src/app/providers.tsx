@@ -3,6 +3,7 @@
 import type { ReactNode } from "react"
 import { DevModeProvider } from "@/lib/context/dev-mode-context"
 import { GridOverlay } from "@/components/ui/grid-overlay"
+import { Header } from "@/components/layout/header"
 
 interface ProvidersProps {
   children: ReactNode
@@ -19,7 +20,8 @@ export function Providers({ children }: ProvidersProps) {
   return (
     <DevModeProvider>
       <GridOverlay />
-      {children}
+      <Header />
+      <main className="pt-16">{children}</main>
     </DevModeProvider>
   )
 }
