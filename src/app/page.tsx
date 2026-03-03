@@ -262,6 +262,24 @@ export default function Home() {
           </div>
         </Container>
       </SectionWrapper>
+
+      {/* Dev-Mode Hint */}
+      <Container as="footer" className="pb-12">
+        <div className="col-full flex items-center gap-2 rounded-sm border border-grid-line bg-obsidian-light px-4 py-3">
+          <span className="font-mono text-[length:var(--text-caption)] uppercase tracking-widest text-copper">
+            Dev-Mode
+          </span>
+          <span className="font-mono text-[length:var(--text-small)] text-canvas-dim">
+            Press{" "}
+            <kbd className="rounded-sm border border-canvas-dim/20 bg-obsidian-lighter px-1.5 py-0.5 font-mono text-[length:var(--text-caption)] text-canvas">⌘</kbd>
+            {" + "}
+            <kbd className="rounded-sm border border-canvas-dim/20 bg-obsidian-lighter px-1.5 py-0.5 font-mono text-[length:var(--text-caption)] text-canvas">⇧</kbd>
+            {" + "}
+            <kbd className="rounded-sm border border-canvas-dim/20 bg-obsidian-lighter px-1.5 py-0.5 font-mono text-[length:var(--text-caption)] text-canvas">D</kbd>
+            {" "} to toggle the grid overlay.
+          </span>
+        </div>
+      </Container>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Playfair_Display, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import { Providers } from "./providers"
 
 /**
  * Headline font — high-contrast extended serif.
@@ -49,7 +50,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
