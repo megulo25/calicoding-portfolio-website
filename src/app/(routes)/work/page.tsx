@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { WorkGallery } from "@/components/sections/work-gallery"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
@@ -10,10 +11,7 @@ export const metadata: Metadata = {
 }
 
 /**
- * /work — Portfolio project gallery.
- *
- * Phase 13 will populate this with the project grid + filtering.
- * For now, the structural skeleton is in place.
+ * /work — Portfolio project gallery with category filtering.
  */
 export default function WorkPage() {
   return (
@@ -37,23 +35,11 @@ export default function WorkPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Project grid placeholder */}
+      {/* Filterable project grid */}
       <SectionWrapper id="projects" className="pb-24 md:pb-32">
         <Container>
-          <div className="col-full grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <ScrollReveal key={i} delay={0.05 + i * 0.08}>
-                <div
-                  className="group relative aspect-[4/3] overflow-hidden rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light transition-colors duration-300 hover:border-copper/20"
-                >
-                  <div className="flex h-full items-center justify-center">
-                    <span className="font-mono text-[0.75rem] uppercase tracking-[0.15em] text-canvas-dim/40">
-                      Project {i + 1}
-                    </span>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+          <div className="col-full">
+            <WorkGallery />
           </div>
         </Container>
       </SectionWrapper>
