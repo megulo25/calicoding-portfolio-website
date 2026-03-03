@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/container"
 import { ParallaxLayer } from "@/components/ui/parallax-layer"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
+import { getProjectStats } from "@/lib/utils/project-stats"
 
 const SERVICES = [
   {
@@ -27,12 +28,7 @@ const SERVICES = [
   },
 ] as const
 
-const STATS = [
-  { value: "50+", label: "Projects Shipped" },
-  { value: "4", label: "Platforms Covered" },
-  { value: "12", label: "Years of Craft" },
-  { value: "99%", label: "Client Retention" },
-] as const
+const STATS = getProjectStats()
 
 export default function Home() {
   return (

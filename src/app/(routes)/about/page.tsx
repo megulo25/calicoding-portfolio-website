@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { TEAM } from "@/data/team"
 import { Container } from "@/components/ui/container"
+import { getAboutStats } from "@/lib/utils/project-stats"
 import { ParallaxLayer } from "@/components/ui/parallax-layer"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
@@ -102,11 +103,7 @@ export default function AboutPage() {
 
           {/* Key stats inline */}
           <div className="col-full mt-16 grid gap-px overflow-hidden rounded-[var(--radius-lg)] border border-canvas/6 sm:grid-cols-3 lg:col-span-8">
-            {([
-              { value: "12+", label: "Years of Experience" },
-              { value: "50+", label: "Projects Delivered" },
-              { value: "4", label: "Platform Specialties" },
-            ] as const).map((stat, i) => (
+            {getAboutStats().map((stat, i) => (
               <ScrollReveal key={stat.label} delay={0.15 + i * 0.1}>
                 <div className="flex flex-col items-center justify-center bg-obsidian-light px-6 py-8 text-center">
                   <span className="font-headline text-[clamp(2rem,4vw,2.75rem)] font-bold text-copper">
