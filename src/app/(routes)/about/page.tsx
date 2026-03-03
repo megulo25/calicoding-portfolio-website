@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
+import { TEAM } from "@/data/team"
 import { Container } from "@/components/ui/container"
 import { ParallaxLayer } from "@/components/ui/parallax-layer"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
@@ -53,23 +55,7 @@ const PROCESS = [
   },
 ] as const
 
-const TEAM = [
-  {
-    name: "Alex Chen",
-    role: "Founder & Lead Engineer",
-    bio: "12 years building digital products across startups and Fortune 500s. Obsessed with systems thinking and clean architecture.",
-  },
-  {
-    name: "Maya Rodriguez",
-    role: "Design Director",
-    bio: "From graphic design to interaction systems — Maya brings a rare blend of visual craft and technical fluency to every project.",
-  },
-  {
-    name: "Sam Okafor",
-    role: "Platform Engineering Lead",
-    bio: "Specialist in cross-platform architecture — from React Native to embedded IoT. Champion of developer experience.",
-  },
-] as const
+// TEAM data is imported from @/data/team
 
 const CAPABILITIES = [
   { label: "React / Next.js", category: "Web" },
@@ -180,12 +166,24 @@ export default function AboutPage() {
             {TEAM.map((member, i) => (
               <ScrollReveal key={member.name} delay={0.15 + i * 0.1}>
                 <div className="group flex h-full flex-col rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6 transition-colors duration-300 hover:border-copper/20">
-                  {/* Avatar placeholder */}
-                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-copper/20 to-safety-orange/10">
-                    <span className="font-headline text-xl font-bold text-copper">
-                      {member.name.split(" ").map((n) => n[0]).join("")}
-                    </span>
-                  </div>
+                  {/* Headshot or fallback avatar */}
+                  {member.headshot ? (
+                    <div className="relative mb-5 h-16 w-16 overflow-hidden rounded-full">
+                      <Image
+                        src={member.headshot}
+                        alt={`${member.name} headshot`}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    </div>
+                  ) : (
+                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-copper/20 to-safety-orange/10">
+                      <span className="font-headline text-xl font-bold text-copper">
+                        {member.name.split(" ").map((n) => n[0]).join("")}
+                      </span>
+                    </div>
+                  )}
                   <h3 className="text-base font-semibold">{member.name}</h3>
                   <p className="mt-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper">
                     {member.role}
@@ -193,6 +191,23 @@ export default function AboutPage() {
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-canvas-dim">
                     {member.bio}
                   </p>
+                  {/* Social links */}
+                  {member.socials && member.socials.length > 0 && (
+                    <div className="mt-4 flex gap-3 border-t border-canvas/6 pt-4">
+                      {member.socials.map((social) => (
+                        <a
+                          key={social.platform}
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-canvas-dim transition-colors duration-200 hover:text-copper"
+                          aria-label={`${member.name} on ${social.label}`}
+                        >
+                          {social.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </ScrollReveal>
             ))}
