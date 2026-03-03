@@ -1,26 +1,164 @@
+/* =============================================================================
+   Foundry Tech — Global Styles & Design Tokens
+   The Architect's Framework: Industrial Futurism, Dark-Mode First
+   ============================================================================= */
+
 @import "tailwindcss";
 
+/* -----------------------------------------------------------------------------
+   1. CSS Custom Properties (non-Tailwind, used by @theme below)
+   ----------------------------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Color Palette ---- */
+  --color-obsidian: #0a0a0a;
+  --color-obsidian-light: #141414;
+  --color-obsidian-lighter: #1e1e1e;
+  --color-canvas: #f2f0e9;
+  --color-canvas-dim: #a8a49c;
+  --color-copper: #b87333;
+  --color-copper-light: #d4956a;
+  --color-copper-dark: #8b5a2b;
+  --color-safety-orange: #ff6700;
+  --color-grid-line: rgba(242, 240, 233, 0.06);
+
+  /* ---- Spacing Scale (4px base unit) ---- */
+  --space-1: 0.25rem;   /*  4px */
+  --space-2: 0.5rem;    /*  8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+
+  /* ---- Border Radii (sharp / industrial) ---- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* ---- Z-Index Scale ---- */
+  --z-base: 0;
+  --z-nav: 100;
+  --z-modal: 200;
+  --z-cursor: 9998;
+  --z-grid: 9999;
+
+  /* ---- Transition Tokens ---- */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* -----------------------------------------------------------------------------
+   2. Tailwind v4 @theme — Maps CSS vars to Tailwind utility classes
+   ----------------------------------------------------------------------------- */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Colors — usable as bg-obsidian, text-canvas, border-copper, etc. */
+  --color-obsidian: var(--color-obsidian);
+  --color-obsidian-light: var(--color-obsidian-light);
+  --color-obsidian-lighter: var(--color-obsidian-lighter);
+  --color-canvas: var(--color-canvas);
+  --color-canvas-dim: var(--color-canvas-dim);
+  --color-copper: var(--color-copper);
+  --color-copper-light: var(--color-copper-light);
+  --color-copper-dark: var(--color-copper-dark);
+  --color-safety-orange: var(--color-safety-orange);
+  --color-grid-line: var(--color-grid-line);
+
+  /* Legacy background/foreground aliases for backward compat */
+  --color-background: var(--color-obsidian);
+  --color-foreground: var(--color-canvas);
+
+  /* Fonts — will be updated in Phase 3 with proper typefaces */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Spacing — usable as p-space-4, gap-space-6, m-space-8, etc. */
+  --spacing-space-1: var(--space-1);
+  --spacing-space-2: var(--space-2);
+  --spacing-space-3: var(--space-3);
+  --spacing-space-4: var(--space-4);
+  --spacing-space-5: var(--space-5);
+  --spacing-space-6: var(--space-6);
+  --spacing-space-8: var(--space-8);
+  --spacing-space-10: var(--space-10);
+  --spacing-space-12: var(--space-12);
+  --spacing-space-16: var(--space-16);
+  --spacing-space-20: var(--space-20);
+  --spacing-space-24: var(--space-24);
+  --spacing-space-32: var(--space-32);
+
+  /* Border Radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* -----------------------------------------------------------------------------
+   3. Global Base Styles
+   ----------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-obsidian);
+  color: var(--color-canvas);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-copper);
+  color: var(--color-obsidian);
+}
+
+/* Scrollbar (WebKit) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-obsidian);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-copper-dark);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-copper);
+}
+
+/* Scrollbar (Firefox) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-copper-dark) var(--color-obsidian);
+}
+
+/* Focus visible — copper accent ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 2px;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 0.5px solid var(--color-grid-line);
 }
