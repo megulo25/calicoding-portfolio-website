@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Container } from "@/components/ui/container"
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function ContactPage() {
       {/* Hero */}
       <SectionWrapper id="contact-hero" className="py-24 md:py-32">
         <Container>
-          <div className="col-full lg:col-span-7">
+          <ScrollReveal className="col-full lg:col-span-7">
             <p className="mb-4 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
               Contact
             </p>
@@ -31,7 +32,7 @@ export default function ContactPage() {
               we&apos;d love to hear from you. Drop us a line and
               we&apos;ll get back within 24 hours.
             </p>
-          </div>
+          </ScrollReveal>
         </Container>
       </SectionWrapper>
 
@@ -39,7 +40,7 @@ export default function ContactPage() {
       <SectionWrapper id="contact-form" className="pb-24 md:pb-32">
         <Container>
           {/* Form column */}
-          <div className="col-full lg:col-span-7">
+          <ScrollReveal className="col-full lg:col-span-7" delay={0.1}>
             <form className="flex flex-col gap-6">
               {/* Name */}
               <div>
@@ -104,10 +105,10 @@ export default function ContactPage() {
                 <span aria-hidden="true">→</span>
               </button>
             </form>
-          </div>
+          </ScrollReveal>
 
           {/* Info column */}
-          <div className="col-full mt-16 lg:col-span-4 lg:col-start-9 lg:mt-0">
+          <ScrollReveal className="col-full mt-16 lg:col-span-4 lg:col-start-9 lg:mt-0" delay={0.2} direction="right">
             <div className="flex flex-col gap-8">
               <div>
                 <h3 className="mb-2 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim">
@@ -135,7 +136,7 @@ export default function ContactPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </Container>
       </SectionWrapper>
     </>

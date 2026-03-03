@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Container } from "@/components/ui/container"
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function AboutPage() {
       {/* Hero */}
       <SectionWrapper id="about-hero" className="py-24 md:py-32">
         <Container>
-          <div className="col-full lg:col-span-8">
+          <ScrollReveal className="col-full lg:col-span-8">
             <p className="mb-4 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
               About Us
             </p>
@@ -32,16 +33,16 @@ export default function AboutPage() {
               engineering with intentional design to build software that
               performs — and endures.
             </p>
-          </div>
+          </ScrollReveal>
         </Container>
       </SectionWrapper>
 
       {/* Philosophy */}
       <SectionWrapper id="philosophy" ariaLabel="Our Philosophy">
         <Container>
-          <div className="col-full mb-12 lg:col-span-4">
+          <ScrollReveal className="col-full mb-12 lg:col-span-4">
             <h2>Our Philosophy</h2>
-          </div>
+          </ScrollReveal>
           <div className="col-full grid gap-8 md:grid-cols-3 lg:col-span-8">
             {(
               [
@@ -58,16 +59,17 @@ export default function AboutPage() {
                   body: "We build systems, not throwaway prototypes. Our code is designed to scale, evolve, and endure.",
                 },
               ] as const
-            ).map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6"
-              >
-                <h3 className="mb-3 text-base font-semibold">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-canvas-dim">
-                  {item.body}
-                </p>
-              </div>
+            ).map((item, i) => (
+              <ScrollReveal key={item.title} delay={0.1 + i * 0.1}>
+                <div
+                  className="h-full rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6"
+                >
+                  <h3 className="mb-3 text-base font-semibold">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-canvas-dim">
+                    {item.body}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </Container>
@@ -76,9 +78,9 @@ export default function AboutPage() {
       {/* Process */}
       <SectionWrapper id="process" ariaLabel="Our Process" className="pb-24 md:pb-32">
         <Container>
-          <div className="col-full mb-12">
+          <ScrollReveal className="col-full mb-12">
             <h2>How We Work</h2>
-          </div>
+          </ScrollReveal>
           <div className="col-full grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {(
               [
@@ -87,16 +89,18 @@ export default function AboutPage() {
                 { step: "03", title: "Develop", body: "Clean architecture, rigorous code, iterative builds." },
                 { step: "04", title: "Deploy", body: "Launch, monitor, optimize, and support." },
               ] as const
-            ).map((item) => (
-              <div key={item.step} className="group">
-                <span className="font-mono text-[2rem] font-bold text-copper/30 transition-colors duration-300 group-hover:text-copper">
-                  {item.step}
-                </span>
-                <h3 className="mt-2 text-base font-semibold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-canvas-dim">
-                  {item.body}
-                </p>
-              </div>
+            ).map((item, i) => (
+              <ScrollReveal key={item.step} delay={0.1 + i * 0.1} direction="left">
+                <div className="group">
+                  <span className="font-mono text-[2rem] font-bold text-copper/30 transition-colors duration-300 group-hover:text-copper">
+                    {item.step}
+                  </span>
+                  <h3 className="mt-2 text-base font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-canvas-dim">
+                    {item.body}
+                  </p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </Container>

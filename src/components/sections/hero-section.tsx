@@ -1,7 +1,8 @@
 "use client"
 
+import { useRef } from "react"
 import dynamic from "next/dynamic"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 
 // Lazy-load the 3D canvas — skip SSR (Three.js needs the DOM)
@@ -44,8 +45,22 @@ const itemVariants = {
  * Mobile:   Gradient/static background, text centered.
  */
 export function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  // Track scroll progress through the hero section
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
+
+  // Parallax transforms — text drifts up, overlay fades in
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -80])
+  const textOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+  const overlayOpacity = useTransform(scrollYProgress, [0.3, 0.8], [0, 0.6])
+
   return (
     <section
+      ref={sectionRef}
       className="relative flex min-h-[100dvh] items-center overflow-hidden"
       aria-label="Hero"
     >
@@ -65,7 +80,10 @@ export function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-[clamp(1rem,4vw,4rem)]">
+      <motion.div
+        className="relative z-10 mx-auto w-full max-w-[1440px] px-[clamp(1rem,4vw,4rem)]"
+        style={{ y: textY, opacity: textOpacity }}
+      >
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -134,7 +152,14 @@ export function HeroSection() {
             </span>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
+
+      {/* Scroll-darken overlay — fades in as user scrolls past hero */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-20 bg-obsidian"
+        style={{ opacity: overlayOpacity }}
+        aria-hidden="true"
+      />
     </section>
   )
 }
