@@ -23,19 +23,32 @@
   --color-grid-line: rgba(242, 240, 233, 0.06);
 
   /* ---- Spacing Scale (4px base unit) ---- */
-  --space-1: 0.25rem;   /*  4px */
-  --space-2: 0.5rem;    /*  8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
-  --space-24: 6rem;     /* 96px */
-  --space-32: 8rem;     /* 128px */
+  --space-1: 0.25rem;
+  /*  4px */
+  --space-2: 0.5rem;
+  /*  8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
+  --space-16: 4rem;
+  /* 64px */
+  --space-20: 5rem;
+  /* 80px */
+  --space-24: 6rem;
+  /* 96px */
+  --space-32: 8rem;
+  /* 128px */
 
   /* ---- Border Radii (sharp / industrial) ---- */
   --radius-sm: 2px;
@@ -55,6 +68,16 @@
   --duration-slow: 600ms;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Fluid Typographic Scale ---- */
+  --text-display: clamp(3rem, 8vw, 7rem);       /* Hero headlines */
+  --text-h1: clamp(2.25rem, 5vw, 4rem);          /* Page titles */
+  --text-h2: clamp(1.75rem, 3.5vw, 2.5rem);      /* Section headers */
+  --text-h3: clamp(1.25rem, 2.5vw, 1.75rem);     /* Subsection headers */
+  --text-h4: clamp(1.1rem, 1.5vw, 1.25rem);      /* Card titles */
+  --text-body: clamp(1rem, 1.2vw, 1.125rem);     /* Body text */
+  --text-small: clamp(0.8125rem, 1vw, 0.875rem); /* Secondary text */
+  --text-caption: 0.6875rem;                      /* Labels, badges */
 }
 
 /* -----------------------------------------------------------------------------
@@ -78,9 +101,10 @@
   --color-background: var(--color-obsidian);
   --color-foreground: var(--color-canvas);
 
-  /* Fonts — will be updated in Phase 3 with proper typefaces */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts — Architect's Framework typographic trinity */
+  --font-headline: var(--font-headline);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
 
   /* Spacing — usable as p-space-4, gap-space-6, m-space-8, etc. */
   --spacing-space-1: var(--space-1);
@@ -116,9 +140,61 @@
 body {
   background-color: var(--color-obsidian);
   color: var(--color-canvas);
-  font-family: var(--font-sans, system-ui, sans-serif);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* -----------------------------------------------------------------------------
+   4. Typography — Base Element Styles
+   ----------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headline), Georgia, serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-canvas);
+}
+
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+h4 { font-size: var(--text-h4); }
+
+p {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.65;
+}
+
+code,
+pre {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-small);
+}
+
+pre {
+  background-color: var(--color-obsidian-lighter);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-in-out);
+}
+
+a:hover {
+  color: var(--color-copper);
 }
 
 /* Selection */
