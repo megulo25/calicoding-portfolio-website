@@ -1,2 +1,3 @@
 // Barrel export for Three.js / R3F components
-// Components will be exported here as they are created
+export { FoundryScene } from "./foundry-scene"
+export { HeroCanvas } from "./hero-canvas"
