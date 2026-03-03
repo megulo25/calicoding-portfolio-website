@@ -38,11 +38,10 @@ export function NavLink({ label, href, onClick }: NavLinkProps) {
       </span>
       {/* Underline indicator */}
       <span
-        className={`absolute -bottom-1 left-0 h-px bg-copper transition-all duration-300 ease-out ${
-          isActive
+        className={`absolute -bottom-1 left-0 h-px bg-copper transition-all duration-300 ease-out ${isActive
             ? "w-full"
             : "w-0 group-hover:w-full"
-        }`}
+          }`}
         aria-hidden="true"
       />
     </Link>
