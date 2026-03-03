@@ -1,2 +1,3 @@
 // Barrel export for UI components
-// Components will be exported here as they are created
+export { Container } from "./container"
+export { SectionWrapper } from "./section-wrapper"

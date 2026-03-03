@@ -70,14 +70,22 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ---- Fluid Typographic Scale ---- */
-  --text-display: clamp(3rem, 8vw, 7rem);       /* Hero headlines */
-  --text-h1: clamp(2.25rem, 5vw, 4rem);          /* Page titles */
-  --text-h2: clamp(1.75rem, 3.5vw, 2.5rem);      /* Section headers */
-  --text-h3: clamp(1.25rem, 2.5vw, 1.75rem);     /* Subsection headers */
-  --text-h4: clamp(1.1rem, 1.5vw, 1.25rem);      /* Card titles */
-  --text-body: clamp(1rem, 1.2vw, 1.125rem);     /* Body text */
-  --text-small: clamp(0.8125rem, 1vw, 0.875rem); /* Secondary text */
-  --text-caption: 0.6875rem;                      /* Labels, badges */
+  --text-display: clamp(3rem, 8vw, 7rem);
+  /* Hero headlines */
+  --text-h1: clamp(2.25rem, 5vw, 4rem);
+  /* Page titles */
+  --text-h2: clamp(1.75rem, 3.5vw, 2.5rem);
+  /* Section headers */
+  --text-h3: clamp(1.25rem, 2.5vw, 1.75rem);
+  /* Subsection headers */
+  --text-h4: clamp(1.1rem, 1.5vw, 1.25rem);
+  /* Card titles */
+  --text-body: clamp(1rem, 1.2vw, 1.125rem);
+  /* Body text */
+  --text-small: clamp(0.8125rem, 1vw, 0.875rem);
+  /* Secondary text */
+  --text-caption: 0.6875rem;
+  /* Labels, badges */
 }
 
 /* -----------------------------------------------------------------------------
@@ -163,10 +171,21 @@ h6 {
   color: var(--color-canvas);
 }
 
-h1 { font-size: var(--text-h1); }
-h2 { font-size: var(--text-h2); }
-h3 { font-size: var(--text-h3); }
-h4 { font-size: var(--text-h4); }
+h1 {
+  font-size: var(--text-h1);
+}
+
+h2 {
+  font-size: var(--text-h2);
+}
+
+h3 {
+  font-size: var(--text-h3);
+}
+
+h4 {
+  font-size: var(--text-h4);
+}
 
 p {
   font-family: var(--font-body), system-ui, sans-serif;
@@ -237,4 +256,118 @@ html {
 hr {
   border: none;
   border-top: 0.5px solid var(--color-grid-line);
+}
+
+/* -----------------------------------------------------------------------------
+   5. Layout — The Architect's Grid System
+   ----------------------------------------------------------------------------- */
+
+/**
+ * .grid-architect — 12-column asymmetric grid foundation.
+ *
+ * Responsive breakdowns:
+ *   Mobile  (< 768px):   4 columns, 1rem gap, 1rem inline padding
+ *   Tablet  (768–1023):  8 columns, 1.25rem gap, 2rem inline padding
+ *   Desktop (≥ 1024px): 12 columns, 1.5rem gap, fluid inline padding
+ *
+ * Named grid area patterns (use via grid-column on children):
+ *   content-full:    1 / -1          (all columns)
+ *   content-wide:    1 / 9           (cols 1–8 on desktop)
+ *   content-narrow:  2 / 8           (cols 2–7, centered-ish)
+ *   content-offset:  2 / 11          (cols 2–10, offset start)
+ *   sidebar:         9 / -1          (cols 9–12)
+ *   content-left:    1 / 7           (cols 1–6)
+ *   content-right:   7 / -1          (cols 7–12)
+ */
+.grid-architect {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1rem;
+  padding-inline: clamp(1rem, 4vw, 4rem);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .grid-architect {
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-architect {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+/* Utility: span all columns */
+.col-full {
+  grid-column: 1 / -1;
+}
+
+/* Utility: content area spanning cols 1–8 (desktop), full on mobile */
+.col-wide {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .col-wide {
+    grid-column: 1 / 9;
+  }
+}
+
+/* Utility: offset content spanning cols 2–10 (desktop), full on mobile */
+.col-offset {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .col-offset {
+    grid-column: 2 / 11;
+  }
+}
+
+/* Utility: narrow centered content cols 2–7 (desktop), full on mobile */
+.col-narrow {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .col-narrow {
+    grid-column: 2 / 8;
+  }
+}
+
+/* Utility: sidebar area cols 9–12 (desktop), full on mobile */
+.col-sidebar {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .col-sidebar {
+    grid-column: 9 / -1;
+  }
+}
+
+/* Utility: left half cols 1–6 (desktop), full on mobile */
+.col-left {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .col-left {
+    grid-column: 1 / 7;
+  }
+}
+
+/* Utility: right half cols 7–12 (desktop), full on mobile */
+.col-right {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .col-right {
+    grid-column: 7 / -1;
+  }
 }

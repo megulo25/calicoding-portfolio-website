@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { Playfair_Display, Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next"
+import { Playfair_Display, Space_Grotesk, JetBrains_Mono } from "next/font/google"
+import "./globals.css"
 
 /**
  * Headline font — high-contrast extended serif.
@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
-});
+})
 
 /**
  * Body font — sharp grotesk sans-serif.
@@ -22,7 +22,7 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
-});
+})
 
 /**
  * Monospace font — technical data, code, labels.
@@ -32,17 +32,17 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "700"],
-});
+})
 
 export const metadata: Metadata = {
   title: "Foundry Tech",
   description: "We Build What's Next — Mobile, Web, TV & IoT.",
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -52,5 +52,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }
