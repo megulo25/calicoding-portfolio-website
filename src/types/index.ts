@@ -29,6 +29,29 @@ export interface Project {
   year: number
   /** Whether to feature this project at a larger size in the grid */
   featured: boolean
+
+  // ── Case-study detail fields ────────────────────────────────────────────
+
+  /** Extended project overview (2–3 paragraphs) */
+  overview: string
+  /** The problem or challenge the project addressed */
+  challenge: string
+  /** How the team approached and solved the challenge */
+  solution: string
+  /** Outcomes, metrics, and impact */
+  results: string
+  /** Gallery image paths relative to `/public` */
+  gallery: string[]
+  /** URL to the live product, or null */
+  liveUrl: string | null
+  /** URL to the source repository, or null */
+  repoUrl: string | null
+  /** Client name (if disclosable), or null */
+  client: string | null
+  /** Project duration (e.g. "12 weeks"), or null */
+  duration: string | null
+  /** Team's role on the project (e.g. "Design & Development"), or null */
+  role: string | null
 }
 
 /**
@@ -110,8 +133,8 @@ export interface TeamMember {
   role: string
   /** Short biographical blurb (1–2 sentences) */
   bio: string
-  /** Path to headshot image relative to `/public`, or null for fallback avatar */
-  headshot: string | null
+  /** Path to upper-body portrait image relative to `/public`, or null for fallback avatar */
+  portrait: string | null
   /** Optional social profile links */
   socials?: SocialLink[]
 }

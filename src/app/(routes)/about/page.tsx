@@ -163,49 +163,53 @@ export default function AboutPage() {
           <div className="col-full grid gap-6 md:grid-cols-3">
             {TEAM.map((member, i) => (
               <ScrollReveal key={member.name} delay={0.15 + i * 0.1}>
-                <div className="group flex h-full flex-col rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6 transition-colors duration-300 hover:border-copper/20">
-                  {/* Headshot or fallback avatar */}
-                  {member.headshot ? (
-                    <div className="relative mb-5 h-16 w-16 overflow-hidden rounded-full">
+                <div className="group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light transition-colors duration-300 hover:border-copper/20">
+                  {/* Portrait or fallback avatar */}
+                  {member.portrait ? (
+                    <div className="relative aspect-[3/4] w-full">
                       <Image
-                        src={member.headshot}
-                        alt={`${member.name} headshot`}
+                        src={member.portrait}
+                        alt={`${member.name} portrait`}
                         fill
                         className="object-cover"
-                        sizes="64px"
+                        sizes="(min-width: 768px) 33vw, 100vw"
                       />
                     </div>
                   ) : (
-                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-copper/20 to-safety-orange/10">
-                      <span className="font-headline text-xl font-bold text-copper">
+                    <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-copper/20 via-safety-orange/10 to-obsidian-light">
+                      <span className="font-headline text-[clamp(3rem,6vw,5rem)] font-bold text-copper/40">
                         {member.name.split(" ").map((n) => n[0]).join("")}
                       </span>
                     </div>
                   )}
-                  <h3 className="text-base font-semibold">{member.name}</h3>
-                  <p className="mt-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper">
-                    {member.role}
-                  </p>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-canvas-dim">
-                    {member.bio}
-                  </p>
-                  {/* Social links */}
-                  {member.socials && member.socials.length > 0 && (
-                    <div className="mt-4 flex gap-3 border-t border-canvas/6 pt-4">
-                      {member.socials.map((social) => (
-                        <a
-                          key={social.platform}
-                          href={social.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-canvas-dim transition-colors duration-200 hover:text-copper"
-                          aria-label={`${member.name} on ${social.label}`}
-                        >
-                          {social.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+
+                  {/* Text content */}
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-base font-semibold">{member.name}</h3>
+                    <p className="mt-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper">
+                      {member.role}
+                    </p>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-canvas-dim">
+                      {member.bio}
+                    </p>
+                    {/* Social links */}
+                    {member.socials && member.socials.length > 0 && (
+                      <div className="mt-4 flex gap-3 border-t border-canvas/6 pt-4">
+                        {member.socials.map((social) => (
+                          <a
+                            key={social.platform}
+                            href={social.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-canvas-dim transition-colors duration-200 hover:text-copper"
+                            aria-label={`${member.name} on ${social.label}`}
+                          >
+                            {social.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
