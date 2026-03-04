@@ -1,13 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
-import type { ProjectCategory } from "@/types"
+import type { Platform } from "@/types"
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
-type FilterValue = "All" | ProjectCategory
+type FilterValue = "All" | Platform
 
 interface CategoryFilterProps {
   /** Currently active filter. */
@@ -41,7 +41,7 @@ export function CategoryFilter({ active, onSelect }: CategoryFilterProps) {
     <div
       className="flex flex-wrap gap-2"
       role="tablist"
-      aria-label="Filter by category"
+      aria-label="Filter by platform"
     >
       {FILTERS.map((filter) => {
         const isActive = filter === active
@@ -52,8 +52,8 @@ export function CategoryFilter({ active, onSelect }: CategoryFilterProps) {
             aria-selected={isActive}
             onClick={() => onSelect(filter)}
             className={`relative rounded-full px-5 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.2em] transition-colors duration-300 ${isActive
-                ? "text-obsidian"
-                : "text-canvas-dim hover:text-canvas"
+              ? "text-obsidian"
+              : "text-canvas-dim hover:text-canvas"
               }`}
             data-cursor="hover"
           >

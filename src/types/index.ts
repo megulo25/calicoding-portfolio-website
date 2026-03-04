@@ -3,9 +3,29 @@
 // =============================================================================
 
 /**
- * Project categories corresponding to Foundry Tech's four service pillars.
+ * Target platforms corresponding to Foundry Tech's four service pillars.
+ * A project can ship to one or more platforms.
  */
-export type ProjectCategory = "Mobile" | "Web" | "TV" | "IoT"
+export type Platform = "Mobile" | "Web" | "TV" | "IoT"
+
+/**
+ * Platform-specific and general external links for a project.
+ * All fields are optional — only populate the ones that apply.
+ */
+export interface ProjectLinks {
+  /** URL to the live web product */
+  liveUrl?: string
+  /** URL to the source repository */
+  repoUrl?: string
+  /** iOS App Store URL */
+  iosAppStore?: string
+  /** Google Play Store URL */
+  googlePlay?: string
+  /** Amazon Appstore (Fire TV / tablets) URL */
+  amazonAppStore?: string
+  /** Roku Channel Store URL */
+  rokuChannelStore?: string
+}
 
 /**
  * A portfolio project / case study.
@@ -17,8 +37,8 @@ export interface Project {
   title: string
   /** URL-safe slug used for routing (`/work/[slug]`) */
   slug: string
-  /** Service category */
-  category: ProjectCategory
+  /** Target platforms this project ships to */
+  platforms: Platform[]
   /** Short description (1–2 sentences) */
   description: string
   /** Path to thumbnail image relative to `/public` */
@@ -42,10 +62,8 @@ export interface Project {
   results: string
   /** Gallery image paths relative to `/public` */
   gallery: string[]
-  /** URL to the live product, or null */
-  liveUrl: string | null
-  /** URL to the source repository, or null */
-  repoUrl: string | null
+  /** External links (app stores, live URLs, repos, etc.) */
+  links: ProjectLinks
   /** Client name (if disclosable), or null */
   client: string | null
   /** Project duration (e.g. "12 weeks"), or null */

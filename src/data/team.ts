@@ -15,31 +15,12 @@ export const TEAM: readonly TeamMember[] = [
   {
     name: "Megulo Abebe",
     role: "Founder & Lead Engineer",
-    bio: "12 years building digital products across startups and Fortune 500s. Obsessed with systems thinking and clean architecture.",
-    portrait: null,
+    bio: "7 years building digital products across startups and Fortune 500s. Obsessed with systems thinking and clean architecture.",
+    portrait: "/images/team/megulo.jpg",
     socials: [
-      { platform: "GitHub", url: "https://github.com/alexchen", label: "GitHub" },
-      { platform: "LinkedIn", url: "https://linkedin.com/in/alexchen", label: "LinkedIn" },
-      { platform: "X", url: "https://x.com/alexchen", label: "X / Twitter" },
+      { platform: "GitHub", url: "https://github.com/megulo25", label: "GitHub" },
+      { platform: "LinkedIn", url: "https://www.linkedin.com/in/megulo-a-751a5393/", label: "LinkedIn" },
+      { platform: "X", url: "https://x.com/megulo25", label: "X / Twitter" },
     ],
-  },
-  {
-    name: "Joseph Brennan",
-    role: "Design Director",
-    bio: "From graphic design to interaction systems — Maya brings a rare blend of visual craft and technical fluency to every project.",
-    portrait: null,
-    socials: [
-      { platform: "LinkedIn", url: "https://linkedin.com/in/mayarodriguez", label: "LinkedIn" },
-    ],
-  },
-  {
-    name: "Danny Tran",
-    role: "Platform Engineering Lead",
-    bio: "Specialist in cross-platform architecture — from React Native to embedded IoT. Champion of developer experience.",
-    portrait: null,
-    socials: [
-      { platform: "GitHub", url: "https://github.com/samokafor", label: "GitHub" },
-      { platform: "LinkedIn", url: "https://linkedin.com/in/samokafor", label: "LinkedIn" },
-    ],
-  },
+  }
 ] as const

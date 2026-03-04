@@ -19,7 +19,7 @@ export interface Stat {
  */
 export function getProjectStats(): Stat[] {
   const projectCount = PROJECTS.length
-  const platformCount = new Set(PROJECTS.map((p) => p.category)).size
+  const platformCount = new Set(PROJECTS.flatMap((p) => p.platforms)).size
   const currentYear = new Date().getFullYear()
   const yearsOfCraft = currentYear - COMPANY.foundedYear
 
@@ -36,7 +36,7 @@ export function getProjectStats(): Stat[] {
  */
 export function getAboutStats(): Stat[] {
   const projectCount = PROJECTS.length
-  const platformCount = new Set(PROJECTS.map((p) => p.category)).size
+  const platformCount = new Set(PROJECTS.flatMap((p) => p.platforms)).size
   const currentYear = new Date().getFullYear()
   const yearsOfCraft = currentYear - COMPANY.foundedYear
 

@@ -3,17 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import type { Project } from "@/types"
-
-// ---------------------------------------------------------------------------
-// Gradient map — deterministic per-category colour for placeholder thumbnails
-// ---------------------------------------------------------------------------
-
-const CATEGORY_GRADIENTS: Record<Project["category"], string> = {
-  Mobile: "from-copper/20 via-safety-orange/10 to-obsidian-light",
-  Web: "from-copper/15 via-copper-dark/10 to-obsidian-light",
-  TV: "from-safety-orange/15 via-copper/10 to-obsidian-light",
-  IoT: "from-copper-dark/20 via-safety-orange/8 to-obsidian-light",
-}
+import { PLATFORM_GRADIENTS } from "@/lib/constants"
 
 // ---------------------------------------------------------------------------
 // Animation
@@ -49,6 +39,8 @@ interface ProjectCardProps {
  * placeholder, category badge, title, description, and tech stack.
  */
 export function ProjectCard({ project }: ProjectCardProps) {
+  const primaryPlatform = project.platforms[0] ?? "Web"
+
   return (
     <motion.article
       layout
@@ -66,12 +58,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Thumbnail placeholder */}
         <div
-          className={`relative aspect-[4/3] w-full bg-gradient-to-br ${CATEGORY_GRADIENTS[project.category]}`}
+          className={`relative aspect-[4/3] w-full bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
         >
-          {/* Category badge */}
-          <span className="absolute left-4 top-4 rounded-full border border-copper/30 bg-obsidian/80 px-3 py-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper backdrop-blur-sm">
-            {project.category}
-          </span>
+          {/* Platform badges */}
+          <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
+            {project.platforms.map((platform) => (
+              <span
+                key={platform}
+                className="rounded-full border border-copper/30 bg-obsidian/80 px-3 py-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper backdrop-blur-sm"
+              >
+                {platform}
+              </span>
+            ))}
+          </div>
 
           {/* Year badge */}
           <span className="absolute right-4 top-4 font-mono text-[0.625rem] uppercase tracking-[0.15em] text-canvas-dim/50">

@@ -4,6 +4,7 @@ import type { Project } from "@/types"
 // Foundry Tech — Portfolio Project Data
 //
 // Each project maps to the four service pillars: Mobile, Web, TV, IoT.
+// A project may target multiple platforms (e.g. Mobile + TV).
 // Thumbnails use generated gradient placeholders via CSS (no external images).
 // =============================================================================
 
@@ -11,27 +12,21 @@ export const PROJECTS: readonly Project[] = [
   // ── Mobile ──────────────────────────────────────────────────────────────
   {
     id: "proj-01",
-    title: "Pulse Health",
-    slug: "pulse-health",
-    category: "Mobile",
-    description:
-      "A cross-platform health tracking app with real-time biometric dashboards and physician-facing analytics.",
+    title: "Addis Tab",
+    slug: "addis-tab",
+    platforms: ["Mobile"],
+    description: "A cross-platform health tracking app with real-time biometric dashboards and physician-facing analytics.",
     thumbnail: "/projects/pulse-health.jpg",
-    techStack: ["React Native", "TypeScript", "GraphQL", "HealthKit"],
-    year: 2025,
+    techStack: ["Expo", "React Native", "TypeScript", "GraphQL", "AWS"],
+    year: 2019,
     featured: true,
-    overview:
-      "Pulse Health is a comprehensive wellness platform that bridges the gap between patients and healthcare providers. The app delivers real-time biometric tracking — heart rate, sleep patterns, activity levels, and blood oxygen — through an intuitive mobile interface available on both iOS and Android.\n\nOn the provider side, a companion analytics dashboard aggregates patient data into actionable insights, enabling physicians to monitor chronic conditions remotely and intervene proactively. The system processes over 500,000 biometric data points daily across its user base.",
-    challenge:
-      "The existing patient-monitoring workflow relied on periodic in-office visits, leaving gaps of weeks or months between data points. Patients lacked visibility into their own health trends, and physicians had no way to detect concerning patterns between appointments. The client needed a solution that felt consumer-friendly for patients while meeting clinical-grade data accuracy standards.",
-    solution:
-      "We built a cross-platform mobile app using React Native to maximize code sharing between iOS and Android while leveraging native HealthKit and Google Fit integrations for sensor-accurate data collection. A GraphQL API layer enabled flexible, efficient data queries for both the patient app and the physician dashboard. Real-time sync was achieved through WebSocket connections that push critical alerts within seconds.",
-    results:
-      "The app launched to 15,000 active users within the first three months. Physician engagement increased by 40%, with doctors reporting earlier detection of patient health anomalies. The platform reduced unnecessary in-person visits by 25%, saving an estimated $2M annually across the provider network.",
+    overview: "Pulse Health is a comprehensive wellness platform that bridges the gap between patients and healthcare providers. The app delivers real-time biometric tracking — heart rate, sleep patterns, activity levels, and blood oxygen — through an intuitive mobile interface available on both iOS and Android.\n\nOn the provider side, a companion analytics dashboard aggregates patient data into actionable insights, enabling physicians to monitor chronic conditions remotely and intervene proactively. The system processes over 500,000 biometric data points daily across its user base.",
+    challenge: "The existing patient-monitoring workflow relied on periodic in-office visits, leaving gaps of weeks or months between data points. Patients lacked visibility into their own health trends, and physicians had no way to detect concerning patterns between appointments. The client needed a solution that felt consumer-friendly for patients while meeting clinical-grade data accuracy standards.",
+    solution: "We built a cross-platform mobile app using React Native to maximize code sharing between iOS and Android while leveraging native HealthKit and Google Fit integrations for sensor-accurate data collection. A GraphQL API layer enabled flexible, efficient data queries for both the patient app and the physician dashboard. Real-time sync was achieved through WebSocket connections that push critical alerts within seconds.",
+    results: "The app launched to 15,000 active users within the first three months. Physician engagement increased by 40%, with doctors reporting earlier detection of patient health anomalies. The platform reduced unnecessary in-person visits by 25%, saving an estimated $2M annually across the provider network.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
-    client: "MedBridge Health Systems",
+    links: {},
+    client: "Addis Market",
     duration: "16 weeks",
     role: "Design & Development",
   },
@@ -39,7 +34,7 @@ export const PROJECTS: readonly Project[] = [
     id: "proj-02",
     title: "UrbanPay",
     slug: "urban-pay",
-    category: "Mobile",
+    platforms: ["Mobile"],
     description:
       "Contactless payment and transit-pass app servicing 2M+ daily commuters across three metro systems.",
     thumbnail: "/projects/urban-pay.jpg",
@@ -55,8 +50,7 @@ export const PROJECTS: readonly Project[] = [
     results:
       "UrbanPay reached 2 million daily active users within six months of launch. Average station throughput improved by 18% due to faster tap times. Customer support tickets related to fare issues dropped 62%, and the app maintains a 4.8-star average rating across both app stores.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
+    links: {},
     client: "Metro Transit Alliance",
     duration: "20 weeks",
     role: "Full-Stack Development",
@@ -67,7 +61,7 @@ export const PROJECTS: readonly Project[] = [
     id: "proj-03",
     title: "Arclight Studio",
     slug: "arclight-studio",
-    category: "Web",
+    platforms: ["Web"],
     description:
       "Brand-forward marketing site and design system for a high-end architecture firm with immersive WebGL transitions.",
     thumbnail: "/projects/arclight-studio.jpg",
@@ -83,8 +77,7 @@ export const PROJECTS: readonly Project[] = [
     results:
       "Page load times dropped from 8+ seconds to under 1.2 seconds. The site won an Awwwards Honorable Mention within two weeks of launch. Content publishing turnaround went from 5 days to under 30 minutes. Organic traffic increased 140% in the first quarter, with average session duration up 3.2x.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
+    links: {},
     client: "Arclight Architecture",
     duration: "14 weeks",
     role: "Design & Development",
@@ -93,7 +86,7 @@ export const PROJECTS: readonly Project[] = [
     id: "proj-04",
     title: "Meridian Analytics",
     slug: "meridian-analytics",
-    category: "Web",
+    platforms: ["Web"],
     description:
       "Enterprise data-visualization dashboard processing 50M+ events per day with sub-200ms render times.",
     thumbnail: "/projects/meridian-analytics.jpg",
@@ -109,8 +102,7 @@ export const PROJECTS: readonly Project[] = [
     results:
       "Time-to-insight dropped from hours to seconds. The platform handles 50M+ daily events with p99 render times under 200ms. Executive adoption reached 92% within the first month — up from 15% with the previous tooling. The client reported a 30% improvement in data-driven decision-making velocity.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
+    links: {},
     client: "Meridian Corp",
     duration: "18 weeks",
     role: "Frontend Architecture & Development",
@@ -121,7 +113,7 @@ export const PROJECTS: readonly Project[] = [
     id: "proj-05",
     title: "StreamForge",
     slug: "stream-forge",
-    category: "TV",
+    platforms: ["TV"],
     description:
       "Smart TV streaming interface with voice navigation, adaptive bitrate, and 10-foot UI across Tizen & webOS.",
     thumbnail: "/projects/stream-forge.jpg",
@@ -137,8 +129,7 @@ export const PROJECTS: readonly Project[] = [
     results:
       "App load times dropped from 4+ seconds to 1.6 seconds on reference hardware. User session duration increased 45%, and the crash rate fell to under 0.1%. Voice navigation adoption reached 35% of active users within the first quarter. The app achieved a 4.6-star rating on both the Samsung and LG app stores.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
+    links: {},
     client: "NovaCast Media",
     duration: "22 weeks",
     role: "Design & Development",
@@ -147,7 +138,7 @@ export const PROJECTS: readonly Project[] = [
     id: "proj-06",
     title: "SignalBoard",
     slug: "signal-board",
-    category: "TV",
+    platforms: ["TV"],
     description:
       "Digital signage management platform powering 4,000+ displays across retail, hospitality, and transit.",
     thumbnail: "/projects/signal-board.jpg",
@@ -163,8 +154,7 @@ export const PROJECTS: readonly Project[] = [
     results:
       "Content update deployment time went from 48 hours (manual) to under 60 seconds (automated). Display uptime improved from 87% to 99.4% thanks to proactive health monitoring and automatic recovery. The platform scaled from 800 to 4,000+ displays without architecture changes. Operational staffing costs decreased by 35%.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
+    links: {},
     client: "Panorama Digital",
     duration: "16 weeks",
     role: "Full-Stack Development",
@@ -175,7 +165,7 @@ export const PROJECTS: readonly Project[] = [
     id: "proj-07",
     title: "TerraLink",
     slug: "terra-link",
-    category: "IoT",
+    platforms: ["IoT"],
     description:
       "Agricultural sensor network and companion app monitoring soil, weather, and crop telemetry across 12,000 acres.",
     thumbnail: "/projects/terra-link.jpg",
@@ -191,8 +181,7 @@ export const PROJECTS: readonly Project[] = [
     results:
       "Water usage decreased 22% across monitored farms through data-driven irrigation scheduling. Crop yield improved an average of 12% in the first growing season. The platform reduced fertilizer costs by $180,000 annually across the deployment. Sensor data uptime reached 99.2% despite rural deployment conditions.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
+    links: {},
     client: "AgriVerde",
     duration: "24 weeks",
     role: "Mobile App & Cloud Infrastructure",
@@ -201,7 +190,7 @@ export const PROJECTS: readonly Project[] = [
     id: "proj-08",
     title: "ForgeFloor",
     slug: "forge-floor",
-    category: "IoT",
+    platforms: ["IoT"],
     description:
       "Industrial control dashboard for smart factories — real-time machine telemetry, predictive maintenance, and OEE tracking.",
     thumbnail: "/projects/forge-floor.jpg",
@@ -217,8 +206,7 @@ export const PROJECTS: readonly Project[] = [
     results:
       "Unplanned downtime decreased 38% in the first six months. The predictive maintenance system achieved 89% accuracy in failure prediction, preventing an estimated $2.1M in lost production. OEE visibility drove a 15% improvement in overall equipment utilization. The platform now monitors 200+ machines across three facilities from a single dashboard.",
     gallery: [],
-    liveUrl: null,
-    repoUrl: null,
+    links: {},
     client: "Steelmark Industries",
     duration: "20 weeks",
     role: "Design & Development",

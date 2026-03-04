@@ -6,10 +6,7 @@ import { PROJECTS } from "@/data/projects"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
-
-// ---------------------------------------------------------------------------
-// Static generation
-// ---------------------------------------------------------------------------
+import { PLATFORM_GRADIENTS } from "@/lib/constants"
 
 export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.slug }))
@@ -54,15 +51,8 @@ function getAdjacentProjects(currentSlug: string) {
 }
 
 // ---------------------------------------------------------------------------
-// Category gradient map (reuses same palette as project cards)
+// Static generation
 // ---------------------------------------------------------------------------
-
-const CATEGORY_GRADIENTS: Record<string, string> = {
-  Mobile: "from-copper/20 via-safety-orange/10 to-obsidian-light",
-  Web: "from-copper/15 via-copper-dark/10 to-obsidian-light",
-  TV: "from-safety-orange/15 via-copper/10 to-obsidian-light",
-  IoT: "from-copper-dark/20 via-safety-orange/8 to-obsidian-light",
-}
 
 // ---------------------------------------------------------------------------
 // Page
@@ -75,6 +65,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   if (!project) notFound()
 
   const { prev, next } = getAdjacentProjects(slug)
+  const primaryPlatform = project.platforms[0] ?? "Web"
 
   return (
     <>
@@ -93,12 +84,17 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </Link>
           </ScrollReveal>
 
-          {/* Category + Year badges */}
+          {/* Platform + Year badges */}
           <ScrollReveal className="col-full mb-4" delay={0.05}>
             <div className="flex items-center gap-3">
-              <span className="rounded-full border border-copper/30 bg-obsidian/80 px-3 py-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper">
-                {project.category}
-              </span>
+              {project.platforms.map((platform) => (
+                <span
+                  key={platform}
+                  className="rounded-full border border-copper/30 bg-obsidian/80 px-3 py-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-copper"
+                >
+                  {platform}
+                </span>
+              ))}
               <span className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-canvas-dim">
                 {project.year}
               </span>
@@ -134,7 +130,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <Container>
           <ScrollReveal className="col-full">
             <div
-              className={`aspect-[16/9] w-full rounded-[var(--radius-lg)] bg-gradient-to-br ${CATEGORY_GRADIENTS[project.category] ?? CATEGORY_GRADIENTS.Web}`}
+              className={`aspect-[16/9] w-full rounded-[var(--radius-lg)] bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
             />
           </ScrollReveal>
         </Container>
@@ -188,9 +184,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               )}
               <div>
                 <h3 className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
-                  Category
+                  Platforms
                 </h3>
-                <p className="text-sm font-medium">{project.category}</p>
+                <p className="text-sm font-medium">
+                  {project.platforms.join(" · ")}
+                </p>
               </div>
               <div>
                 <h3 className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
@@ -200,30 +198,75 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               </div>
 
               {/* External links */}
-              {(project.liveUrl || project.repoUrl) && (
-                <div className="flex flex-col gap-3 border-t border-canvas/6 pt-6">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
-                    >
-                      Visit Live Site <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
-                  {project.repoUrl && (
-                    <a
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
-                    >
-                      View Repository <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
-                </div>
-              )}
+              {(project.links.liveUrl ||
+                project.links.repoUrl ||
+                project.links.iosAppStore ||
+                project.links.googlePlay ||
+                project.links.amazonAppStore ||
+                project.links.rokuChannelStore) && (
+                  <div className="flex flex-col gap-3 border-t border-canvas/6 pt-6">
+                    {project.links.liveUrl && (
+                      <a
+                        href={project.links.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
+                      >
+                        Visit Live Site <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    {project.links.iosAppStore && (
+                      <a
+                        href={project.links.iosAppStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
+                      >
+                        App Store (iOS) <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    {project.links.googlePlay && (
+                      <a
+                        href={project.links.googlePlay}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
+                      >
+                        Google Play <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    {project.links.amazonAppStore && (
+                      <a
+                        href={project.links.amazonAppStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
+                      >
+                        Amazon Appstore <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    {project.links.rokuChannelStore && (
+                      <a
+                        href={project.links.rokuChannelStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
+                      >
+                        Roku Channel Store <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    {project.links.repoUrl && (
+                      <a
+                        href={project.links.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-[0.75rem] uppercase tracking-[0.15em] text-copper transition-colors duration-300 hover:text-copper-light"
+                      >
+                        View Repository <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                  </div>
+                )}
             </div>
           </ScrollReveal>
         </Container>
@@ -299,17 +342,17 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <>
                 <ScrollReveal className="sm:col-span-2" delay={0.1}>
                   <div
-                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-br ${CATEGORY_GRADIENTS[project.category] ?? CATEGORY_GRADIENTS.Web}`}
+                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
                   />
                 </ScrollReveal>
                 <ScrollReveal delay={0.18}>
                   <div
-                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-tl ${CATEGORY_GRADIENTS[project.category] ?? CATEGORY_GRADIENTS.Web}`}
+                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-tl ${PLATFORM_GRADIENTS[primaryPlatform]}`}
                   />
                 </ScrollReveal>
                 <ScrollReveal delay={0.26}>
                   <div
-                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-tr ${CATEGORY_GRADIENTS[project.category] ?? CATEGORY_GRADIENTS.Web}`}
+                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-tr ${PLATFORM_GRADIENTS[primaryPlatform]}`}
                   />
                 </ScrollReveal>
               </>

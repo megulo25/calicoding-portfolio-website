@@ -26,7 +26,7 @@ export function WorkGallery() {
   const filtered =
     active === "All"
       ? PROJECTS
-      : PROJECTS.filter((p) => p.category === active)
+      : PROJECTS.filter((p) => p.platforms.includes(active))
 
   return (
     <LayoutGroup>
