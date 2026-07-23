@@ -5,83 +5,103 @@ import type { Project } from "@/types"
 //
 // Each project maps to the four service pillars: Mobile, Web, TV, IoT.
 // A project may target multiple platforms (e.g. Mobile + TV).
-// Thumbnails use generated gradient placeholders via CSS (no external images).
+// Thumbnails fall back to gradient placeholders when no image is provided.
 // =============================================================================
 
 export const PROJECTS: readonly Project[] = [
+  {
+    id: "proj-03",
+    title: "Addis Restaurant Website",
+    slug: "addis-restaurant-website",
+    platforms: ["Web"],
+    description: "A static restaurant website for Addis Ethiopian Restaurant in San Diego, featuring an online menu, about section, contact information, and an immersive video banner — originally built on WordPress and exported as a fully static site hosted on GitHub Pages.",
+    thumbnail: "/images/addis_restaurant/index.jpg",
+    techStack: ["WordPress", "PHP", "HTML", "CSS", "jQuery", "Simply Static", "GitHub Pages", "AWS Lightsail", "Gutenify Theme"],
+    year: 2021,
+    featured: true,
+    overview: "Addis Restaurant is a family-owned Ethiopian restaurant in San Diego, CA, run by husband and wife Fekad & Alem since 2016. The website serves as their digital presence — showcasing their full breakfast, lunch, and dinner menus with prices and descriptions, telling their immigration story and passion for Ethiopian cuisine, and providing essential contact details, hours (11 AM – 9 PM), and a Google Maps link for directions. The site also integrates social media links to Facebook, Instagram, and Yelp, and provides an online ordering link through GrubHub.",
+    challenge: "The client needed an affordable, low-maintenance website that could be updated occasionally without incurring ongoing hosting costs. WordPress provided the content editing experience they needed, but running a live WordPress instance 24/7 was unnecessary and expensive for a small restaurant. Additionally, the site needed to be visually rich — with custom fonts (Cormorant Garamond, Jost, Roboto), animations, a hero video banner, and a responsive layout — while remaining performant and easy to maintain by a solo developer.",
+    solution: "I built the site on a temporary AWS Lightsail WordPress instance using the Gutenify Restaurant theme (a Full Site Editing block-based theme) and customized it with the WordPress Block Editor. When updates are needed, a new Lightsail instance is spun up, the site is imported via the All-in-One WP Migration plugin, changes are made, and the site is then exported to static files using the Simply Static plugin configured for offline usage. The resulting static HTML, CSS, and JS files are committed to a GitHub repository and served via GitHub Pages with a custom domain — eliminating all hosting costs while preserving the full WordPress editing workflow.",
+    results: "The restaurant now has a professional, fast-loading static website at addisrestaurantsd.com with zero ongoing hosting costs. The site features a full categorized menu (breakfast, lunch, and dinner with 30+ items), an engaging auto-playing video hero section, animated scroll-in content, a photo gallery, an about-us section with the owners' story, and a comprehensive footer with contact info, hours, quick links, and social media integration. The update workflow allows the client's site to be refreshed at any time without needing a permanently running server.",
+    gallery: ["/images/addis_restaurant/index.jpg", "/images/addis_restaurant/menu.jpg", "/images/addis_restaurant/team.jpg"],
+    links: {
+      liveUrl: "https://www.addisrestaurantsd.com/"
+    },
+    client: "Addis Restaurant",
+    role: "Design & Development",
+  },
+  {
+    id: "proj-02",
+    title: "DMAASD",
+    slug: "dmaasd",
+    platforms: ["Mobile"],
+    description: "A full-stack mobile application for the Dir Biyaber Edir community, enabling members to manage obituaries, notifications, and community communications through a secure, cross-platform experience.",
+    thumbnail: "/images/dmaasd/thumbnail.png",
+    techStack: [
+      "Expo",
+      "React Native",
+      "TypeScript",
+      "GraphQL",
+      "AWS Amplify",
+      "AWS Cognito",
+      "AWS AppSync",
+      "DynamoDB",
+      "AWS Lambda",
+      "Zustand",
+      "TanStack Query",
+      "Sentry",
+    ],
+    year: 2019,
+    featured: false,
+    overview: "DMAASD is a cross-platform mobile application built for the Dir Biyaber Edir community organization. The app serves as a centralized hub for community members to stay connected, receive real-time push notifications, manage obituaries, and access important community information — all secured behind biometric and Cognito-based authentication.",
+    challenge: "The community relied on fragmented, manual communication channels to coordinate sensitive matters like obituary announcements and member notifications. There was no centralized, secure, and accessible platform — especially one that catered to members across different devices and platforms. The app needed to handle sensitive personal data securely, support biometric authentication, deliver reliable push notifications, and remain performant even as the community grew.",
+    solution: "Built a production-grade React Native application using Expo (SDK 54) with file-based routing via Expo Router. The backend leverages a fully serverless AWS architecture — Cognito for authentication (including biometric login via Face ID and fingerprint), AppSync with GraphQL for real-time data operations, DynamoDB for storage, and Lambda for business logic. State management is cleanly separated: server state with TanStack Query, client state with Zustand. The app includes push notifications, quick actions for common tasks like creating obituaries and notifications, over-the-air updates via EAS Update, and error monitoring through Sentry. The new architecture (React Native New Architecture) is enabled for improved performance.",
+    results: "The app has been actively maintained through 20+ iOS builds and 44+ Android builds, reaching version 2.10.0. It successfully digitized the community's communication workflows, providing members with instant push notifications, streamlined obituary management, and secure access to community resources. The serverless backend ensures low operational costs and automatic scalability, while OTA updates allow rapid iteration without app store review cycles.",
+    gallery: null,
+    links: {
+      iosAppStore: "https://apps.apple.com/us/app/dmaasd/id6449449839",
+      googlePlay: "https://play.google.com/store/apps/details?id=com.megulo25.DirBiyaberEdir&hl=en_US"
+    },
+    client: "DMAASD",
+    role: "Design & Development",
+  },
   // ── Mobile ──────────────────────────────────────────────────────────────
   {
     id: "proj-01",
     title: "Addis Tab",
     slug: "addis-tab",
     platforms: ["Mobile"],
-    description: "A cross-platform health tracking app with real-time biometric dashboards and physician-facing analytics.",
-    thumbnail: "/projects/pulse-health.jpg",
-    techStack: ["Expo", "React Native", "TypeScript", "GraphQL", "AWS"],
+    description: "A mobile application for managing business-customer credit tabs, enabling small businesses to track transactions, monitor customer debts, and streamline payment collection — all from their phone.",
+    thumbnail: "/images/addis_tab/index.PNG",
+    techStack: [
+      "Expo",
+      "React Native",
+      "TypeScript",
+      "AWS Amplify",
+      "AWS AppSync (GraphQL)",
+      "Amazon Cognito",
+      "Amazon S3",
+      "AWS Lambda",
+      "TanStack Query",
+      "Zustand",
+      "React Native Paper",
+      "EAS Build"
+    ],
     year: 2019,
     featured: true,
-    overview: "Pulse Health is a comprehensive wellness platform that bridges the gap between patients and healthcare providers. The app delivers real-time biometric tracking — heart rate, sleep patterns, activity levels, and blood oxygen — through an intuitive mobile interface available on both iOS and Android.\n\nOn the provider side, a companion analytics dashboard aggregates patient data into actionable insights, enabling physicians to monitor chronic conditions remotely and intervene proactively. The system processes over 500,000 biometric data points daily across its user base.",
-    challenge: "The existing patient-monitoring workflow relied on periodic in-office visits, leaving gaps of weeks or months between data points. Patients lacked visibility into their own health trends, and physicians had no way to detect concerning patterns between appointments. The client needed a solution that felt consumer-friendly for patients while meeting clinical-grade data accuracy standards.",
-    solution: "We built a cross-platform mobile app using React Native to maximize code sharing between iOS and Android while leveraging native HealthKit and Google Fit integrations for sensor-accurate data collection. A GraphQL API layer enabled flexible, efficient data queries for both the patient app and the physician dashboard. Real-time sync was achieved through WebSocket connections that push critical alerts within seconds.",
-    results: "The app launched to 15,000 active users within the first three months. Physician engagement increased by 40%, with doctors reporting earlier detection of patient health anomalies. The platform reduced unnecessary in-person visits by 25%, saving an estimated $2M annually across the provider network.",
-    gallery: [],
-    links: {},
+    overview: "Addis Tab is a cross-platform iOS and Android application designed for small businesses — like neighborhood markets — that extend credit to their customers. It provides role-based dashboards for both Business owners and Customers, enabling real-time tracking of credit tabs, payment history, and outstanding debts. Business users can add customers, record credit and payment transactions with optional photo receipts, and monitor key financial metrics like total debt, open tabs, collection rate, and net cash flow. Customer users get a read-only view of their transaction history and outstanding balance. The app features phone-number-based OTP authentication, biometric login (Face ID / Fingerprint), push notifications for transaction alerts, and offline-first data persistence.",
+    challenge: "Small businesses that operate on informal credit systems — common in many communities — had no simple, affordable way to digitally track who owes what. Paper ledgers are error-prone, hard to reconcile, and offer no transparency to customers. The core technical challenges included building a reliable real-time sync system between business and customer devices, implementing a secure passwordless authentication flow using phone numbers and OTP via Twilio, handling optimistic concurrency for conflict resolution across multiple devices, and delivering a smooth native experience on both iOS and Android from a single codebase.",
+    solution: "Built a full-stack mobile application using Expo and React Native for the frontend with AWS Amplify Gen 1 powering the entire backend. The app uses AWS AppSync (GraphQL) for the data API with optimistic concurrency conflict resolution, Amazon Cognito with custom Lambda triggers for passwordless phone-number authentication via Twilio, and Amazon S3 for transaction receipt image storage. The frontend follows a feature-first architecture with Expo Router v6 for file-based navigation, TanStack Query v5 with AsyncStorage persistence for offline-capable server state management, and Zustand for lightweight client state. React Native Paper provides a consistent Material Design UI, while EAS Build handles CI/CD across both platforms. Push notifications via Expo's notification service keep customers informed of new transactions in real time.",
+    results: "Successfully launched on both the Apple App Store and Google Play Store. The app serves active business users who manage customer credit tabs daily, replacing manual paper-based tracking with a digital solution. Key outcomes include real-time debt visibility for both merchants and customers, significantly reduced reconciliation errors, biometric-secured access for quick daily use, and an offline-first architecture that ensures reliability even with intermittent connectivity.",
+    gallery: null,
+    links: {
+      iosAppStore: "https://apps.apple.com/us/app/addis-tab/id6504838248",
+      googlePlay: "https://play.google.com/store/apps/details?id=com.megulo25.AddisTab"
+    },
     client: "Addis Market",
-    duration: "16 weeks",
-    role: "Design & Development",
+    role: "Design & Development"
   },
-  {
-    id: "proj-02",
-    title: "UrbanPay",
-    slug: "urban-pay",
-    platforms: ["Mobile"],
-    description:
-      "Contactless payment and transit-pass app servicing 2M+ daily commuters across three metro systems.",
-    thumbnail: "/projects/urban-pay.jpg",
-    techStack: ["Swift", "Kotlin", "NFC", "Stripe"],
-    year: 2024,
-    featured: false,
-    overview:
-      "UrbanPay unifies contactless payments and transit passes into a single mobile wallet, eliminating the need for physical cards across three major metropolitan transit systems. The app supports NFC tap-to-pay at turnstiles, bus readers, and participating retail locations.\n\nThe platform handles peak loads of 120,000 transactions per minute during rush hours, with sub-300ms authorization times that keep commuters moving without friction.",
-    challenge:
-      "Each of the three transit authorities operated independent fare systems with different protocols, card standards, and backend infrastructure. Commuters were forced to carry multiple cards and manage separate accounts. The client needed a unified experience that abstracted away the underlying complexity while meeting strict PCI-DSS and transit authority security requirements.",
-    solution:
-      "We developed native apps for iOS (Swift) and Android (Kotlin) to ensure maximum NFC performance and reliability — a critical requirement for tap-to-pay at high-throughput turnstiles. The payment layer integrates Stripe for retail transactions and custom transit APIs for fare calculation. A tokenization system maps a single user identity across all three transit networks without exposing cross-system data.",
-    results:
-      "UrbanPay reached 2 million daily active users within six months of launch. Average station throughput improved by 18% due to faster tap times. Customer support tickets related to fare issues dropped 62%, and the app maintains a 4.8-star average rating across both app stores.",
-    gallery: [],
-    links: {},
-    client: "Metro Transit Alliance",
-    duration: "20 weeks",
-    role: "Full-Stack Development",
-  },
-
   // ── Web ─────────────────────────────────────────────────────────────────
-  {
-    id: "proj-03",
-    title: "Arclight Studio",
-    slug: "arclight-studio",
-    platforms: ["Web"],
-    description:
-      "Brand-forward marketing site and design system for a high-end architecture firm with immersive WebGL transitions.",
-    thumbnail: "/projects/arclight-studio.jpg",
-    techStack: ["Next.js", "Three.js", "Framer Motion", "Sanity"],
-    year: 2025,
-    featured: true,
-    overview:
-      "Arclight Studio's digital presence needed to match the caliber of their physical work — award-winning architectural design. We created an immersive marketing site that treats each project as a visual narrative, with smooth WebGL transitions that echo the spatial experience of walking through one of their buildings.\n\nBacked by a Sanity CMS, the content team can publish new case studies, update project galleries, and manage team bios without developer involvement. The design system ensures visual consistency across 40+ page templates.",
-    challenge:
-      "The firm's previous website was a static WordPress site that failed to convey the sophistication of their work. Page load times exceeded 8 seconds, mobile experience was broken, and the content team had no way to update portfolio projects without filing a support ticket. The new site needed to be a portfolio piece in its own right — fast, beautiful, and effortlessly maintainable.",
-    solution:
-      "We built on Next.js for its hybrid rendering capabilities — static generation for portfolio pages and server-side rendering for dynamic content. Three.js powers the immersive 3D transitions between project pages, while Framer Motion handles micro-interactions and scroll-driven animations. A component-based design system in Figma maps 1:1 to React components, ensuring design-dev parity.",
-    results:
-      "Page load times dropped from 8+ seconds to under 1.2 seconds. The site won an Awwwards Honorable Mention within two weeks of launch. Content publishing turnaround went from 5 days to under 30 minutes. Organic traffic increased 140% in the first quarter, with average session duration up 3.2x.",
-    gallery: [],
-    links: {},
-    client: "Arclight Architecture",
-    duration: "14 weeks",
-    role: "Design & Development",
-  },
   {
     id: "proj-04",
     title: "Meridian Analytics",
@@ -101,10 +121,9 @@ export const PROJECTS: readonly Project[] = [
       "We built a React frontend with D3.js for custom, high-performance visualizations that go beyond off-the-shelf charting libraries. WebSocket connections deliver real-time data updates without polling. The backend streams events through a PostgreSQL-backed pipeline with materialized views optimized for the dashboard's most common query patterns. Role-based access control ensures each user sees only the data relevant to their function.",
     results:
       "Time-to-insight dropped from hours to seconds. The platform handles 50M+ daily events with p99 render times under 200ms. Executive adoption reached 92% within the first month — up from 15% with the previous tooling. The client reported a 30% improvement in data-driven decision-making velocity.",
-    gallery: [],
+    gallery: null,
     links: {},
     client: "Meridian Corp",
-    duration: "18 weeks",
     role: "Frontend Architecture & Development",
   },
 
@@ -128,10 +147,9 @@ export const PROJECTS: readonly Project[] = [
       "We built a custom React-based rendering layer optimized for TV hardware constraints, with spatial navigation that maps remote control d-pad inputs to a focus management system. Shaka Player handles adaptive bitrate streaming with custom buffer management tuned for TV chipsets. Voice navigation integrates with each platform's native voice SDK (Bixby on Tizen, ThinQ on webOS). Performance budgets enforce sub-2-second cold starts on target hardware.",
     results:
       "App load times dropped from 4+ seconds to 1.6 seconds on reference hardware. User session duration increased 45%, and the crash rate fell to under 0.1%. Voice navigation adoption reached 35% of active users within the first quarter. The app achieved a 4.6-star rating on both the Samsung and LG app stores.",
-    gallery: [],
+    gallery: null,
     links: {},
     client: "NovaCast Media",
-    duration: "22 weeks",
     role: "Design & Development",
   },
   {
@@ -153,10 +171,9 @@ export const PROJECTS: readonly Project[] = [
       "We built an Electron-based display player that runs on commodity hardware, normalizing the rendering layer across different display setups. MQTT provides lightweight, reliable messaging for content updates and health telemetry — critical for displays on unreliable network connections. The Canvas API powers a custom rendering engine that handles text, images, video, and live data overlays with consistent performance across hardware tiers.",
     results:
       "Content update deployment time went from 48 hours (manual) to under 60 seconds (automated). Display uptime improved from 87% to 99.4% thanks to proactive health monitoring and automatic recovery. The platform scaled from 800 to 4,000+ displays without architecture changes. Operational staffing costs decreased by 35%.",
-    gallery: [],
+    gallery: null,
     links: {},
     client: "Panorama Digital",
-    duration: "16 weeks",
     role: "Full-Stack Development",
   },
 
@@ -180,10 +197,9 @@ export const PROJECTS: readonly Project[] = [
       "We designed a React Native mobile app with an offline-first architecture that syncs when connectivity is available — critical for rural deployment. The backend leverages AWS IoT Core for device management and message routing, with LoRaWAN gateways providing long-range, low-power sensor connectivity. TimescaleDB handles time-series data at scale, powering both real-time dashboards and historical trend analysis. ML models generate irrigation and fertilization recommendations based on sensor data and weather forecasts.",
     results:
       "Water usage decreased 22% across monitored farms through data-driven irrigation scheduling. Crop yield improved an average of 12% in the first growing season. The platform reduced fertilizer costs by $180,000 annually across the deployment. Sensor data uptime reached 99.2% despite rural deployment conditions.",
-    gallery: [],
+    gallery: null,
     links: {},
     client: "AgriVerde",
-    duration: "24 weeks",
     role: "Mobile App & Cloud Infrastructure",
   },
   {
@@ -205,10 +221,9 @@ export const PROJECTS: readonly Project[] = [
       "We built a Next.js web application with a WebGL-rendered 3D floor plan that gives operators a spatial, real-time view of their entire factory. OPC-UA integration connects directly to machine PLCs without requiring hardware modifications. InfluxDB stores high-frequency time-series data (sampling at 1Hz per machine), enabling both real-time monitoring and historical trend analysis. A predictive maintenance engine uses vibration-pattern analysis to forecast bearing failures 48–72 hours in advance.",
     results:
       "Unplanned downtime decreased 38% in the first six months. The predictive maintenance system achieved 89% accuracy in failure prediction, preventing an estimated $2.1M in lost production. OEE visibility drove a 15% improvement in overall equipment utilization. The platform now monitors 200+ machines across three facilities from a single dashboard.",
-    gallery: [],
+    gallery: null,
     links: {},
     client: "Steelmark Industries",
-    duration: "20 weeks",
     role: "Design & Development",
   },
 ] as const

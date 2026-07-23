@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
@@ -56,10 +57,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
         className="flex flex-1 flex-col"
         data-cursor="hover"
       >
-        {/* Thumbnail placeholder */}
+        {/* Thumbnail */}
         <div
-          className={`relative aspect-[4/3] w-full bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
+          className={`relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
         >
+          {project.thumbnail && (
+            <Image
+              src={project.thumbnail}
+              alt={project.title}
+              fill
+              className="object-cover"
+              sizes={project.featured ? "(max-width: 640px) 100vw, 66vw" : "(max-width: 640px) 100vw, 33vw"}
+            />
+          )}
           {/* Platform badges */}
           <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
             {project.platforms.map((platform) => (

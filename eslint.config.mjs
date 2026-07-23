@@ -12,6 +12,7 @@
 // =============================================================================
 
 import { defineConfig, globalIgnores } from "eslint/config";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
@@ -21,6 +22,9 @@ const eslintConfig = defineConfig([
 
   // Foundry Tech — strict overrides
   {
+    plugins: {
+      "react-hooks": reactHooksPlugin,
+    },
     rules: {
       // Ban `any` — forces proper typing throughout the codebase
       "@typescript-eslint/no-explicit-any": "error",
@@ -52,6 +56,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    ".pnp.cjs",
+    ".pnp.loader.mjs",
   ]),
 ]);
 

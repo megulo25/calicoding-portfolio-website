@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import { COMPANY } from "@/data/company"
 import { PROJECTS } from "@/data/projects"
@@ -130,8 +131,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <Container>
           <ScrollReveal className="col-full">
             <div
-              className={`aspect-[16/9] w-full rounded-[var(--radius-lg)] bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
-            />
+              className={`relative aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
+            >
+              {project.thumbnail && (
+                <Image
+                  src={project.thumbnail}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority
+                />
+              )}
+            </div>
           </ScrollReveal>
         </Container>
       </SectionWrapper>
@@ -164,14 +176,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     Client
                   </h3>
                   <p className="text-sm font-medium">{project.client}</p>
-                </div>
-              )}
-              {project.duration && (
-                <div>
-                  <h3 className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
-                    Duration
-                  </h3>
-                  <p className="text-sm font-medium">{project.duration}</p>
                 </div>
               )}
               {project.role && (
@@ -315,17 +319,17 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </Container>
       </SectionWrapper>
 
-      {/* Gallery — placeholder gradient blocks when gallery is empty */}
-      <SectionWrapper id="project-gallery" className="pb-24 md:pb-32">
-        <Container>
-          <ScrollReveal className="col-full mb-8">
-            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
-              Gallery
-            </p>
-          </ScrollReveal>
-          <div className="col-full grid gap-4 sm:grid-cols-2">
-            {project.gallery.length > 0 ? (
-              project.gallery.map((src, i) => (
+      {/* Gallery — only shown when gallery images exist */}
+      {project.gallery && project.gallery.length > 0 && (
+        <SectionWrapper id="project-gallery" className="pb-24 md:pb-32">
+          <Container>
+            <ScrollReveal className="col-full mb-8">
+              <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+                Gallery
+              </p>
+            </ScrollReveal>
+            <div className="col-full grid gap-4 sm:grid-cols-2">
+              {project.gallery.map((src, i) => (
                 <ScrollReveal key={src} delay={0.1 + i * 0.08} className={i === 0 ? "sm:col-span-2" : ""}>
                   <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-md)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -336,30 +340,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     />
                   </div>
                 </ScrollReveal>
-              ))
-            ) : (
-              /* Placeholder gradient blocks */
-              <>
-                <ScrollReveal className="sm:col-span-2" delay={0.1}>
-                  <div
-                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
-                  />
-                </ScrollReveal>
-                <ScrollReveal delay={0.18}>
-                  <div
-                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-tl ${PLATFORM_GRADIENTS[primaryPlatform]}`}
-                  />
-                </ScrollReveal>
-                <ScrollReveal delay={0.26}>
-                  <div
-                    className={`aspect-[16/9] w-full rounded-[var(--radius-md)] bg-gradient-to-tr ${PLATFORM_GRADIENTS[primaryPlatform]}`}
-                  />
-                </ScrollReveal>
-              </>
-            )}
-          </div>
-        </Container>
-      </SectionWrapper>
+              ))}
+            </div>
+          </Container>
+        </SectionWrapper>
+      )}
 
       {/* Prev / Next navigation */}
       <SectionWrapper id="project-nav" className="pb-24 md:pb-32">

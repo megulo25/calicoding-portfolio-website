@@ -60,14 +60,12 @@ export interface Project {
   solution: string
   /** Outcomes, metrics, and impact */
   results: string
-  /** Gallery image paths relative to `/public` */
-  gallery: string[]
+  /** Gallery image paths relative to `/public`, or null if no gallery */
+  gallery: string[] | null
   /** External links (app stores, live URLs, repos, etc.) */
   links: ProjectLinks
   /** Client name (if disclosable), or null */
   client: string | null
-  /** Project duration (e.g. "12 weeks"), or null */
-  duration: string | null
   /** Team's role on the project (e.g. "Design & Development"), or null */
   role: string | null
 }
