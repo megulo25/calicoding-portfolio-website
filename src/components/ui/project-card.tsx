@@ -1,11 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { motion } from "framer-motion"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
-import { withBasePath } from "@/lib/utils"
+import { BrowserFrame, PhoneFrame } from "@/components/ui/device-frame"
 
 // ---------------------------------------------------------------------------
 // Animation
@@ -27,6 +26,56 @@ const cardVariants = {
     transition: { duration: 0.3 },
   },
 } as const
+
+/** Tech chips shown on a card before collapsing into "+N more". */
+const MAX_CARD_TECH = 4
+
+// ---------------------------------------------------------------------------
+// Showcase — framed screenshots instead of a cropped thumbnail
+// ---------------------------------------------------------------------------
+
+function CardShowcase({ project }: { project: Project }) {
+  if (!project.thumbnail) return null
+
+  if (project.showcase === "browser") {
+    return (
+      <div className="absolute inset-x-6 top-14 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
+        <BrowserFrame src={project.thumbnail} alt={project.title} url={project.links.liveUrl} />
+      </div>
+    )
+  }
+
+  // Phone: featured cards fan out up to three screens; others show one.
+  const extra = project.featured
+    ? (project.gallery ?? []).filter((src) => src !== project.thumbnail).slice(0, 2)
+    : []
+
+  return (
+    <div
+      className={`absolute inset-x-0 bottom-0 flex justify-center gap-4 ${project.featured ? "top-0 items-center py-12" : "top-14 items-start"}`}
+    >
+      {extra[0] && (
+        <PhoneFrame
+          src={extra[0]}
+          alt=""
+          className="hidden w-[24%] translate-y-8 -rotate-6 opacity-80 transition-transform duration-500 group-hover:translate-y-5 sm:block"
+        />
+      )}
+      <PhoneFrame
+        src={project.thumbnail}
+        alt={project.title}
+        className={`${project.featured ? "w-[42%] sm:w-[30%]" : "w-[38%]"} z-10 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3`}
+      />
+      {extra[1] && (
+        <PhoneFrame
+          src={extra[1]}
+          alt=""
+          className="hidden w-[24%] translate-y-8 rotate-6 opacity-80 transition-transform duration-500 group-hover:translate-y-5 sm:block"
+        />
+      )}
+    </div>
+  )
+}
 
 // ---------------------------------------------------------------------------
 // Component
@@ -60,17 +109,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Thumbnail */}
         <div
-          className={`relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
+          className={`relative w-full overflow-hidden bg-gradient-to-br ${project.featured ? "min-h-[20rem] flex-1 sm:min-h-[28rem]" : "aspect-[4/3]"} ${PLATFORM_GRADIENTS[primaryPlatform]}`}
         >
-          {project.thumbnail && (
-            <Image
-              src={withBasePath(project.thumbnail)}
-              alt={project.title}
-              fill
-              className="object-cover"
-              sizes={project.featured ? "(max-width: 640px) 100vw, 66vw" : "(max-width: 640px) 100vw, 33vw"}
-            />
-          )}
+          <CardShowcase project={project} />
           {/* Platform badges */}
           <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
             {project.platforms.map((platform) => (
@@ -97,17 +138,23 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 flex-col p-5">
+        <div className={`flex flex-col p-5 ${project.featured ? "" : "flex-1"}`}>
           <h3 className="text-lg font-semibold leading-tight transition-colors duration-300 group-hover:text-copper">
             {project.title}
           </h3>
+          {project.status && (
+            <div className="mt-1.5 flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.15em] text-copper/80">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-copper" aria-hidden="true" />
+              {project.status}
+            </div>
+          )}
           <p className="mt-2 flex-1 text-sm leading-relaxed text-canvas-dim">
             {project.description}
           </p>
 
           {/* Tech stack */}
           <div className="mt-4 flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
+            {project.techStack.slice(0, MAX_CARD_TECH).map((tech) => (
               <span
                 key={tech}
                 className="rounded-[var(--radius-sm)] bg-obsidian-lighter px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.1em] text-canvas-dim/60"
@@ -115,6 +162,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 {tech}
               </span>
             ))}
+            {project.techStack.length > MAX_CARD_TECH && (
+              <span className="rounded-[var(--radius-sm)] px-1 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.1em] text-canvas-dim/40">
+                +{project.techStack.length - MAX_CARD_TECH} more
+              </span>
+            )}
           </div>
         </div>
       </Link>

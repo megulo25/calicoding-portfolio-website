@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
 import { notFound } from "next/navigation"
 import { COMPANY } from "@/data/company"
 import { PROJECTS } from "@/data/projects"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
-import { withBasePath } from "@/lib/utils"
+import { BrowserFrame, PhoneFrame } from "@/components/ui/device-frame"
+import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
 
 export function generateStaticParams() {
@@ -43,6 +43,65 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // Helpers
 // ---------------------------------------------------------------------------
 
+/** Primary call-to-action links shown in the hero, most important first. */
+function getCtas(project: Project) {
+  const { links } = project
+  return [
+    links.liveUrl && { label: "Visit Live Site", href: links.liveUrl },
+    links.iosAppStore && { label: "App Store", href: links.iosAppStore },
+    links.googlePlay && { label: "Google Play", href: links.googlePlay },
+    links.amazonAppStore && { label: "Amazon Appstore", href: links.amazonAppStore },
+    links.rokuChannelStore && { label: "Roku Channel Store", href: links.rokuChannelStore },
+    links.repoUrl && { label: "Source Code", href: links.repoUrl },
+  ].filter((cta): cta is { label: string; href: string } => Boolean(cta))
+}
+
+/** Framed hero visual: a fan of phones, or a browser window. */
+function HeroShowcase({ project }: { project: Project }) {
+  if (!project.thumbnail) return <div className="aspect-[16/9]" />
+
+  if (project.showcase === "browser") {
+    return (
+      <BrowserFrame
+        src={project.thumbnail}
+        alt={project.title}
+        url={project.links.liveUrl}
+        eager
+        className="mx-auto max-w-5xl translate-y-px rounded-b-none border-b-0"
+      />
+    )
+  }
+
+  const screens = [
+    project.thumbnail,
+    ...(project.gallery ?? []).filter((src) => src !== project.thumbnail),
+  ].slice(0, 3)
+  // Put the thumbnail in the middle of the fan.
+  const [first, second, third] = screens
+  const ordered = first && second && third ? [second, first, third] : screens
+
+  return (
+    <div className="mx-auto flex h-[22rem] max-w-4xl items-start justify-center gap-4 overflow-hidden sm:h-[28rem] sm:gap-8 md:h-[34rem]">
+      {ordered.map((src, i) => {
+        const isCenter = ordered.length === 1 || i === 1
+        return (
+          <PhoneFrame
+            key={src}
+            src={src}
+            alt={isCenter ? project.title : ""}
+            eager
+            className={
+              isCenter
+                ? "z-10 w-[46%] sm:w-[32%] md:w-[26%]"
+                : "mt-12 hidden w-[24%] opacity-70 sm:block md:w-[21%]"
+            }
+          />
+        )
+      })}
+    </div>
+  )
+}
+
 /** Get previous and next projects for navigation. */
 function getAdjacentProjects(currentSlug: string) {
   const index = PROJECTS.findIndex((p) => p.slug === currentSlug)
@@ -68,6 +127,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   const { prev, next } = getAdjacentProjects(slug)
   const primaryPlatform = project.platforms[0] ?? "Web"
+  const ctas = getCtas(project)
 
   return (
     <>
@@ -104,11 +164,36 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </ScrollReveal>
 
           {/* Title */}
-          <ScrollReveal className="col-full lg:col-span-8" delay={0.1}>
+          <ScrollReveal className="col-span-full lg:col-span-8" delay={0.1}>
             <h1 className="max-w-3xl font-bold">{project.title}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-canvas-dim">
               {project.description}
             </p>
+            {project.status && (
+              <div className="mt-6 flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.15em] text-copper">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-copper" aria-hidden="true" />
+                {project.status}
+              </div>
+            )}
+            {ctas.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-3">
+                {ctas.map((cta, i) => (
+                  <a
+                    key={cta.href}
+                    href={cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="hover"
+                    className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.15em] transition-colors duration-300 ${i === 0
+                      ? "bg-copper text-obsidian hover:bg-copper-light"
+                      : "border border-canvas/15 text-canvas hover:border-copper hover:text-copper"
+                      }`}
+                  >
+                    {cta.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
           </ScrollReveal>
 
           {/* Tech stack pills */}
@@ -132,18 +217,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         <Container>
           <ScrollReveal className="col-full">
             <div
-              className={`relative aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br ${PLATFORM_GRADIENTS[primaryPlatform]}`}
+              className={`relative w-full overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br px-6 pt-12 sm:px-12 md:pt-16 ${PLATFORM_GRADIENTS[primaryPlatform]}`}
             >
-              {project.thumbnail && (
-                <Image
-                  src={withBasePath(project.thumbnail)}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="100vw"
-                  priority
-                />
-              )}
+              <HeroShowcase project={project} />
             </div>
           </ScrollReveal>
         </Container>
@@ -153,7 +229,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       <SectionWrapper id="project-overview" className="pb-24 md:pb-32">
         <Container>
           {/* Overview text */}
-          <ScrollReveal className="col-full lg:col-span-7">
+          <ScrollReveal className="col-span-full lg:col-span-7">
             <p className="mb-4 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
               Overview
             </p>
@@ -166,41 +242,44 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
           {/* Project info sidebar */}
           <ScrollReveal
-            className="col-full mt-12 lg:col-span-4 lg:col-start-9 lg:mt-0"
+            className="col-span-full mt-12 lg:col-span-4 lg:col-start-9 lg:mt-0"
             delay={0.15}
             direction="right"
           >
             <div className="flex flex-col gap-6 rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light p-6">
+              <dl className="flex flex-col gap-6">
               {project.client && (
                 <div>
-                  <h3 className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
+                  <dt className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
                     Client
-                  </h3>
-                  <p className="text-sm font-medium">{project.client}</p>
+                  </dt>
+                  <dd className="text-sm font-medium">{project.client}</dd>
                 </div>
               )}
               {project.role && (
                 <div>
-                  <h3 className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
+                  <dt className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
                     Our Role
-                  </h3>
-                  <p className="text-sm font-medium">{project.role}</p>
+                  </dt>
+                  <dd className="text-sm font-medium">{project.role}</dd>
                 </div>
               )}
               <div>
-                <h3 className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
+                <dt className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
                   Platforms
-                </h3>
-                <p className="text-sm font-medium">
+                </dt>
+                <dd className="text-sm font-medium">
                   {project.platforms.join(" · ")}
-                </p>
+                </dd>
               </div>
               <div>
-                <h3 className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
+                <dt className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
                   Year
-                </h3>
-                <p className="text-sm font-medium">{project.year}</p>
+                </dt>
+                <dd className="text-sm font-medium">{project.year}</dd>
               </div>
+
+              </dl>
 
               {/* External links */}
               {(project.links.liveUrl ||
@@ -277,6 +356,29 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </Container>
       </SectionWrapper>
 
+      {/* Highlights */}
+      {project.highlights.length > 0 && (
+        <SectionWrapper id="project-highlights" className="pb-24 md:pb-32">
+          <Container>
+            <ScrollReveal className="col-full mb-8">
+              <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+                Key Features
+              </p>
+            </ScrollReveal>
+            <ul className="col-full grid gap-px overflow-hidden rounded-[var(--radius-md)] border border-canvas/6 bg-canvas/6 sm:grid-cols-2 lg:grid-cols-3">
+              {project.highlights.map((item, i) => (
+                <li key={item} className="flex gap-4 bg-obsidian-light p-6">
+                  <span className="font-mono text-[0.6875rem] text-copper/70">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-sm leading-relaxed text-canvas">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </SectionWrapper>
+      )}
+
       {/* Challenge / Solution / Results */}
       <SectionWrapper id="project-narrative" className="pb-24 md:pb-32">
         <Container>
@@ -329,20 +431,23 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 Gallery
               </p>
             </ScrollReveal>
-            <div className="col-full grid gap-4 sm:grid-cols-2">
-              {project.gallery.map((src, i) => (
-                <ScrollReveal key={src} delay={0.1 + i * 0.08} className={i === 0 ? "sm:col-span-2" : ""}>
-                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-md)]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={withBasePath(src)}
-                      alt={`${project.title} screenshot ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+            {project.showcase === "phone" ? (
+              <div className="col-full grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+                {project.gallery.map((src, i) => (
+                  <ScrollReveal key={src} delay={0.05 + i * 0.06}>
+                    <PhoneFrame src={src} alt={`${project.title} screen ${i + 1}`} />
+                  </ScrollReveal>
+                ))}
+              </div>
+            ) : (
+              <div className="col-full grid gap-6 sm:grid-cols-2">
+                {project.gallery.map((src, i) => (
+                  <ScrollReveal key={src} delay={0.1 + i * 0.08} className={i === 0 ? "sm:col-span-2" : ""}>
+                    <BrowserFrame src={src} alt={`${project.title} screenshot ${i + 1}`} url={project.links.liveUrl} />
+                  </ScrollReveal>
+                ))}
+              </div>
+            )}
           </Container>
         </SectionWrapper>
       )}

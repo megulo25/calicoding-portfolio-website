@@ -1,0 +1,67 @@
+import { withBasePath } from "@/lib/utils"
+
+// =============================================================================
+// Device frames — present screenshots in context instead of cropping them.
+// "phone" for portrait mobile screenshots, "browser" for landscape web ones.
+// Plain <img> keeps these usable in both server and client components.
+// =============================================================================
+
+interface FrameProps {
+  src: string
+  alt: string
+  className?: string
+  /** Load eagerly (above-the-fold hero images) */
+  eager?: boolean
+}
+
+/** Portrait screenshot inside a minimal phone bezel (≈ 9:19.5). */
+export function PhoneFrame({ src, alt, className = "", eager = false }: FrameProps) {
+  return (
+    <div
+      className={`relative aspect-[9/19.5] overflow-hidden rounded-[2rem] border-[6px] border-[#1c1c1c] bg-[#1c1c1c] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(242,240,233,0.08)] ${className}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={withBasePath(src)}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        className="h-full w-full rounded-[1.6rem] object-cover object-top"
+      />
+    </div>
+  )
+}
+
+/** Landscape screenshot inside a browser window with a title bar. */
+export function BrowserFrame({
+  src,
+  alt,
+  className = "",
+  eager = false,
+  url,
+}: FrameProps & { url?: string | undefined }) {
+  return (
+    <div
+      className={`overflow-hidden rounded-[var(--radius-md)] border border-canvas/10 bg-obsidian-lighter shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
+    >
+      <div className="flex items-center gap-1.5 border-b border-canvas/6 px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-canvas/15" />
+        <span className="h-2 w-2 rounded-full bg-canvas/15" />
+        <span className="h-2 w-2 rounded-full bg-canvas/15" />
+        {url && (
+          <span className="ml-3 truncate rounded-full bg-obsidian/60 px-3 py-0.5 font-mono text-[0.625rem] text-canvas-dim/70">
+            {url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+          </span>
+        )}
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={withBasePath(src)}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        className="block aspect-[16/10] w-full object-cover object-top"
+      />
+    </div>
+  )
+}

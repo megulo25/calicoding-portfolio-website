@@ -68,6 +68,15 @@ export interface Project {
   client: string | null
   /** Team's role on the project (e.g. "Design & Development"), or null */
   role: string | null
+  /**
+   * How screenshots are framed: "phone" renders portrait screenshots inside a
+   * device frame, "browser" renders landscape screenshots inside a browser window.
+   */
+  showcase: "phone" | "browser"
+  /** Short, scannable list of key features shown on the case-study page */
+  highlights: string[]
+  /** Current status line (e.g. "Live on App Store & Google Play"), or null */
+  status: string | null
 }
 
 /**
