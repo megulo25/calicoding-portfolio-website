@@ -8,6 +8,7 @@ import { getAboutStats } from "@/lib/utils/project-stats"
 import { ParallaxLayer } from "@/components/ui/parallax-layer"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
+import { withBasePath } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: `About — ${COMPANY.name}`,
@@ -168,7 +169,7 @@ export default function AboutPage() {
                   {member.portrait ? (
                     <div className="relative aspect-[3/4] w-full">
                       <Image
-                        src={member.portrait}
+                        src={withBasePath(member.portrait)}
                         alt={`${member.name} portrait`}
                         fill
                         className="object-cover"

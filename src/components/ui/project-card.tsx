@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
+import { withBasePath } from "@/lib/utils"
 
 // ---------------------------------------------------------------------------
 // Animation
@@ -63,7 +64,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         >
           {project.thumbnail && (
             <Image
-              src={project.thumbnail}
+              src={withBasePath(project.thumbnail)}
               alt={project.title}
               fill
               className="object-cover"

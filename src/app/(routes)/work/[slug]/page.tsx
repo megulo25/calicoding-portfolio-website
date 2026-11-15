@@ -7,6 +7,7 @@ import { PROJECTS } from "@/data/projects"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
+import { withBasePath } from "@/lib/utils"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
 
 export function generateStaticParams() {
@@ -135,7 +136,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             >
               {project.thumbnail && (
                 <Image
-                  src={project.thumbnail}
+                  src={withBasePath(project.thumbnail)}
                   alt={project.title}
                   fill
                   className="object-cover"
@@ -334,7 +335,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-md)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={src}
+                      src={withBasePath(src)}
                       alt={`${project.title} screenshot ${i + 1}`}
                       className="h-full w-full object-cover"
                     />
