@@ -4,7 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
-import { BrowserFrame, PhoneFrame } from "@/components/ui/device-frame"
+import { BrowserFrame, PhoneFrame, TvFrame } from "@/components/ui/device-frame"
 
 // ---------------------------------------------------------------------------
 // Animation
@@ -41,6 +41,14 @@ function CardShowcase({ project }: { project: Project }) {
     return (
       <div className="absolute inset-x-6 top-14 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
         <BrowserFrame src={project.thumbnail} alt={project.title} url={project.links.liveUrl} />
+      </div>
+    )
+  }
+
+  if (project.showcase === "tv") {
+    return (
+      <div className="absolute inset-x-6 top-14 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
+        <TvFrame src={project.thumbnail} alt={project.title} />
       </div>
     )
   }

@@ -6,7 +6,7 @@ import { PROJECTS } from "@/data/projects"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
-import { BrowserFrame, PhoneFrame } from "@/components/ui/device-frame"
+import { BrowserFrame, PhoneFrame, TvFrame } from "@/components/ui/device-frame"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
 
@@ -70,6 +70,10 @@ function HeroShowcase({ project }: { project: Project }) {
         className="mx-auto max-w-5xl translate-y-px rounded-b-none border-b-0"
       />
     )
+  }
+
+  if (project.showcase === "tv") {
+    return <TvFrame src={project.thumbnail} alt={project.title} eager className="mx-auto max-w-5xl" />
   }
 
   const screens = [
@@ -443,7 +447,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div className="col-full grid gap-6 sm:grid-cols-2">
                 {project.gallery.map((src, i) => (
                   <ScrollReveal key={src} delay={0.1 + i * 0.08} className={i === 0 ? "sm:col-span-2" : ""}>
-                    <BrowserFrame src={src} alt={`${project.title} screenshot ${i + 1}`} url={project.links.liveUrl} />
+                    {project.showcase === "tv" ? (
+                      <TvFrame src={src} alt={`${project.title} screen ${i + 1}`} />
+                    ) : (
+                      <BrowserFrame src={src} alt={`${project.title} screenshot ${i + 1}`} url={project.links.liveUrl} />
+                    )}
                   </ScrollReveal>
                 ))}
               </div>

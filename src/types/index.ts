@@ -70,9 +70,10 @@ export interface Project {
   role: string | null
   /**
    * How screenshots are framed: "phone" renders portrait screenshots inside a
-   * device frame, "browser" renders landscape screenshots inside a browser window.
+   * device frame, "browser" renders landscape screenshots inside a browser window,
+   * "tv" renders 16:9 screenshots inside a television bezel.
    */
-  showcase: "phone" | "browser"
+  showcase: "phone" | "browser" | "tv"
   /** Short, scannable list of key features shown on the case-study page */
   highlights: string[]
   /** Current status line (e.g. "Live on App Store & Google Play"), or null */

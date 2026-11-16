@@ -2,7 +2,8 @@ import { withBasePath } from "@/lib/utils"
 
 // =============================================================================
 // Device frames — present screenshots in context instead of cropping them.
-// "phone" for portrait mobile screenshots, "browser" for landscape web ones.
+// "phone" for portrait mobile screenshots, "browser" for landscape web ones,
+// "tv" for 16:9 television (tvOS / Fire TV / Roku) screens.
 // Plain <img> keeps these usable in both server and client components.
 // =============================================================================
 
@@ -62,6 +63,25 @@ export function BrowserFrame({
         decoding="async"
         className="block aspect-[16/10] w-full object-cover object-top"
       />
+    </div>
+  )
+}
+
+/** 16:9 TV screenshot inside a slim television bezel with a stand. */
+export function TvFrame({ src, alt, className = "", eager = false }: FrameProps) {
+  return (
+    <div className={className}>
+      <div className="overflow-hidden rounded-[var(--radius-md)] border-[5px] border-[#1c1c1c] bg-[#1c1c1c] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(242,240,233,0.08)]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={withBasePath(src)}
+          alt={alt}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+          className="block aspect-[16/9] w-full rounded-[calc(var(--radius-md)-5px)] object-cover"
+        />
+      </div>
+      <div aria-hidden className="mx-auto h-2 w-[18%] rounded-b-md bg-[#1c1c1c]" />
     </div>
   )
 }
