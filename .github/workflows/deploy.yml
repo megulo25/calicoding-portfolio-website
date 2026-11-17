@@ -32,7 +32,8 @@ jobs:
       - name: Build
         run: bun run build
         env:
-          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          # Served from the custom domain root (meguloabebe.com), so no subpath.
+          NEXT_PUBLIC_BASE_PATH: ""
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
