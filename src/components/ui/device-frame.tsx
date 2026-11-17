@@ -3,7 +3,8 @@ import { withBasePath } from "@/lib/utils"
 // =============================================================================
 // Device frames — present screenshots in context instead of cropping them.
 // "phone" for portrait mobile screenshots, "browser" for landscape web ones,
-// "tv" for 16:9 television (tvOS / Fire TV / Roku) screens.
+// "tv" for 16:9 television (tvOS / Fire TV / Roku) screens, "watch" for
+// smartwatch screens.
 // Plain <img> keeps these usable in both server and client components.
 // =============================================================================
 
@@ -82,6 +83,24 @@ export function TvFrame({ src, alt, className = "", eager = false }: FrameProps)
         />
       </div>
       <div aria-hidden className="mx-auto h-2 w-[18%] rounded-b-md bg-[#1c1c1c]" />
+    </div>
+  )
+}
+
+/** Apple Watch screenshot (≈ 5:6) inside a rounded watch case. */
+export function WatchFrame({ src, alt, className = "", eager = false }: FrameProps) {
+  return (
+    <div
+      className={`overflow-hidden rounded-[28%/24%] border-[6px] border-[#1c1c1c] bg-black shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(242,240,233,0.08)] ${className}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={withBasePath(src)}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        className="block aspect-[416/496] w-full object-cover"
+      />
     </div>
   )
 }

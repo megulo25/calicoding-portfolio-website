@@ -216,7 +216,7 @@ export const PROJECTS: readonly Project[] = [
     slug: "nexus",
     platforms: ["Mobile", "TV"],
     description: "A Spotify-style music streaming app across iPhone, Apple Watch, Apple TV and Mac — playlists, Liked Songs, lock-screen controls and offline downloads, all powered by a private music library.",
-    thumbnail: "",
+    thumbnail: "/images/nexus/iphone-now-playing.jpg",
     techStack: [
       "Swift",
       "SwiftUI",
@@ -242,11 +242,30 @@ export const PROJECTS: readonly Project[] = [
     challenge: "Building a music app that feels as good as Spotify means sweating the details that users only notice when they're missing: instant playback, gapless seeking, lock-screen controls, offline mode, and a library that stays in sync across every device. The app also had to stream from a private, authenticated server — which Apple's media player doesn't natively support — and sign in on a TV or watch where typing a password is painful.",
     solution: "The first version shipped as an Expo / React Native app with a Node.js and Express API using JWT authentication. I then rebuilt the client natively in Swift and SwiftUI using only Apple frameworks, and expanded it to watchOS, tvOS and macOS. Because AVPlayer can't send auth headers, the iPhone app runs a small loopback proxy that injects the current token and forwards range requests, so streaming stays secure while seeking stays instant; downloaded tracks play straight from disk. The Apple TV and Apple Watch sign in by pairing code — the device shows a code and you approve it from your phone — and the watch talks to the phone over WatchConnectivity. Python tooling enriches the library with artwork, genres and BPM to power recommendations.",
     results: "Nexus runs in production across iPhone, Apple Watch, Apple TV and Mac, and the original React Native app continues to build and update over the air while the native apps take over. The project shows the full range: a cross-platform app rebuilt natively, four Apple platforms sharing one backend, and a listening experience on par with commercial streaming services.",
-    gallery: null,
+    gallery: [
+      "/images/nexus/iphone-now-playing.jpg",
+      "/images/nexus/iphone-home.jpg",
+      "/images/nexus/iphone-mix.jpg",
+      "/images/nexus/iphone-queue.jpg",
+      "/images/nexus/iphone-playlist-detail.jpg",
+      "/images/nexus/iphone-library.jpg",
+    ],
     links: {},
     client: null,
     role: "Product Design, Full-Stack & Native Apple Development",
     showcase: "phone",
+    extraGalleries: [
+      {
+        label: "Apple TV",
+        frame: "tv",
+        images: ["/images/nexus/tv-home.jpg", "/images/nexus/tv-pairing.jpg"],
+      },
+      {
+        label: "Apple Watch",
+        frame: "watch",
+        images: ["/images/nexus/watch-now-playing.png", "/images/nexus/watch-pairing.png"],
+      },
+    ],
     highlights: [
       "Native SwiftUI apps for iPhone, Apple Watch, Apple TV and Mac",
       "Playlists, Liked Songs, Recently Played and search",

@@ -6,7 +6,7 @@ import { PROJECTS } from "@/data/projects"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
-import { BrowserFrame, PhoneFrame, TvFrame } from "@/components/ui/device-frame"
+import { BrowserFrame, PhoneFrame, TvFrame, WatchFrame } from "@/components/ui/device-frame"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
 
@@ -459,6 +459,44 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </Container>
         </SectionWrapper>
       )}
+
+      {/* Extra galleries — companion platforms (TV, watch, …) */}
+      {project.extraGalleries?.map((extra) => (
+        <SectionWrapper
+          key={extra.label}
+          id={`project-gallery-${extra.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+          className="pb-24 md:pb-32"
+        >
+          <Container>
+            <ScrollReveal className="col-full mb-8">
+              <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+                {extra.label}
+              </p>
+            </ScrollReveal>
+            <div
+              className={`col-full grid gap-6 ${
+                extra.frame === "phone"
+                  ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
+                  : extra.frame === "watch"
+                    ? "grid-cols-2 sm:grid-cols-4 lg:grid-cols-6"
+                    : "sm:grid-cols-2"
+              }`}
+            >
+              {extra.images.map((src, i) => {
+                const alt = `${project.title} ${extra.label} screen ${i + 1}`
+                return (
+                  <ScrollReveal key={src} delay={0.05 + i * 0.06}>
+                    {extra.frame === "phone" && <PhoneFrame src={src} alt={alt} />}
+                    {extra.frame === "tv" && <TvFrame src={src} alt={alt} />}
+                    {extra.frame === "watch" && <WatchFrame src={src} alt={alt} />}
+                    {extra.frame === "browser" && <BrowserFrame src={src} alt={alt} />}
+                  </ScrollReveal>
+                )
+              })}
+            </div>
+          </Container>
+        </SectionWrapper>
+      ))}
 
       {/* Prev / Next navigation */}
       <SectionWrapper id="project-nav" className="pb-24 md:pb-32">

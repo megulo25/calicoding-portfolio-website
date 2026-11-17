@@ -74,10 +74,27 @@ export interface Project {
    * "tv" renders 16:9 screenshots inside a television bezel.
    */
   showcase: "phone" | "browser" | "tv"
+  /**
+   * Optional additional galleries for other platforms (e.g. a TV or watch
+   * companion app), each shown under its own label on the case-study page.
+   */
+  extraGalleries?: ExtraGallery[]
   /** Short, scannable list of key features shown on the case-study page */
   highlights: string[]
   /** Current status line (e.g. "Live on App Store & Google Play"), or null */
   status: string | null
+}
+
+/**
+ * A labelled set of screenshots for an additional platform.
+ */
+export interface ExtraGallery {
+  /** Section label (e.g. "Apple TV") */
+  label: string
+  /** Device frame used for every image in this gallery */
+  frame: "phone" | "browser" | "tv" | "watch"
+  /** Image paths relative to `/public` */
+  images: string[]
 }
 
 /**
