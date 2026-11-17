@@ -4,7 +4,7 @@ import { withBasePath } from "@/lib/utils"
 // Device frames — present screenshots in context instead of cropping them.
 // "phone" for portrait mobile screenshots, "browser" for landscape web ones,
 // "tv" for 16:9 television (tvOS / Fire TV / Roku) screens, "watch" for
-// smartwatch screens.
+// smartwatch screens, "render" for CAD / 3D renders with no device chrome.
 // Plain <img> keeps these usable in both server and client components.
 // =============================================================================
 
@@ -100,6 +100,55 @@ export function WatchFrame({ src, alt, className = "", eager = false }: FramePro
         loading={eager ? "eager" : "lazy"}
         decoding="async"
         className="block aspect-[416/496] w-full object-cover"
+      />
+    </div>
+  )
+}
+
+/** CAD / 3D render shown as-is on a rounded card, no device chrome. */
+export function RenderFrame({ src, alt, className = "", eager = false }: FrameProps) {
+  return (
+    <div
+      className={`overflow-hidden rounded-[var(--radius-md)] border border-canvas/10 bg-obsidian-lighter shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={withBasePath(src)}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        className="block h-auto w-full"
+      />
+    </div>
+  )
+}
+
+/** Looping, muted animation clip (e.g. a CAD motion study) on a rounded card. */
+export function VideoFrame({
+  src,
+  poster,
+  label,
+  className = "",
+}: {
+  src: string
+  poster: string
+  label: string
+  className?: string
+}) {
+  return (
+    <div
+      className={`overflow-hidden rounded-[var(--radius-md)] border border-canvas/10 bg-obsidian-lighter shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
+    >
+      <video
+        src={withBasePath(src)}
+        poster={withBasePath(poster)}
+        aria-label={label}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="block h-auto w-full"
       />
     </div>
   )

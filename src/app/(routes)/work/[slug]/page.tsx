@@ -6,7 +6,7 @@ import { PROJECTS } from "@/data/projects"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
-import { BrowserFrame, PhoneFrame, TvFrame, WatchFrame } from "@/components/ui/device-frame"
+import { BrowserFrame, PhoneFrame, RenderFrame, TvFrame, VideoFrame, WatchFrame } from "@/components/ui/device-frame"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
 
@@ -70,6 +70,10 @@ function HeroShowcase({ project }: { project: Project }) {
         className="mx-auto max-w-5xl translate-y-px rounded-b-none border-b-0"
       />
     )
+  }
+
+  if (project.showcase === "render") {
+    return <RenderFrame src={project.thumbnail} alt={project.title} eager className="mx-auto max-w-5xl" />
   }
 
   if (project.showcase === "tv") {
@@ -426,6 +430,29 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </Container>
       </SectionWrapper>
 
+      {/* Motion — looping animation clips */}
+      {project.videos && project.videos.length > 0 && (
+        <SectionWrapper id="project-motion" className="pb-24 md:pb-32">
+          <Container>
+            <ScrollReveal className="col-full mb-8">
+              <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+                In Motion
+              </p>
+            </ScrollReveal>
+            <div className={`col-full grid gap-6 ${project.videos.length > 1 ? "sm:grid-cols-2" : ""}`}>
+              {project.videos.map((video, i) => (
+                <ScrollReveal key={video.src} delay={0.05 + i * 0.08}>
+                  <figure>
+                    <VideoFrame src={video.src} poster={video.poster} label={video.caption} />
+                    <figcaption className="mt-3 text-sm text-canvas-dim">{video.caption}</figcaption>
+                  </figure>
+                </ScrollReveal>
+              ))}
+            </div>
+          </Container>
+        </SectionWrapper>
+      )}
+
       {/* Gallery — only shown when gallery images exist */}
       {project.gallery && project.gallery.length > 0 && (
         <SectionWrapper id="project-gallery" className="pb-24 md:pb-32">
@@ -449,6 +476,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <ScrollReveal key={src} delay={0.1 + i * 0.08} className={i === 0 ? "sm:col-span-2" : ""}>
                     {project.showcase === "tv" ? (
                       <TvFrame src={src} alt={`${project.title} screen ${i + 1}`} />
+                    ) : project.showcase === "render" ? (
+                      <RenderFrame src={src} alt={`${project.title} render ${i + 1}`} />
                     ) : (
                       <BrowserFrame src={src} alt={`${project.title} screenshot ${i + 1}`} url={project.links.liveUrl} />
                     )}
@@ -489,6 +518,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {extra.frame === "phone" && <PhoneFrame src={src} alt={alt} />}
                     {extra.frame === "tv" && <TvFrame src={src} alt={alt} />}
                     {extra.frame === "watch" && <WatchFrame src={src} alt={alt} />}
+                    {extra.frame === "render" && <RenderFrame src={src} alt={alt} />}
                     {extra.frame === "browser" && <BrowserFrame src={src} alt={alt} />}
                   </ScrollReveal>
                 )

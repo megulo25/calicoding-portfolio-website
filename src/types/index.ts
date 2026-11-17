@@ -71,18 +71,33 @@ export interface Project {
   /**
    * How screenshots are framed: "phone" renders portrait screenshots inside a
    * device frame, "browser" renders landscape screenshots inside a browser window,
-   * "tv" renders 16:9 screenshots inside a television bezel.
+   * "tv" renders 16:9 screenshots inside a television bezel, "render" shows
+   * CAD / 3D renders as-is with no device chrome.
    */
-  showcase: "phone" | "browser" | "tv"
+  showcase: "phone" | "browser" | "tv" | "render"
   /**
    * Optional additional galleries for other platforms (e.g. a TV or watch
    * companion app), each shown under its own label on the case-study page.
    */
   extraGalleries?: ExtraGallery[]
+  /** Optional looping animation clips (muted, autoplay) shown on the case-study page */
+  videos?: ProjectVideo[]
   /** Short, scannable list of key features shown on the case-study page */
   highlights: string[]
   /** Current status line (e.g. "Live on App Store & Google Play"), or null */
   status: string | null
+}
+
+/**
+ * A short looping animation clip, e.g. a CAD motion study.
+ */
+export interface ProjectVideo {
+  /** MP4 path relative to `/public` */
+  src: string
+  /** Poster frame path relative to `/public` */
+  poster: string
+  /** Caption shown under the clip; also used as its accessible label */
+  caption: string
 }
 
 /**
@@ -92,7 +107,7 @@ export interface ExtraGallery {
   /** Section label (e.g. "Apple TV") */
   label: string
   /** Device frame used for every image in this gallery */
-  frame: "phone" | "browser" | "tv" | "watch"
+  frame: "phone" | "browser" | "tv" | "watch" | "render"
   /** Image paths relative to `/public` */
   images: string[]
 }
