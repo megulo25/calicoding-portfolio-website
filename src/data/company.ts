@@ -15,10 +15,8 @@ export const COMPANY: CompanyInfo = {
   location: "San Diego, CA",
   tagline: "We Build What's Next.",
   description: "Megulo Abebe Inc. is a digital product studio specializing in Mobile, Web, TV, and IoT experiences.",
-  availability: "Q3 2026",
   foundedYear: 2019,
   twitter: "@megulo25",
-  clientRetention: "99%",
 } as const
 
 export const SOCIAL_LINKS: readonly SocialLink[] = [

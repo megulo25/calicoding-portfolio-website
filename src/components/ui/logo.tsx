@@ -2,7 +2,7 @@ import Link from "next/link"
 import { COMPANY } from "@/data/company"
 
 /**
- * Logo — Foundry Tech wordmark.
+ * Logo — brand wordmark (first word bold, the rest small caps).
  *
  * Uses the headline (serif) font with tight tracking for an
  * industrial-luxe feel. The "FOUNDRY" text is displayed in

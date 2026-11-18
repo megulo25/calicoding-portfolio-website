@@ -34,41 +34,42 @@ const MAX_CARD_TECH = 4
 // Showcase — framed screenshots instead of a cropped thumbnail
 // ---------------------------------------------------------------------------
 
-function CardShowcase({ project }: { project: Project }) {
+function CardShowcase({ project, large }: { project: Project; large: boolean }) {
   if (!project.thumbnail) return null
+  const reelProps = { reel: project.reel, hideReelControl: true }
 
   if (project.showcase === "browser") {
     return (
-      <div className="absolute inset-x-6 top-14 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
-        <BrowserFrame src={project.thumbnail} alt={project.title} url={project.links.liveUrl} />
+      <div className={`absolute inset-x-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 ${large ? "inset-y-0 flex items-center sm:inset-x-10" : "top-14"}`}>
+        <BrowserFrame src={project.thumbnail} alt={project.title} url={project.links.liveUrl} sizes="(max-width: 640px) 90vw, 560px" {...reelProps} />
       </div>
     )
   }
 
   if (project.showcase === "render") {
     return (
-      <div className="absolute inset-x-6 top-14 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
-        <RenderFrame src={project.thumbnail} alt={project.title} />
+      <div className={`absolute inset-x-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 ${large ? "inset-y-0 flex items-center sm:inset-x-10" : "top-14"}`}>
+        <RenderFrame src={project.thumbnail} alt={project.title} sizes={large ? "(max-width: 640px) 90vw, 900px" : "(max-width: 640px) 90vw, 440px"} {...reelProps} />
       </div>
     )
   }
 
   if (project.showcase === "tv") {
     return (
-      <div className="absolute inset-x-6 top-14 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
-        <TvFrame src={project.thumbnail} alt={project.title} />
+      <div className={`absolute inset-x-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 ${large ? "inset-y-0 flex items-center sm:inset-x-10" : "top-14"}`}>
+        <TvFrame src={project.thumbnail} alt={project.title} sizes={large ? "(max-width: 640px) 90vw, 900px" : "(max-width: 640px) 90vw, 440px"} {...reelProps} />
       </div>
     )
   }
 
   // Phone: featured cards fan out up to three screens; others show one.
-  const extra = project.featured
+  const extra = large
     ? (project.gallery ?? []).filter((src) => src !== project.thumbnail).slice(0, 2)
     : []
 
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 flex justify-center gap-4 ${project.featured ? "top-0 items-center py-12" : "top-14 items-start"}`}
+      className={`absolute inset-x-0 bottom-0 flex justify-center gap-4 ${large ? "top-0 items-center py-12" : "top-14 items-start"}`}
     >
       {extra[0] && (
         <PhoneFrame
@@ -80,7 +81,9 @@ function CardShowcase({ project }: { project: Project }) {
       <PhoneFrame
         src={project.thumbnail}
         alt={project.title}
-        className={`${project.featured ? "w-[42%] sm:w-[30%]" : "w-[38%]"} z-10 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3`}
+        sizes="(max-width: 640px) 40vw, 240px"
+        {...reelProps}
+        className={`${large ? "w-[42%] sm:w-[30%]" : "w-[38%]"} z-10 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3`}
       />
       {extra[1] && (
         <PhoneFrame
@@ -99,13 +102,15 @@ function CardShowcase({ project }: { project: Project }) {
 
 interface ProjectCardProps {
   project: Project
+  /** Override the project's own `featured` flag for this placement */
+  large?: boolean
 }
 
 /**
  * ProjectCard — displays a single portfolio project with gradient thumbnail
  * placeholder, category badge, title, description, and tech stack.
  */
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, large = project.featured }: ProjectCardProps) {
   const primaryPlatform = project.platforms[0] ?? "Web"
 
   return (
@@ -115,7 +120,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className={`group relative flex flex-col overflow-hidden rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light transition-colors duration-300 hover:border-copper/20 ${project.featured ? "sm:col-span-2 sm:row-span-2" : ""
+      className={`group relative flex flex-col overflow-hidden rounded-[var(--radius-md)] border border-canvas/6 bg-obsidian-light transition-colors duration-300 hover:border-copper/20 ${large ? "sm:col-span-2 sm:row-span-2" : ""
         }`}
     >
       <Link
@@ -125,9 +130,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Thumbnail */}
         <div
-          className={`relative w-full overflow-hidden bg-gradient-to-br ${project.featured ? "min-h-[20rem] flex-1 sm:min-h-[28rem]" : "aspect-[4/3]"} ${PLATFORM_GRADIENTS[primaryPlatform]}`}
+          className={`relative w-full overflow-hidden bg-gradient-to-br ${large ? "min-h-[20rem] flex-1 sm:min-h-[28rem]" : "aspect-[4/3]"} ${PLATFORM_GRADIENTS[primaryPlatform]}`}
         >
-          <CardShowcase project={project} />
+          <CardShowcase project={project} large={large} />
           {/* Platform badges */}
           <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
             {project.platforms.map((platform) => (
@@ -154,7 +159,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Content */}
-        <div className={`flex flex-col p-5 ${project.featured ? "" : "flex-1"}`}>
+        <div className={`flex flex-col p-5 ${large ? "" : "flex-1"}`}>
           <h3 className="text-lg font-semibold leading-tight transition-colors duration-300 group-hover:text-copper">
             {project.title}
           </h3>

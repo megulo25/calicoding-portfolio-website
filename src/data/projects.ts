@@ -17,7 +17,12 @@ export const PROJECTS: readonly Project[] = [
     slug: "dmaasd",
     platforms: ["Mobile"],
     description: "The official iOS and Android app for the Dir Byabir Edir Mutual Assistance Association in San Diego — delivering obituary announcements, memorial service details, and community notices to members the moment they're published.",
-    thumbnail: "/images/dmaasd/login.jpg",
+    thumbnail: "/images/dmaasd/obituary.jpg",
+    ogImage: "/images/dmaasd/og.jpg",
+    reel: {
+      src: "/videos/dmaasd-reel.mp4",
+      poster: "/images/dmaasd/reel-poster.jpg",
+    },
     techStack: [
       "Expo",
       "React Native",
@@ -43,12 +48,42 @@ export const PROJECTS: readonly Project[] = [
     solution: "I built a cross-platform Expo / React Native app with file-based routing (Expo Router) and separate member and admin experiences. Sign-in is passwordless: a custom Amazon Cognito auth flow sends a 4-digit code by SMS through Twilio, with optional Face ID / fingerprint unlock afterwards. The backend runs on AWS Amplify Gen 2 — AppSync GraphQL over DynamoDB, Lambda functions for auth challenges and push fan-out, and S3 for obituary photos and flyers. Admins create obituaries through a guided four-step wizard (member details, memorial and funeral services with Google Places address lookup, flyer upload, review) that can save and resume drafts. TanStack Query with persisted cache keeps the app usable on weak connections, EAS Update ships fixes over the air, and Sentry reports crashes. The most recent release focused on senior-friendly UI: larger type, higher contrast, and simpler navigation.",
     results: "DMAASD has been live on the App Store and Google Play since 2023 and has gone through 40+ Android and 20+ iOS store builds as it has grown with the community. Members now receive announcements within moments of publication instead of hours or days, and the admin team publishes obituaries end-to-end from their phones. Over-the-air updates let me fix issues the same day without waiting on app-store review, and the serverless backend keeps running costs low for a volunteer-run nonprofit.",
     gallery: [
-      "/images/dmaasd/login.jpg",
       "/images/dmaasd/home.jpg",
       "/images/dmaasd/obituary.jpg",
+      "/images/dmaasd/services.jpg",
+      "/images/dmaasd/flyer.jpg",
       "/images/dmaasd/notifications.jpg",
-      "/images/dmaasd/admin.jpg",
-      "/images/dmaasd/create-obituary.jpg",
+      "/images/dmaasd/notification-detail.jpg",
+    ],
+    extraGalleries: [
+      {
+        label: "Admin",
+        frame: "phone",
+        images: [
+          "/images/dmaasd/admin-manage.jpg",
+          "/images/dmaasd/admin-review.jpg",
+          "/images/dmaasd/wizard-1.jpg",
+          "/images/dmaasd/wizard-2.jpg",
+          "/images/dmaasd/wizard-3.jpg",
+          "/images/dmaasd/wizard-4.jpg",
+        ],
+      },
+    ],
+    videos: [
+      {
+        src: "/videos/dmaasd-flow-directions.mp4",
+        poster: "/images/dmaasd/flow-directions-poster.jpg",
+        frame: "phone",
+        caption: "From lock screen to turn-by-turn directions in three taps.",
+        alt: "The lock screen receives a notification and the person opens it. The obituary shows memorial and funeral service details, the person scrolls, and taps Get Directions as the phone hands off to a maps app.",
+      },
+      {
+        src: "/videos/dmaasd-flow-wizard.mp4",
+        poster: "/images/dmaasd/flow-wizard-poster.jpg",
+        frame: "phone",
+        caption: "Four guided steps to publish an obituary, with nothing missed.",
+        alt: "An administrator enters a name and years, adds a portrait and memorial flyer, turns on a memorial service with a date and place, reviews everything and submits. An \"Obituary created!\" confirmation appears.",
+      },
     ],
     links: {
       iosAppStore: "https://apps.apple.com/us/app/dmaasd/id6449449839",
@@ -73,7 +108,12 @@ export const PROJECTS: readonly Project[] = [
     slug: "addis-tab",
     platforms: ["Mobile"],
     description: "A credit-tab manager for neighborhood businesses — merchants record what customers owe and pay, and customers see their own balance in real time, replacing the paper ledger behind the counter.",
-    thumbnail: "/images/addis_tab/dashboard.jpg",
+    thumbnail: "/images/addis_tab/customer-tab.jpg",
+    ogImage: "/images/addis_tab/og.jpg",
+    reel: {
+      src: "/videos/addis-tab-reel.mp4",
+      poster: "/images/addis_tab/reel-poster.jpg",
+    },
     techStack: [
       "Expo",
       "React Native",
@@ -99,7 +139,30 @@ export const PROJECTS: readonly Project[] = [
     challenge: "Informal store credit runs on trust and paper. Ledgers get lost, totals drift, and customers have no way to check what they owe — which leads to disputes. The app had to be fast enough to use at a busy counter, simple for customers of any age, keep merchant and customer views in sync across devices, and handle edits made on two phones at once without losing data.",
     solution: "I built a single Expo / React Native codebase with role-based route groups: Business users land on a dashboard, transactions and customers tabs; Customer users get a personal balance view. Authentication is passwordless — Amazon Cognito custom auth triggers send one-time codes over SMS via Twilio — with biometric unlock for quick daily use. Data lives in AWS AppSync (GraphQL) with optimistic-concurrency conflict resolution, receipt photos go to S3, and Lambda functions handle auth and notifications. Charts are drawn with React Native Skia and D3 for smooth native rendering. TanStack Query with persisted cache makes the app work offline-first, and the backend was migrated from Amplify Gen 1 to the TypeScript-defined Amplify Gen 2.",
     results: "Addis Tab is published on the App Store and Google Play and is used daily to manage hundreds of customer tabs. Merchants see total exposure and collections at a glance instead of adding up pages by hand, customers can check their balance any time, and every credit and payment has a timestamped record — with a receipt photo when needed — which has cut down on reconciliation errors and disputes.",
-    gallery: null,
+    gallery: [
+      "/images/addis_tab/dashboard.jpg",
+      "/images/addis_tab/customers.jpg",
+      "/images/addis_tab/record-credit.jpg",
+      "/images/addis_tab/customer-tab.jpg",
+      "/images/addis_tab/receipt.jpg",
+      "/images/addis_tab/customer-notification.jpg",
+    ],
+    videos: [
+      {
+        src: "/videos/addis-tab-merchant-customer.mp4",
+        mobileSrc: "/videos/addis-tab-merchant-customer-mobile.mp4",
+        poster: "/images/addis_tab/merchant-customer-poster.jpg",
+        caption: "A merchant records a credit and the customer\u2019s phone gets the notification at once.",
+        alt: "Two phone screens side by side. On the merchant phone, a $24.50 credit with a receipt photo is added to a customer\u2019s tab. On the customer phone, a notification arrives and her balance changes from $86.25 to $110.75.",
+      },
+      {
+        src: "/videos/addis-tab-flow-dashboard.mp4",
+        poster: "/images/addis_tab/flow-dashboard-poster.jpg",
+        frame: "phone",
+        caption: "The dashboard: a week of outstanding credit at a glance.",
+        alt: "The app opens on a purple launch screen, then the merchant dashboard appears and the bars of the debt chart grow in. Cards below show $1,798.75 total debt, 12 open tabs and 14 customers.",
+      },
+    ],
     links: {
       iosAppStore: "https://apps.apple.com/us/app/addis-tab/id6504838248",
       googlePlay: "https://play.google.com/store/apps/details?id=com.megulo25.AddisTab",
@@ -125,7 +188,13 @@ export const PROJECTS: readonly Project[] = [
     slug: "addis-restaurant-website",
     platforms: ["Web"],
     description: "The website for Addis Ethiopian Restaurant in San Diego — full menu, the owners' story, hours, directions and online ordering — designed in WordPress and published as a zero-cost static site.",
-    thumbnail: "/images/addis_restaurant/index.jpg",
+    thumbnail: "/images/addis_restaurant/desktop-hero.jpg",
+    ogImage: "/images/addis_restaurant/og.jpg",
+    reel: {
+      src: "/videos/addis-restaurant-reel.mp4",
+      mobileSrc: "/videos/addis-restaurant-reel-720.mp4",
+      poster: "/images/addis_restaurant/reel-poster.jpg",
+    },
     techStack: ["WordPress", "Gutenify Theme", "Simply Static", "HTML", "CSS", "jQuery", "AWS Lightsail", "GitHub Pages"],
     year: 2025,
     featured: false,
@@ -133,7 +202,27 @@ export const PROJECTS: readonly Project[] = [
     challenge: "A small restaurant needs a site that looks great and is easy to change, but can't justify paying for a WordPress server that runs all year for a page that changes a few times. The design also called for a video hero banner, custom fonts (Cormorant Garamond, Jost, Roboto), scroll animations and a fully responsive layout — without becoming slow.",
     solution: "I designed the site in WordPress with the block-based Gutenify Restaurant theme on a temporary AWS Lightsail instance, then exported it to plain HTML, CSS and JavaScript with the Simply Static plugin. The static files live in a GitHub repository and are served by GitHub Pages on the restaurant's own domain. When the menu or hours change, I spin Lightsail back up, import the saved site with All-in-One WP Migration, make the edits, re-export and push — keeping the WordPress editing experience with none of the hosting cost. The whole process is documented step by step so it can be repeated by anyone.",
     results: "addisrestaurantsd.com is fast, mobile-friendly and costs nothing to host. It carries a categorized menu of 30+ dishes, an auto-playing video hero, animated sections, a photo gallery, and a footer with contact details, hours and social links. Updates take minutes and don't require keeping a server running.",
-    gallery: ["/images/addis_restaurant/index.jpg", "/images/addis_restaurant/menu.jpg", "/images/addis_restaurant/team.jpg"],
+    gallery: ["/images/addis_restaurant/desktop-hero.jpg", "/images/addis_restaurant/desktop-menu.jpg"],
+    extraGalleries: [
+      {
+        label: "Mobile",
+        frame: "phone",
+        images: [
+          "/images/addis_restaurant/mobile-hero.jpg",
+          "/images/addis_restaurant/mobile-menu.jpg",
+          "/images/addis_restaurant/mobile-food.jpg",
+        ],
+      },
+    ],
+    videos: [
+      {
+        src: "/videos/addis-restaurant-mobile-scroll.mp4",
+        poster: "/images/addis_restaurant/mobile-scroll-poster.jpg",
+        frame: "phone",
+        caption: "The homepage on a phone, from the video hero to the menu.",
+        alt: "Mobile restaurant website scrolling smoothly from the video hero to the breakfast menu with dishes and prices.",
+      },
+    ],
     links: {
       liveUrl: "https://www.addisrestaurantsd.com/",
     },
@@ -157,7 +246,13 @@ export const PROJECTS: readonly Project[] = [
     slug: "streamnest",
     platforms: ["TV", "Mobile", "Web"],
     description: "A Netflix-grade streaming platform for Apple TV and iPhone — billboard heroes, focus-driven rows, profiles and Continue Watching — rebuilt screen by screen to match the experience people already know.",
-    thumbnail: "/images/streamnest/home-billboard.jpg",
+    thumbnail: "/images/streamnest/tv-home.jpg",
+    ogImage: "/images/streamnest/og.jpg",
+    reel: {
+      src: "/videos/streamnest-reel.mp4",
+      mobileSrc: "/videos/streamnest-reel-720.mp4",
+      poster: "/images/streamnest/tv-home.jpg",
+    },
     techStack: [
       "Swift",
       "SwiftUI",
@@ -185,14 +280,66 @@ export const PROJECTS: readonly Project[] = [
     solution: "I treated the reference app as a spec. An automated XCUITest walk captured every screen of the reference experience on a real Apple TV 4K along with its accessibility tree, giving exact measurements — 68 pt margins, 310×504 tiles that expand to 900×504 on focus, 24 pt corner radii, a 112 pt nav bar. Every gap between that and StreamNest was logged in a parity matrix and closed in SwiftUI: a custom top navigation bar replacing the system tab bar, row-snapping vertical scroll, an info panel under the focused row, inset billboards with title logos, and a Netflix-style profile picker. The backend is TypeScript on Bun and Fastify with SQLite via Drizzle, TMDB metadata and artwork, HTTP range streaming for instant seeking, and a typed API contract shared across every client. Heavy media processing fans out to a fleet of Raspberry Pi workers over Cloudflare Tunnels, each adding capacity with a one-command installer.",
     results: "StreamNest runs in production on Apple TV and iPhone and is close to indistinguishable from the app it was modeled on — the same layout, motion and remote behavior, under its own brand. The measured parity process is now a repeatable playbook: given any app or website, I can capture it, measure it, and rebuild it faithfully for a client's own product and content. Adding a Raspberry Pi to the worker fleet adds processing capacity in minutes, keeping running costs to a home server and a few small boards.",
     gallery: [
-      "/images/streamnest/home-billboard.jpg",
-      "/images/streamnest/home-focused-tile.jpg",
-      "/images/streamnest/page-shows.jpg",
-      "/images/streamnest/detail.jpg",
-      "/images/streamnest/home-down-1.jpg",
-      "/images/streamnest/page-search-typed.jpg",
-      "/images/streamnest/profile-picker.jpg",
+      "/images/streamnest/tv-browse-row.jpg",
+      "/images/streamnest/tv-title-detail.jpg",
+      "/images/streamnest/tv-player.jpg",
     ],
+    extraGalleries: [
+      {
+        label: "iPhone",
+        frame: "phone",
+        images: [
+          "/images/streamnest/iphone-home.jpg",
+          "/images/streamnest/iphone-title-detail.jpg",
+          "/images/streamnest/iphone-player.jpg",
+          "/images/streamnest/iphone-downloads.jpg",
+          "/images/streamnest/iphone-search.jpg",
+          "/images/streamnest/iphone-profiles.jpg",
+        ],
+      },
+      {
+        label: "Web Admin",
+        frame: "browser",
+        images: [
+          "/images/streamnest/admin-library.jpg",
+          "/images/streamnest/admin-activity.jpg",
+          "/images/streamnest/admin-profiles.jpg",
+        ],
+      },
+    ],
+    videos: [
+      {
+        src: "/videos/streamnest-flow-play.mp4",
+        poster: "/images/streamnest/flow-play-poster.jpg",
+        frame: "tv",
+        caption: "From \u201cwho\u2019s watching\u201d to playing in four clicks.",
+        alt: "A profile is chosen, the home screen appears, the featured film\u2019s detail page opens, and playback starts with the timeline and controls visible.",
+      },
+      {
+        src: "/videos/streamnest-flow-search.mp4",
+        poster: "/images/streamnest/flow-search-poster.jpg",
+        frame: "tv",
+        caption: "Searching with the remote\u2019s on-screen keyboard.",
+        alt: "The search screen\u2019s letter row is used to type \u201cor\u201d; the results narrow to three series and one is selected.",
+      },
+      {
+        src: "/videos/streamnest-flow-iphone.mp4",
+        poster: "/images/streamnest/flow-iphone-poster.jpg",
+        frame: "phone",
+        caption: "Opening a series on iPhone.",
+        alt: "On iPhone, a title is opened from My List and its episode list is scrolled up and back.",
+      },
+    ],
+    credits: {
+      lines: [
+        "Demo catalog films: Spring (2019) and Charge (2022) \u00a9 Blender Foundation \u00b7 studio.blender.org, CC BY 4.0. Sintel (2010) \u00a9 Blender Foundation \u00b7 durian.blender.org, Tears of Steel (2012) (CC) Blender Foundation \u00b7 mango.blender.org and Big Buck Bunny (2008) \u00a9 Blender Foundation \u00b7 bigbuckbunny.org, CC BY 3.0. Stills and excerpts resized and cropped; title typography added.",
+        "All other titles and artwork in the demo catalog are original.",
+      ],
+      licenses: [
+        { label: "CC BY 4.0", href: "https://creativecommons.org/licenses/by/4.0/" },
+        { label: "CC BY 3.0", href: "https://creativecommons.org/licenses/by/3.0/" },
+      ],
+    },
     links: {},
     client: null,
     role: "Product Design, Full-Stack & Native Apple Development",
@@ -216,6 +363,11 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Mobile", "TV"],
     description: "A Spotify-style music streaming app across iPhone, Apple Watch, Apple TV and Mac — playlists, Liked Songs, lock-screen controls and offline downloads, all powered by a private music library.",
     thumbnail: "/images/nexus/iphone-now-playing.jpg",
+    ogImage: "/images/nexus/og.jpg",
+    reel: {
+      src: "/videos/nexus-reel.mp4",
+      poster: "/images/nexus/reel-poster.jpg",
+    },
     techStack: [
       "Swift",
       "SwiftUI",
@@ -237,7 +389,7 @@ export const PROJECTS: readonly Project[] = [
     ],
     year: 2026,
     featured: false,
-    overview: "Nexus is a personal music streaming service with the polish of the apps people already pay for. It streams a private music library to native apps on iPhone, Apple Watch, Apple TV and Mac, with the playlists, Liked Songs, Recently Played, search and recommendations listeners expect.\n\nOn iPhone it plays in the background with full lock-screen and Control Center controls, and tracks can be downloaded for offline listening. The Apple Watch app works as a remote — browse the library, control playback and adjust volume with the Digital Crown — and the TV and Mac apps bring the same library to the living room and the desk.",
+    overview: "Nexus is a personal music streaming service with the polish of the apps people already pay for. It streams a private music library to native apps on iPhone, Apple Watch, Apple TV and Mac, with the playlists, Liked Songs, Recently Played, search and recommendations listeners expect.\n\nOn iPhone it plays in the background with full lock-screen and Control Center controls, and tracks can be downloaded for offline listening. Playback can be handed off from the phone to the living-room TV, the Apple Watch app works as a remote for whatever is playing — browse the library, play, pause and skip — and the TV and Mac apps bring the same library to the living room and the desk.",
     challenge: "Building a music app that feels as good as Spotify means sweating the details that users only notice when they're missing: instant playback, gapless seeking, lock-screen controls, offline mode, and a library that stays in sync across every device. The app also had to stream from a private, authenticated server — which Apple's media player doesn't natively support — and sign in on a TV or watch where typing a password is painful.",
     solution: "The first version shipped as an Expo / React Native app with a Node.js and Express API using JWT authentication. I then rebuilt the client natively in Swift and SwiftUI using only Apple frameworks, and expanded it to watchOS, tvOS and macOS. Because AVPlayer can't send auth headers, the iPhone app runs a small loopback proxy that injects the current token and forwards range requests, so streaming stays secure while seeking stays instant; downloaded tracks play straight from disk. The Apple TV and Apple Watch sign in by pairing code — the device shows a code and you approve it from your phone — and the watch talks to the phone over WatchConnectivity. Python tooling enriches the library with artwork, genres and BPM to power recommendations.",
     results: "Nexus runs in production across iPhone, Apple Watch, Apple TV and Mac, and the original React Native app continues to build and update over the air while the native apps take over. The project shows the full range: a cross-platform app rebuilt natively, four Apple platforms sharing one backend, and a listening experience on par with commercial streaming services.",
@@ -257,12 +409,49 @@ export const PROJECTS: readonly Project[] = [
       {
         label: "Apple TV",
         frame: "tv",
-        images: ["/images/nexus/tv-home.jpg", "/images/nexus/tv-pairing.jpg"],
+        images: [
+          "/images/nexus/tv-home.jpg",
+          "/images/nexus/tv-now-playing.jpg",
+          "/images/nexus/tv-library.jpg",
+          "/images/nexus/tv-pairing.jpg",
+        ],
+      },
+      {
+        label: "Mac",
+        frame: "render",
+        images: [
+          "/images/nexus/mac-home.jpg",
+          "/images/nexus/mac-library.jpg",
+          "/images/nexus/mac-playlist.jpg",
+          "/images/nexus/mac-now-playing.jpg",
+        ],
       },
       {
         label: "Apple Watch",
         frame: "watch",
-        images: ["/images/nexus/watch-now-playing.png", "/images/nexus/watch-pairing.png"],
+        images: [
+          "/images/nexus/watch-now-playing.png",
+          "/images/nexus/watch-library.png",
+          "/images/nexus/watch-pairing.png",
+        ],
+      },
+      {
+        label: "Offline Mode",
+        frame: "phone",
+        images: [
+          "/images/nexus/iphone-offline-downloading.jpg",
+          "/images/nexus/iphone-offline-playlists.jpg",
+          "/images/nexus/iphone-offline-now-playing.jpg",
+        ],
+      },
+    ],
+    videos: [
+      {
+        src: "/videos/nexus-continuity.mp4",
+        mobileSrc: "/videos/nexus-continuity-mobile.mp4",
+        poster: "/images/nexus/continuity-poster.jpg",
+        caption: "Start on the phone, hand off to the TV, control it from your wrist.",
+        alt: "An iPhone, an Apple Watch and an Apple TV screen side by side. The phone plays a song from a playlist, opens Playback output and picks Living Room; the TV takes over playback, and the Watch pauses, resumes and skips to the next song.",
       },
     ],
     highlights: [
@@ -270,7 +459,8 @@ export const PROJECTS: readonly Project[] = [
       "Playlists, Liked Songs, Recently Played and search",
       "Background playback with lock-screen controls",
       "Offline downloads",
-      "Apple Watch remote with Digital Crown volume",
+      "Hand off playback from iPhone to Apple TV",
+      "Apple Watch remote for whatever is playing",
       "Pairing-code sign-in for TV and Watch",
       "Secure authenticated streaming with instant seeking",
     ],
@@ -284,7 +474,8 @@ export const PROJECTS: readonly Project[] = [
     slug: "cat-countermeasure",
     platforms: ["IoT"],
     description: "A computer-vision cat deterrent — a Raspberry Pi watches the counter, recognizes a cat in real time, and triggers a servo-driven puff of air from a 3D-printed, fully parametric stand.",
-    thumbnail: "/images/cat-countermeasure/assembled-iso.jpg",
+    thumbnail: "/images/cat-countermeasure/detect-poster.jpg",
+    ogImage: "/images/cat-countermeasure/og.jpg",
     techStack: [
       "Python",
       "Raspberry Pi 4",
@@ -307,19 +498,43 @@ export const PROJECTS: readonly Project[] = [
     solution: "I wrote the controller as a tested Python package. EfficientDet-Lite0 runs on LiteRT directly on the Pi, and a trigger engine requires a cat in 3 of the last 5 frames, then enforces a cooldown, a per-visit burst cap and an hourly limit. People always win: a person seen anywhere in the frame at a lower confidence bar blocks spraying and aborts a burst mid-press. The servo runs on hardware PWM with every exit path — normal finish, error, shutdown or the physical ARM switch — returning it to rest, and systemd's watchdog and an ExecStopPost hook park it even after a crash. The stand is generated by a parametric Fusion 360 script: change the can's diameter or height and every part regenerates, with a jointed assembly and scripted motion renders. A calibration CLI, a dry-run mode that logs and snapshots without moving the servo, and a frame-by-frame debug view make it easy to tune on site.",
     results: "The result is a self-contained, set-and-forget appliance: it boots straight into watching, explains every decision in its logs, and recovers on its own from camera drop-outs and hangs. Detection, trigger rules, burst timing and the full camera-to-servo loop are covered by unit and end-to-end tests, and the whole stand prints on a 220 mm bed with no supports.",
     gallery: [
-      "/images/cat-countermeasure/assembled-iso.jpg",
+      "/images/cat-countermeasure/cad-render.jpg",
+      "/images/cat-countermeasure/cad-render-three-quarter.jpg",
       "/images/cat-countermeasure/exploded-iso.jpg",
       "/images/cat-countermeasure/camera-mast-closeup.jpg",
+    ],
+    extraGalleries: [
+      {
+        label: "Detection",
+        frame: "render",
+        images: [
+          "/images/cat-countermeasure/detect-person-hold.jpg",
+          "/images/cat-countermeasure/detect-cat-held.jpg",
+          "/images/cat-countermeasure/detect-fire.jpg",
+        ],
+      },
     ],
     links: {},
     client: null,
     role: "Hardware Design, Embedded Software & Computer Vision",
     showcase: "render",
+    reel: {
+      src: "/videos/cat-countermeasure-detect.mp4",
+      mobileSrc: "/videos/cat-countermeasure-detect-mobile.mp4",
+      poster: "/images/cat-countermeasure/detect-poster.jpg",
+    },
     videos: [
+      {
+        src: "/videos/cat-countermeasure-hold-fire.mp4",
+        poster: "/images/cat-countermeasure/hold-fire-poster.jpg",
+        loop: false,
+        caption: "The detector and trigger rules on sample footage: a person in view holds; after they leave, a three-second countdown, then FIRE on the cat.",
+        alt: "Cats eat by a white wall while a person's legs stand among them, boxed in green as \"person SUPPRESS\" and the status reads HOLD. The person walks away, the view cuts to a close-up of a calico cat boxed in amber as \"cat TARGET\", a countdown runs out and the status flashes FIRE.",
+      },
       {
         src: "/videos/cat-countermeasure-overview.mp4",
         poster: "/images/cat-countermeasure/motion-overview-poster.jpg",
-        caption: "Motion study: press, return, swing up to change the can, and the camera tilt sweep.",
+        caption: "The parametric stand assembling and operating in Fusion 360.",
       },
       {
         src: "/videos/cat-countermeasure-closeup.mp4",
@@ -327,6 +542,15 @@ export const PROJECTS: readonly Project[] = [
         caption: "Close-up of the servo-driven actuator arm pressing the nozzle.",
       },
     ],
+    credits: {
+      lines: [
+        "Cat footage in the detection clips and stills: \u201cRury Feeds the Faculty of Biology Cats\u201d by Joaquim Baeta (Wikimedia Commons), CC BY 4.0 \u2014 trimmed, cropped, colour graded and overlaid with this project\u2019s own detection output.",
+      ],
+      licenses: [
+        { label: "Source", href: "https://commons.wikimedia.org/wiki/File:Rury_Feeds_the_Faculty_of_Biology_Cats.webm" },
+        { label: "CC BY 4.0", href: "https://creativecommons.org/licenses/by/4.0/" },
+      ],
+    },
     highlights: [
       "On-device cat detection with EfficientDet-Lite0",
       "Multi-frame confirmation to reject false positives",
@@ -346,6 +570,7 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["IoT"],
     description: "A hardware mouse jiggler — your mouse sits on a 3D-printed stand while an Arduino-driven servo twitches a textured disk under its sensor, keeping the computer awake with no software installed.",
     thumbnail: "/images/awake-jiggler/assembled.jpg",
+    ogImage: "/images/awake-jiggler/og.jpg",
     techStack: [
       "Arduino",
       "C++",
@@ -371,11 +596,16 @@ export const PROJECTS: readonly Project[] = [
     client: null,
     role: "Hardware Design & Embedded Software",
     showcase: "render",
+    reel: {
+      src: "/videos/awake-jiggler-reel.mp4",
+      mobileSrc: "/videos/awake-jiggler-reel-mobile.mp4",
+      poster: "/images/awake-jiggler/reel-poster.jpg",
+    },
     videos: [
       {
         src: "/videos/awake-jiggler.mp4",
-        poster: "/images/awake-jiggler/animation-poster.jpg",
-        caption: "Rendered in Fusion 360: the parts assemble, the button turns it on, and the disk twitches under the mouse sensor.",
+        poster: "/images/awake-jiggler/still.jpg",
+        caption: "The parametric model assembling and running in Fusion 360.",
       },
     ],
     highlights: [
@@ -390,3 +620,9 @@ export const PROJECTS: readonly Project[] = [
     status: "Completed",
   },
 ] as const
+
+/**
+ * Projects shown in "Selected Work" on the home page, in order.
+ * The first one is shown large.
+ */
+export const HOME_FEATURED_SLUGS: readonly string[] = ["streamnest", "nexus", "cat-countermeasure"]

@@ -15,8 +15,6 @@ export type Platform = "Mobile" | "Web" | "TV" | "IoT"
 export interface ProjectLinks {
   /** URL to the live web product */
   liveUrl?: string
-  /** URL to the source repository */
-  repoUrl?: string
   /** iOS App Store URL */
   iosAppStore?: string
   /** Google Play Store URL */
@@ -80,24 +78,58 @@ export interface Project {
    * companion app), each shown under its own label on the case-study page.
    */
   extraGalleries?: ExtraGallery[]
+  /**
+   * Optional hero reel. Plays inside the showcase frame on the project card and
+   * the case-study hero, in place of the thumbnail (which stays as the poster).
+   */
+  reel?: Reel
   /** Optional looping animation clips (muted, autoplay) shown on the case-study page */
   videos?: ProjectVideo[]
   /** Short, scannable list of key features shown on the case-study page */
   highlights: string[]
+  /** Social share image (1200×630); defaults to the thumbnail */
+  ogImage?: string
+  /** Attribution for third-party content in the project's media */
+  credits?: ProjectCredits
   /** Current status line (e.g. "Live on App Store & Google Play"), or null */
   status: string | null
 }
 
 /**
- * A short looping animation clip, e.g. a CAD motion study.
+ * A short, muted, looping clip. Plays only while on screen.
  */
-export interface ProjectVideo {
-  /** MP4 path relative to `/public` */
+export interface Reel {
+  /** MP4 path relative to `/public` (desktop / default) */
   src: string
-  /** Poster frame path relative to `/public` */
+  /** Optional portrait or smaller cut for phones (≤ 640 px wide) */
+  mobileSrc?: string
+  /** Poster frame path relative to `/public` (shown before load and for reduced motion) */
   poster: string
+  /** Loop the clip (default true). A non-looping clip plays once, then shows a replay button. */
+  loop?: boolean
+}
+
+/**
+ * A captioned clip in the case study's "In Motion" section.
+ */
+export interface ProjectVideo extends Reel {
   /** Caption shown under the clip; also used as its accessible label */
   caption: string
+  /** Device frame the clip plays in (default "render": no device chrome) */
+  frame?: "tv" | "phone" | "render"
+  /** Longer description for screen readers (defaults to the caption) */
+  alt?: string
+}
+
+/**
+ * Attribution for third-party content shown in a project's media
+ * (e.g. Creative Commons films in a demo catalog).
+ */
+export interface ProjectCredits {
+  /** One line per credited work */
+  lines: string[]
+  /** License links shown after the lines */
+  licenses?: { label: string; href: string }[]
 }
 
 /**
@@ -171,14 +203,10 @@ export interface CompanyInfo {
   tagline: string
   /** Short company description for SEO / meta tags */
   description: string
-  /** Current availability window (e.g. "Q3 2026") */
-  availability: string
   /** Year the company was founded — used to compute "years of craft" */
   foundedYear: number
   /** Twitter / X handle (including @) */
   twitter: string
-  /** Percentage string for client retention (e.g. "99%") */
-  clientRetention: string
 }
 
 /**

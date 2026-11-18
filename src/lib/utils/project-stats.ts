@@ -5,8 +5,7 @@ import { COMPANY } from "@/data/company"
 // Project Stats — Derived metrics from project data + company config
 //
 // Stats that can be computed (project count, platform count) are derived
-// dynamically. Non-computable metrics (years of craft, client retention) are
-// pulled from the centralized company config.
+// dynamically; years of craft comes from the company's founding year.
 // =============================================================================
 
 export interface Stat {
@@ -27,7 +26,6 @@ export function getProjectStats(): Stat[] {
     { value: `${projectCount}+`, label: "Projects Shipped" },
     { value: `${platformCount}`, label: "Platforms Covered" },
     { value: `${yearsOfCraft}`, label: "Years of Craft" },
-    { value: COMPANY.clientRetention, label: "Client Retention" },
   ]
 }
 

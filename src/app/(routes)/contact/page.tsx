@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/sections/contact-form"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
+import { nextAvailableQuarter } from "@/lib/utils/availability"
 
 export const metadata: Metadata = {
   title: `Contact — ${COMPANY.name}`,
@@ -27,7 +28,7 @@ const CONTACT_INFO = [
   },
   {
     heading: "Availability",
-    content: `Currently accepting new projects for ${COMPANY.availability}.`,
+    content: `Currently accepting new projects for ${nextAvailableQuarter()}.`,
   },
 ] as const
 

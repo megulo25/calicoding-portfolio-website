@@ -1,0 +1,1413 @@
+{
+  "/images/addis_restaurant/desktop-hero.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/desktop-hero.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_restaurant/desktop-hero.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/addis_restaurant/desktop-hero.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/addis_restaurant/desktop-hero.w1920.webp"
+      }
+    ]
+  },
+  "/images/addis_restaurant/desktop-menu.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/desktop-menu.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_restaurant/desktop-menu.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/addis_restaurant/desktop-menu.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/addis_restaurant/desktop-menu.w1920.webp"
+      }
+    ]
+  },
+  "/images/addis_restaurant/mobile-food.jpg": {
+    "width": 1170,
+    "height": 2532,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/mobile-food.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_restaurant/mobile-food.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_restaurant/mobile-hero.jpg": {
+    "width": 1170,
+    "height": 2532,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/mobile-hero.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_restaurant/mobile-hero.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_restaurant/mobile-menu.jpg": {
+    "width": 1170,
+    "height": 2532,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/mobile-menu.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_restaurant/mobile-menu.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_restaurant/mobile-scroll-poster.jpg": {
+    "width": 660,
+    "height": 1428,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/mobile-scroll-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/addis_restaurant/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/og.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_restaurant/og.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_restaurant/reel-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_restaurant/reel-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_restaurant/reel-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/addis_restaurant/reel-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/customer-notification.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/customer-notification.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/customer-notification.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/customer-tab.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/customer-tab.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/customer-tab.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/customers.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/customers.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/customers.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/dashboard.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/dashboard.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/dashboard.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/flow-dashboard-poster.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/flow-dashboard-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/merchant-customer-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/merchant-customer-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/merchant-customer-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/addis_tab/merchant-customer-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/og.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/og.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/receipt.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/receipt.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/receipt.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/record-credit.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/record-credit.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/addis_tab/record-credit.w960.webp"
+      }
+    ]
+  },
+  "/images/addis_tab/reel-poster.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/addis_tab/reel-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/awake-jiggler/assembled.jpg": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/awake-jiggler/assembled.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/awake-jiggler/assembled.w960.webp"
+      }
+    ]
+  },
+  "/images/awake-jiggler/closeup.jpg": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/awake-jiggler/closeup.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/awake-jiggler/closeup.w960.webp"
+      }
+    ]
+  },
+  "/images/awake-jiggler/exploded.jpg": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/awake-jiggler/exploded.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/awake-jiggler/exploded.w960.webp"
+      }
+    ]
+  },
+  "/images/awake-jiggler/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/awake-jiggler/og.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/awake-jiggler/og.w960.webp"
+      }
+    ]
+  },
+  "/images/awake-jiggler/reel-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/awake-jiggler/reel-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/awake-jiggler/reel-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/awake-jiggler/reel-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/awake-jiggler/still.jpg": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/awake-jiggler/still.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/awake-jiggler/still.w960.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/cad-render-three-quarter.jpg": {
+    "width": 2880,
+    "height": 1920,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/cad-render-three-quarter.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/cad-render-three-quarter.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/cad-render-three-quarter.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/cat-countermeasure/cad-render-three-quarter.w1920.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/cad-render.jpg": {
+    "width": 2880,
+    "height": 1920,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/cad-render.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/cad-render.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/cad-render.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/cat-countermeasure/cad-render.w1920.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/camera-mast-closeup.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/camera-mast-closeup.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/camera-mast-closeup.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/camera-mast-closeup.w1440.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/detect-cat-held.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/detect-cat-held.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/detect-cat-held.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/detect-cat-held.w1440.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/detect-fire.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/detect-fire.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/detect-fire.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/detect-fire.w1440.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/detect-person-hold.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/detect-person-hold.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/detect-person-hold.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/detect-person-hold.w1440.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/detect-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/detect-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/detect-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/detect-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/exploded-iso.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/exploded-iso.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/exploded-iso.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/exploded-iso.w1440.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/hold-fire-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/hold-fire-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/hold-fire-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/cat-countermeasure/hold-fire-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/motion-closeup-poster.jpg": {
+    "width": 960,
+    "height": 720,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/motion-closeup-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/motion-overview-poster.jpg": {
+    "width": 960,
+    "height": 720,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/motion-overview-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/cat-countermeasure/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/cat-countermeasure/og.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/cat-countermeasure/og.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/admin-manage.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/admin-manage.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/admin-manage.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/admin-review.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/admin-review.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/admin-review.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/flow-directions-poster.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/flow-directions-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/flow-wizard-poster.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/flow-wizard-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/flyer.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/flyer.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/flyer.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/home.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/home.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/home.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/notification-detail.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/notification-detail.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/notification-detail.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/notifications.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/notifications.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/notifications.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/obituary.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/obituary.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/obituary.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/og.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/og.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/reel-poster.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/reel-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/services.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/services.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/services.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/wizard-1.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/wizard-1.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/wizard-1.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/wizard-2.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/wizard-2.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/wizard-2.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/wizard-3.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/wizard-3.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/wizard-3.w960.webp"
+      }
+    ]
+  },
+  "/images/dmaasd/wizard-4.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/dmaasd/wizard-4.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/dmaasd/wizard-4.w960.webp"
+      }
+    ]
+  },
+  "/images/nexus/continuity-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/continuity-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/continuity-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/continuity-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-home.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-home.w480.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-library.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-library.w480.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-mix.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-mix.w480.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-now-playing.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-now-playing.w480.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-offline-downloading.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-offline-downloading.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/iphone-offline-downloading.w960.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-offline-now-playing.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-offline-now-playing.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/iphone-offline-now-playing.w960.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-offline-playlists.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-offline-playlists.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/iphone-offline-playlists.w960.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-playlist-detail.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-playlist-detail.w480.webp"
+      }
+    ]
+  },
+  "/images/nexus/iphone-queue.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/iphone-queue.w480.webp"
+      }
+    ]
+  },
+  "/images/nexus/mac-home.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/mac-home.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/mac-home.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/mac-home.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/mac-home.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/mac-library.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/mac-library.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/mac-library.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/mac-library.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/mac-library.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/mac-now-playing.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/mac-now-playing.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/mac-now-playing.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/mac-now-playing.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/mac-now-playing.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/mac-playlist.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/mac-playlist.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/mac-playlist.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/mac-playlist.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/mac-playlist.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/og.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/og.w960.webp"
+      }
+    ]
+  },
+  "/images/nexus/reel-poster.jpg": {
+    "width": 660,
+    "height": 1434,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/reel-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/nexus/tv-home.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/tv-home.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/tv-home.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/tv-home.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/tv-home.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/tv-library.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/tv-library.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/tv-library.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/tv-library.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/tv-library.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/tv-now-playing.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/tv-now-playing.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/tv-now-playing.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/tv-now-playing.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/tv-now-playing.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/tv-pairing.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/nexus/tv-pairing.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/nexus/tv-pairing.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/nexus/tv-pairing.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/nexus/tv-pairing.w1920.webp"
+      }
+    ]
+  },
+  "/images/nexus/watch-library.png": {
+    "width": 422,
+    "height": 514,
+    "variants": []
+  },
+  "/images/nexus/watch-now-playing.png": {
+    "width": 422,
+    "height": 514,
+    "variants": []
+  },
+  "/images/nexus/watch-pairing.png": {
+    "width": 416,
+    "height": 496,
+    "variants": []
+  },
+  "/images/streamnest/admin-activity.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/admin-activity.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/admin-activity.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/admin-activity.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/streamnest/admin-activity.w1920.webp"
+      }
+    ]
+  },
+  "/images/streamnest/admin-library.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/admin-library.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/admin-library.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/admin-library.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/streamnest/admin-library.w1920.webp"
+      }
+    ]
+  },
+  "/images/streamnest/admin-profiles.jpg": {
+    "width": 2880,
+    "height": 1800,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/admin-profiles.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/admin-profiles.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/admin-profiles.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/streamnest/admin-profiles.w1920.webp"
+      }
+    ]
+  },
+  "/images/streamnest/flow-iphone-poster.jpg": {
+    "width": 720,
+    "height": 1564,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/flow-iphone-poster.w480.webp"
+      }
+    ]
+  },
+  "/images/streamnest/flow-play-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/flow-play-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/flow-play-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/flow-play-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/streamnest/flow-search-poster.jpg": {
+    "width": 1920,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/flow-search-poster.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/flow-search-poster.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/flow-search-poster.w1440.webp"
+      }
+    ]
+  },
+  "/images/streamnest/iphone-downloads.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/iphone-downloads.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/iphone-downloads.w960.webp"
+      }
+    ]
+  },
+  "/images/streamnest/iphone-home.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/iphone-home.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/iphone-home.w960.webp"
+      }
+    ]
+  },
+  "/images/streamnest/iphone-player.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/iphone-player.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/iphone-player.w960.webp"
+      }
+    ]
+  },
+  "/images/streamnest/iphone-profiles.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/iphone-profiles.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/iphone-profiles.w960.webp"
+      }
+    ]
+  },
+  "/images/streamnest/iphone-search.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/iphone-search.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/iphone-search.w960.webp"
+      }
+    ]
+  },
+  "/images/streamnest/iphone-title-detail.jpg": {
+    "width": 1320,
+    "height": 2868,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/iphone-title-detail.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/iphone-title-detail.w960.webp"
+      }
+    ]
+  },
+  "/images/streamnest/og.jpg": {
+    "width": 1200,
+    "height": 630,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/og.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/og.w960.webp"
+      }
+    ]
+  },
+  "/images/streamnest/tv-browse-row.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/tv-browse-row.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/tv-browse-row.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/tv-browse-row.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/streamnest/tv-browse-row.w1920.webp"
+      }
+    ]
+  },
+  "/images/streamnest/tv-home.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/tv-home.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/tv-home.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/tv-home.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/streamnest/tv-home.w1920.webp"
+      }
+    ]
+  },
+  "/images/streamnest/tv-player.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/tv-player.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/tv-player.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/tv-player.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/streamnest/tv-player.w1920.webp"
+      }
+    ]
+  },
+  "/images/streamnest/tv-title-detail.jpg": {
+    "width": 2560,
+    "height": 1440,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/streamnest/tv-title-detail.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/streamnest/tv-title-detail.w960.webp"
+      },
+      {
+        "w": 1440,
+        "src": "/images/streamnest/tv-title-detail.w1440.webp"
+      },
+      {
+        "w": 1920,
+        "src": "/images/streamnest/tv-title-detail.w1920.webp"
+      }
+    ]
+  },
+  "/images/team/megulo.jpg": {
+    "width": 942,
+    "height": 1765,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/team/megulo.w480.webp"
+      }
+    ]
+  }
+}

@@ -6,6 +6,9 @@ import type { NavItem } from "@/types"
 // Data
 // ---------------------------------------------------------------------------
 
+const [BRAND_FIRST, ...BRAND_PARTS] = COMPANY.name.split(" ")
+const BRAND_REST = BRAND_PARTS.join(" ")
+
 const NAV_ITEMS: NavItem[] = [
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
@@ -23,13 +26,13 @@ const NAV_ITEMS: NavItem[] = [
  * ┌──────────────────────────────────────────────────────────────┐
  * │  ─────────────── thin ruled line ──────────────────────────  │
  * │                                                              │
- * │  FOUNDRY TECH            Navigation        Connect           │
+ * │  MEGULO ABEBE            Navigation        Connect           │
  * │  We Build What's Next.   Work              GitHub            │
  * │                          About             LinkedIn          │
  * │                          Contact           X / Twitter       │
  * │                                                              │
  * │  ─────────────── thin ruled line ──────────────────────────  │
- * │  © 2026 Foundry Tech. All rights reserved.                   │
+ * │  © 2026 Megulo Abebe. All rights reserved.                   │
  * └──────────────────────────────────────────────────────────────┘
  */
 export function Footer() {
@@ -50,10 +53,10 @@ export function Footer() {
             className="group mb-4 inline-flex items-baseline gap-2"
           >
             <span className="font-headline text-[1.35rem] font-bold uppercase tracking-[0.08em] text-canvas transition-colors duration-300 group-hover:text-copper">
-              Foundry
+              {BRAND_FIRST}
             </span>
             <span className="font-mono text-[0.6875rem] font-light uppercase tracking-[0.2em] text-canvas-dim transition-colors duration-300 group-hover:text-copper-light">
-              Tech
+              {BRAND_REST}
             </span>
           </Link>
           <p className="mt-3 max-w-xs font-mono text-[0.8125rem] leading-relaxed text-canvas-dim">
