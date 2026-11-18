@@ -138,12 +138,6 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               ))}
             </ul>
 
-            {/* Keyboard shortcut hint */}
-            <div className="mt-auto px-8 pb-10">
-              <p className="font-mono text-[0.625rem] uppercase tracking-[0.15em] text-canvas-dim/40">
-                Ctrl + Shift + D — Dev Mode
-              </p>
-            </div>
           </motion.nav>
         </>
       )}

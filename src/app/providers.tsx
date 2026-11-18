@@ -1,9 +1,6 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { DevModeProvider } from "@/lib/context/dev-mode-context"
-import { GridOverlay } from "@/components/ui/grid-overlay"
-import { DevInfoPanel } from "@/components/ui/dev-info-panel"
 import { CustomCursor } from "@/components/ui/custom-cursor"
 import { SkipLink } from "@/components/ui/skip-link"
 import { Header } from "@/components/layout/header"
@@ -26,14 +23,12 @@ export function Providers({ children }: ProvidersProps) {
   useLenis()
 
   return (
-    <DevModeProvider>
+    <>
       <SkipLink />
-      <GridOverlay />
-      <DevInfoPanel />
       <CustomCursor />
       <Header />
       <main id="main-content" className="pt-16">{children}</main>
       <Footer />
-    </DevModeProvider>
+    </>
   )
 }

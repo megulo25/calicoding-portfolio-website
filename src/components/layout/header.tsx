@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react"
 import type { NavItem } from "@/types"
 import { Logo } from "@/components/ui/logo"
 import { NavLink } from "@/components/ui/nav-link"
-import { DevModeToggle } from "@/components/ui/dev-mode-toggle"
 import { MenuToggle } from "@/components/ui/menu-toggle"
 import { MobileNav } from "@/components/layout/mobile-nav"
 
@@ -35,7 +34,6 @@ const SCROLL_THRESHOLD = 40
  *
  * - Transparent at top of page → semi-opaque obsidian + blur after scroll.
  * - Desktop nav links with active-route copper underline.
- * - Dev-Mode toggle switch (far right).
  * - z-index: nav (100) to sit above content but below modals.
  */
 export function Header() {
@@ -88,7 +86,6 @@ export function Header() {
 
         {/* Right side controls */}
         <div className="flex items-center gap-4">
-          <DevModeToggle />
           <MenuToggle
             isOpen={isMobileMenuOpen}
             onToggle={() => setIsMobileMenuOpen((prev) => !prev)}

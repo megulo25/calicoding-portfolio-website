@@ -145,16 +145,6 @@ export interface ExtraGallery {
 }
 
 /**
- * State shape for the Dev-Mode context.
- */
-export interface DevModeState {
-  /** Whether Dev-Mode is currently active */
-  isDevMode: boolean
-  /** Toggle Dev-Mode on/off */
-  toggleDevMode: () => void
-}
-
-/**
  * Navigation link item used by header, mobile nav, and footer.
  */
 export interface NavItem {
