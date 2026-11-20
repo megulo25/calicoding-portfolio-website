@@ -4,7 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import type { Project } from "@/types"
 import { PLATFORM_GRADIENTS } from "@/lib/constants"
-import { BrowserFrame, PhoneFrame, RenderFrame, TvFrame } from "@/components/ui/device-frame"
+import { BrowserFrame, PhoneFrame, RenderFrame, TabletFrame, TvFrame } from "@/components/ui/device-frame"
 
 // ---------------------------------------------------------------------------
 // Animation
@@ -58,6 +58,14 @@ function CardShowcase({ project, large }: { project: Project; large: boolean }) 
     return (
       <div className={`absolute inset-x-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2 ${large ? "inset-y-0 flex items-center sm:inset-x-10" : "top-14"}`}>
         <TvFrame src={project.thumbnail} alt={project.title} sizes={large ? "(max-width: 640px) 90vw, 900px" : "(max-width: 640px) 90vw, 440px"} {...reelProps} />
+      </div>
+    )
+  }
+
+  if (project.showcase === "tablet") {
+    return (
+      <div className="absolute inset-x-6 top-14 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
+        <TabletFrame src={project.thumbnail} alt={project.title} />
       </div>
     )
   }
@@ -160,6 +168,11 @@ export function ProjectCard({ project, large = project.featured }: ProjectCardPr
 
         {/* Content */}
         <div className={`flex flex-col p-5 ${large ? "" : "flex-1"}`}>
+          {project.origin === "Professional" && project.client && (
+            <p className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim/70">
+              {project.client}
+            </p>
+          )}
           <h3 className="text-lg font-semibold leading-tight transition-colors duration-300 group-hover:text-copper">
             {project.title}
           </h3>

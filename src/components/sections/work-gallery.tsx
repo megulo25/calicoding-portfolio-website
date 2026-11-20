@@ -5,7 +5,9 @@ import { AnimatePresence, LayoutGroup } from "framer-motion"
 import { PROJECTS } from "@/data/projects"
 import {
   CategoryFilter,
+  OriginFilter,
   type FilterValue,
+  type OriginFilterValue,
 } from "@/components/ui/category-filter"
 import { ProjectCard } from "@/components/ui/project-card"
 
@@ -16,22 +18,25 @@ import { ProjectCard } from "@/components/ui/project-card"
 /**
  * WorkGallery — client-side filterable project grid.
  *
- * Renders a category filter bar and an animated grid of ProjectCards.
+ * Renders origin + platform filter bars and an animated grid of ProjectCards.
  * Uses Framer Motion `layout` + `AnimatePresence` for smooth filter
  * transitions.
  */
 export function WorkGallery() {
   const [active, setActive] = useState<FilterValue>("All")
+  const [origin, setOrigin] = useState<OriginFilterValue>("All Work")
 
-  const filtered =
-    active === "All"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.platforms.includes(active))
+  const filtered = PROJECTS.filter(
+    (p) =>
+      (active === "All" || p.platforms.includes(active)) &&
+      (origin === "All Work" || p.origin === origin),
+  )
 
   return (
     <LayoutGroup>
       {/* Filter bar */}
-      <div className="mb-10">
+      <div className="mb-10 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+        <OriginFilter active={origin} onSelect={setOrigin} />
         <CategoryFilter active={active} onSelect={setActive} />
       </div>
 

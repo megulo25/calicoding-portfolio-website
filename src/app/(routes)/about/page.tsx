@@ -8,6 +8,7 @@ import { getAboutStats } from "@/lib/utils/project-stats"
 import { ParallaxLayer } from "@/components/ui/parallax-layer"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
+import { ExperienceTimeline } from "@/components/sections/experience-timeline"
 import { withBasePath } from "@/lib/utils"
 
 export const metadata: Metadata = {
@@ -214,6 +215,28 @@ export default function AboutPage() {
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+        </Container>
+      </SectionWrapper>
+
+      {/* Experience */}
+      <SectionWrapper id="experience" ariaLabel="Experience">
+        <Container>
+          <ScrollReveal className="col-full mb-4">
+            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-copper">
+              Experience
+            </p>
+          </ScrollReveal>
+          <ScrollReveal className="col-full mb-12 lg:col-span-8" delay={0.1}>
+            <h2 className="max-w-2xl">From deep learning research to AI-native engineering.</h2>
+            <p className="mt-4 max-w-xl text-canvas-dim">
+              The companies I&apos;ve shipped for — from ML research labs and
+              industrial IoT to streaming apps on five platforms, and now an
+              agent-driven rewrite of a fintech app and portal.
+            </p>
+          </ScrollReveal>
+          <div className="col-full lg:col-span-10">
+            <ExperienceTimeline />
           </div>
         </Container>
       </SectionWrapper>

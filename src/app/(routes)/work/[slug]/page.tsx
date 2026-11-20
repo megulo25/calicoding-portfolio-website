@@ -6,7 +6,7 @@ import { PROJECTS } from "@/data/projects"
 import { Container } from "@/components/ui/container"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { SectionWrapper } from "@/components/ui/section-wrapper"
-import { BrowserFrame, PhoneFrame, RenderFrame, TvFrame } from "@/components/ui/device-frame"
+import { BrowserFrame, PhoneFrame, RenderFrame, TabletFrame, TvFrame } from "@/components/ui/device-frame"
 import { MediaGallery } from "@/components/ui/media-gallery"
 import { projectJsonLd } from "@/lib/seo/json-ld"
 import type { Project, ProjectVideo } from "@/types"
@@ -81,6 +81,10 @@ function HeroShowcase({ project }: { project: Project }) {
         className="mx-auto max-w-5xl translate-y-px rounded-b-none border-b-0"
       />
     )
+  }
+
+  if (project.showcase === "tablet") {
+    return <TabletFrame src={project.thumbnail} alt={project.title} eager reel={reel} className="mx-auto max-w-4xl" />
   }
 
   if (project.showcase === "render") {
@@ -329,7 +333,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.client && (
                 <div>
                   <dt className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
-                    Client
+                    {project.origin === "Professional" ? "Company" : "Client"}
                   </dt>
                   <dd className="text-sm font-medium">{project.client}</dd>
                 </div>
@@ -337,7 +341,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.role && (
                 <div>
                   <dt className="mb-1 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim">
-                    Our Role
+                    {project.origin === "Professional" ? "My Role" : "Our Role"}
                   </dt>
                   <dd className="text-sm font-medium">{project.role}</dd>
                 </div>

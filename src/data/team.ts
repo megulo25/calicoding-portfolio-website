@@ -15,7 +15,7 @@ export const TEAM: readonly TeamMember[] = [
   {
     name: "Megulo Abebe",
     role: "Founder & Lead Engineer",
-    bio: "7 years building digital products across startups and Fortune 500s. Obsessed with systems thinking and clean architecture.",
+    bio: "Building digital products from deep learning research to React Native apps for Fortune 500s. Now leading AI-native, agent-driven engineering. Obsessed with systems thinking and clean architecture.",
     portrait: "/images/team/megulo.jpg",
     socials: [
       { platform: "GitHub", url: "https://github.com/megulo25", label: "GitHub" },

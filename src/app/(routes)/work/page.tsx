@@ -29,9 +29,9 @@ export default function WorkPage() {
               Work that speaks for itself.
             </h1>
             <p className="mt-6 max-w-xl text-canvas-dim">
-              A curated selection of projects across Mobile, Web, TV, and IoT
-              — each one a testament to precision engineering and intentional
-              design.
+              Products shipped for companies like Credit Acceptance, NBC Sports
+              Next, and Solar Turbines, alongside independent work — across
+              Mobile, Web, TV, and IoT.
             </p>
           </ScrollReveal>
         </Container>

@@ -9,6 +9,12 @@
 export type Platform = "Mobile" | "Web" | "TV" | "IoT"
 
 /**
+ * Where a project came from: work shipped for an employer ("Professional")
+ * or an independent / studio project ("Personal").
+ */
+export type ProjectOrigin = "Professional" | "Personal"
+
+/**
  * Platform-specific and general external links for a project.
  * All fields are optional — only populate the ones that apply.
  */
@@ -37,6 +43,8 @@ export interface Project {
   slug: string
   /** Target platforms this project ships to */
   platforms: Platform[]
+  /** Employer work vs. independent / studio work */
+  origin: ProjectOrigin
   /** Short description (1–2 sentences) */
   description: string
   /** Path to thumbnail image relative to `/public` */
@@ -69,10 +77,11 @@ export interface Project {
   /**
    * How screenshots are framed: "phone" renders portrait screenshots inside a
    * device frame, "browser" renders landscape screenshots inside a browser window,
+   * "tablet" renders landscape 4:3 screenshots inside a tablet bezel,
    * "tv" renders 16:9 screenshots inside a television bezel, "render" shows
    * CAD / 3D renders as-is with no device chrome.
    */
-  showcase: "phone" | "browser" | "tv" | "render"
+  showcase: "phone" | "browser" | "tablet" | "tv" | "render"
   /**
    * Optional additional galleries for other platforms (e.g. a TV or watch
    * companion app), each shown under its own label on the case-study page.
@@ -93,6 +102,38 @@ export interface Project {
   credits?: ProjectCredits
   /** Current status line (e.g. "Live on App Store & Google Play"), or null */
   status: string | null
+}
+
+/**
+ * A role on the career timeline.
+ */
+export interface Experience {
+  /** Unique identifier */
+  id: string
+  /** Employer name */
+  company: string
+  /** Official job title */
+  title: string
+  /** Optional qualifier shown next to the title (e.g. "Hired as the React Native expert") */
+  titleNote?: string
+  /** City / region label */
+  location: string
+  /** Display start (e.g. "Jan 2023") */
+  start: string
+  /** Display end, or "Present" */
+  end: string
+  /** One- or two-sentence summary of the role */
+  summary: string
+  /** Key accomplishments */
+  highlights: string[]
+  /** Short list of the main technologies / disciplines */
+  tags: string[]
+  /** Slugs of case studies (in PROJECTS) produced in this role */
+  projectSlugs?: string[]
+  /** Path to the company / product icon relative to `/public`, or null */
+  logo: string | null
+  /** Marks the current role for emphasis */
+  current?: boolean
 }
 
 /**

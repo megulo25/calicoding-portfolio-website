@@ -4,18 +4,170 @@ import type { Project } from "@/types"
 // Portfolio Project Data
 //
 // Each project maps to the four service pillars: Mobile, Web, TV, IoT.
+// `origin` separates work shipped for employers ("Professional") from
+// independent / studio work ("Personal").
 // A project may target multiple platforms (e.g. Mobile + TV).
 // Thumbnails fall back to gradient placeholders when no image is provided.
 // `showcase` controls how screenshots are framed ("phone" or "browser").
 // =============================================================================
 
 export const PROJECTS: readonly Project[] = [
-  // ── Mobile ──────────────────────────────────────────────────────────────
+  // ── Professional ────────────────────────────────────────────────────────
+  {
+    id: "pro-01",
+    title: "Credit Acceptance Mobile",
+    slug: "credit-acceptance-mobile",
+    platforms: ["Mobile", "Web"],
+    origin: "Professional",
+    description: "An AI-native rewrite of Credit Acceptance's customer app and portal from Flutter to Expo / React Native — one universal codebase delivering a unified experience on iOS, Android, and the web, built by a team of AI agents I orchestrate.",
+    thumbnail: "/images/credit_acceptance/screen-1.jpg",
+    techStack: [
+      "AI-Native Engineering",
+      "Agentic Workflows",
+      "Expo",
+      "React Native",
+      "React Native Web",
+      "TypeScript",
+      "Expo Router",
+      "EAS Build & Update",
+    ],
+    year: 2026,
+    featured: true,
+    overview: "Credit Acceptance Mobile is how Credit Acceptance auto-finance customers manage their accounts: signing in with Face ID, checking what's due, scheduling one-time or recurring payments, saving payment methods, and getting reminders. Alongside it sits the web Customer Portal — historically a separate experience.\n\nI was brought on as the team's React Native expert to lead the move from Flutter to Expo / React Native, so mobile and web can share one codebase, one design system, and one set of business logic. The rewrite is AI-native from the ground up: rather than hand-writing every screen, I direct a fleet of autonomous AI coding agents, and my job is the architecture, the context they work from, and the judgment that decides what ships.",
+    challenge: "Two products, two codebases, and a mature Flutter app that real customers depend on to pay their car loans. The rewrite had to reach feature parity without regressions in a regulated, security-sensitive domain, converge mobile and web into a single experience, and do it far faster than a traditional rewrite would allow — without lowering the bar on quality.",
+    solution: "We treat AI as a first-class member of the engineering team. I break the migration into well-specified, agent-sized units of work, engineer the context each agent needs — architecture decisions, conventions, design tokens, the legacy behavior to preserve — and run multiple agents in parallel through an agentic development loop. Every change flows through human-in-the-loop review, automated tests, and quality gates before it merges. On the platform side, Expo Router and React Native Web give us a single universal app, with shared components and business logic across iOS, Android, and the browser, shipped through EAS. Our AI tooling is a living stack: we keep evaluating and adopting new models and agent capabilities as they arrive.",
+    results: "The migration is actively underway, moving at a pace a conventional rewrite couldn't match. The existing Credit Acceptance Mobile app is rated 4.4★ from 5,000+ reviews on the App Store, and the new universal codebase is set to give customers the same experience on every device while giving the team a single platform to build on.",
+    gallery: [
+      "/images/credit_acceptance/screen-1.jpg",
+      "/images/credit_acceptance/screen-2.jpg",
+      "/images/credit_acceptance/screen-3.jpg",
+      "/images/credit_acceptance/screen-4.jpg",
+      "/images/credit_acceptance/screen-5.jpg",
+    ],
+    links: {
+      iosAppStore: "https://apps.apple.com/us/app/credit-acceptance-mobile/id1600112247",
+      googlePlay: "https://play.google.com/store/apps/details?id=com.creditacceptance.customer",
+      liveUrl: "https://www.creditacceptance.com/",
+    },
+    client: "Credit Acceptance",
+    role: "React Native Lead · AI Agent Orchestration",
+    showcase: "phone",
+    highlights: [
+      "Flutter → Expo / React Native migration, led as the RN expert",
+      "One universal codebase for iOS, Android, and web",
+      "AI-native, agent-driven development at scale",
+      "Human-in-the-loop review and automated quality gates",
+      "Shared design system and business logic across platforms",
+      "Biometric sign-in, payments, and account alerts",
+    ],
+    status: "AI-native rewrite in progress",
+  },
+  {
+    id: "pro-02",
+    title: "GolfPass",
+    slug: "golfpass",
+    platforms: ["Mobile", "TV"],
+    origin: "Professional",
+    description: "NBC Sports Next's golf streaming service — Golf Channel originals, shows, and thousands of on-demand lessons. I was the primary mobile engineer across iOS, Android, Apple TV, Fire TV, and Roku.",
+    thumbnail: "/images/golfpass/home.jpg",
+    techStack: [
+      "React Native",
+      "TypeScript",
+      "React Query",
+      "React Navigation",
+      "tvOS / Fire TV / Roku",
+      "Fastlane",
+      "Maestro",
+      "GitHub Actions",
+      "Sentry",
+      "OneTrust",
+    ],
+    year: 2025,
+    featured: false,
+    overview: "GolfPass is NBC Sports Next's membership streaming service for golfers: exclusive originals, favorite Golf Channel programs, and thousands of on-demand tips and lessons from champions and the coaches behind them — available on phones, tablets, and connected TVs.\n\nAs the primary mobile engineer, I owned the React Native apps across five platforms — iOS, Android, Apple TV, Fire TV, and Roku — serving more than 100,000 monthly active users.",
+    challenge: "One small team, five platforms, and a large, demanding audience. Cold starts were slow because of bespoke data stores, releases were held back by manual screenshot generation and multi-day manual regression passes, and privacy regulations required consistent consent management on every device.",
+    solution: "I replaced the bespoke stores with React Query's normalized cache, automated Fastlane builds and App Store Connect screenshots, and built a Maestro end-to-end test suite that runs in CI. I integrated the OneTrust consent management platform for GDPR / CCPA compliance across all five platforms, and kept stability high with Sentry monitoring.",
+    results: "Cold-start time dropped 45%. Release cadence tripled to true bi-weekly shipping, with two days of manual regression removed from every release. The apps held a 99% crash-free rate for 100K+ monthly active users, and GolfPass on iOS is rated 4.8★ from 5,500+ reviews.",
+    gallery: [
+      "/images/golfpass/home.jpg",
+      "/images/golfpass/watch.jpg",
+      "/images/golfpass/tips.jpg",
+      "/images/golfpass/shows.jpg",
+      "/images/golfpass/swing-expedition.jpg",
+      "/images/golfpass/big-break.jpg",
+    ],
+    links: {
+      iosAppStore: "https://apps.apple.com/us/app/golfpass/id1448493740",
+      googlePlay: "https://play.google.com/store/apps/details?id=com.golfchannel.pass",
+      liveUrl: "https://www.golfpass.com/",
+    },
+    client: "NBC Sports Next",
+    role: "Primary Mobile Engineer",
+    showcase: "phone",
+    highlights: [
+      "Five platforms: iOS, Android, Apple TV, Fire TV, Roku",
+      "100K+ monthly active users, 99% crash-free",
+      "45% faster cold start with React Query",
+      "3× release cadence via Fastlane automation",
+      "Maestro E2E suite in CI",
+      "OneTrust GDPR / CCPA consent on every platform",
+    ],
+    status: "Live on iOS, Android, Apple TV, Fire TV & Roku",
+  },
+  {
+    id: "pro-03",
+    title: "Solar Turbines InSight Platform",
+    slug: "solar-turbines-insight",
+    platforms: ["Mobile", "IoT"],
+    origin: "Professional",
+    description: "The connected-equipment app Solar Turbines (a Caterpillar company) gives customers and field technicians to monitor gas-turbine fleets — reliability, alerts, diagnostics, and live equipment data. I built v2.0 in React Native.",
+    thumbnail: "/images/solar_insight/dashboard.jpg",
+    techStack: [
+      "React Native",
+      "TypeScript",
+      "Redux Toolkit",
+      "Reanimated 2",
+      "Python",
+      "Django",
+      "REST APIs",
+    ],
+    year: 2021,
+    featured: false,
+    overview: "InSight Platform is Solar Turbines' technology foundation for service delivery — an ecosystem of tools for connected industrial equipment. Operators see fleet reliability and availability, advisories, service bulletins, alerts, diagnostics, and utilization; DataWatch streams live equipment readings; and maps show every site at a glance.\n\nI developed InSight Platform v2.0 in TypeScript React Native, used by 1,200 field technicians on phones and tablets, and built the Python / Django APIs behind it.",
+    challenge: "Field technicians work on rugged, often low-end devices, in remote locations, with data-dense dashboards full of charts. The previous version crashed too often (2.4% of sessions) and animations stuttered on the hardware technicians actually carry.",
+    solution: "I rebuilt the app in TypeScript React Native, migrated state management to Redux Toolkit for predictable data flow, and rewrote the key charts with Reanimated 2 so animation runs on the UI thread. On the backend I designed a suite of secure, well-architected Django API endpoints focused on performance, scalability, and data security.",
+    results: "The crash rate fell from 2.4% to 0.8% across 1,200 field technicians, and frame drops on low-end devices fell 35%. InSight Platform remains live on the App Store and Google Play.",
+    gallery: [
+      "/images/solar_insight/dashboard.jpg",
+      "/images/solar_insight/datawatch.jpg",
+      "/images/solar_insight/notifications.jpg",
+      "/images/solar_insight/map.jpg",
+      "/images/solar_insight/capabilities.jpg",
+    ],
+    links: {
+      iosAppStore: "https://apps.apple.com/us/app/insight-platform/id840821315",
+      googlePlay: "https://play.google.com/store/apps/details?id=com.cat.solar.ehm.InSight",
+    },
+    client: "Solar Turbines",
+    role: "React Native Developer",
+    showcase: "tablet",
+    highlights: [
+      "Fleet dashboard: reliability, alerts, diagnostics, utilization",
+      "Crash rate cut from 2.4% to 0.8%",
+      "35% fewer frame drops with Reanimated 2",
+      "Redux Toolkit state architecture",
+      "Secure Python / Django API endpoints",
+    ],
+    status: "Live on the App Store & Google Play",
+  },
+
+  // ── Personal: Mobile ────────────────────────────────────────────────────
   {
     id: "proj-02",
     title: "DMAASD",
     slug: "dmaasd",
     platforms: ["Mobile"],
+    origin: "Personal",
     description: "The official iOS and Android app for the Dir Byabir Edir Mutual Assistance Association in San Diego — delivering obituary announcements, memorial service details, and community notices to members the moment they're published.",
     thumbnail: "/images/dmaasd/obituary.jpg",
     ogImage: "/images/dmaasd/og.jpg",
@@ -107,6 +259,7 @@ export const PROJECTS: readonly Project[] = [
     title: "Addis Tab",
     slug: "addis-tab",
     platforms: ["Mobile"],
+    origin: "Personal",
     description: "A credit-tab manager for neighborhood businesses — merchants record what customers owe and pay, and customers see their own balance in real time, replacing the paper ledger behind the counter.",
     thumbnail: "/images/addis_tab/customer-tab.jpg",
     ogImage: "/images/addis_tab/og.jpg",
@@ -181,12 +334,13 @@ export const PROJECTS: readonly Project[] = [
     status: "Live on the App Store & Google Play",
   },
 
-  // ── Web ─────────────────────────────────────────────────────────────────
+  // ── Personal: Web ─────────────────────────────────────────────────────────────────
   {
     id: "proj-03",
     title: "Addis Restaurant Website",
     slug: "addis-restaurant-website",
     platforms: ["Web"],
+    origin: "Personal",
     description: "The website for Addis Ethiopian Restaurant in San Diego — full menu, the owners' story, hours, directions and online ordering — designed in WordPress and published as a zero-cost static site.",
     thumbnail: "/images/addis_restaurant/desktop-hero.jpg",
     ogImage: "/images/addis_restaurant/og.jpg",
@@ -239,12 +393,13 @@ export const PROJECTS: readonly Project[] = [
     status: "Live at addisrestaurantsd.com",
   },
 
-  // ── TV ──────────────────────────────────────────────────────────────────
+  // ── Personal: TV ──────────────────────────────────────────────────────────────────
   {
     id: "proj-04",
     title: "StreamNest",
     slug: "streamnest",
     platforms: ["TV", "Mobile", "Web"],
+    origin: "Personal",
     description: "A Netflix-grade streaming platform for Apple TV and iPhone — billboard heroes, focus-driven rows, profiles and Continue Watching — rebuilt screen by screen to match the experience people already know.",
     thumbnail: "/images/streamnest/tv-home.jpg",
     ogImage: "/images/streamnest/og.jpg",
@@ -361,6 +516,7 @@ export const PROJECTS: readonly Project[] = [
     title: "Nexus",
     slug: "nexus",
     platforms: ["Mobile", "TV"],
+    origin: "Personal",
     description: "A Spotify-style music streaming app across iPhone, Apple Watch, Apple TV and Mac — playlists, Liked Songs, lock-screen controls and offline downloads, all powered by a private music library.",
     thumbnail: "/images/nexus/iphone-now-playing.jpg",
     ogImage: "/images/nexus/og.jpg",
@@ -467,12 +623,13 @@ export const PROJECTS: readonly Project[] = [
     status: "In production on iPhone, Apple Watch, Apple TV & Mac (private)",
   },
 
-  // ── IoT ─────────────────────────────────────────────────────────────────
+  // ── Personal: IoT ─────────────────────────────────────────────────────────────────
   {
     id: "proj-06",
     title: "Cat Countermeasure",
     slug: "cat-countermeasure",
     platforms: ["IoT"],
+    origin: "Personal",
     description: "A computer-vision cat deterrent — a Raspberry Pi watches the counter, recognizes a cat in real time, and triggers a servo-driven puff of air from a 3D-printed, fully parametric stand.",
     thumbnail: "/images/cat-countermeasure/detect-poster.jpg",
     ogImage: "/images/cat-countermeasure/og.jpg",
@@ -568,6 +725,7 @@ export const PROJECTS: readonly Project[] = [
     title: "Awake Jiggler",
     slug: "awake-jiggler",
     platforms: ["IoT"],
+    origin: "Personal",
     description: "A hardware mouse jiggler — your mouse sits on a 3D-printed stand while an Arduino-driven servo twitches a textured disk under its sensor, keeping the computer awake with no software installed.",
     thumbnail: "/images/awake-jiggler/assembled.jpg",
     ogImage: "/images/awake-jiggler/og.jpg",

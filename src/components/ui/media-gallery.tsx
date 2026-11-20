@@ -5,6 +5,7 @@ import {
   BrowserFrame,
   PhoneFrame,
   RenderFrame,
+  TabletFrame,
   TvFrame,
   WatchFrame,
 } from "@/components/ui/device-frame"
@@ -19,7 +20,7 @@ import { responsiveImage } from "@/lib/utils/images"
 // width) from `sm` up. The lightbox supports arrow keys, swipe and Escape.
 // =============================================================================
 
-export type GalleryFrame = "phone" | "browser" | "tv" | "watch" | "render"
+export type GalleryFrame = "phone" | "browser" | "tablet" | "tv" | "watch" | "render"
 
 interface MediaGalleryProps {
   images: string[]
@@ -37,6 +38,7 @@ const GRID: Record<GalleryFrame, string> = {
     "max-sm:-mx-[clamp(1rem,4vw,4rem)] max-sm:flex max-sm:snap-x max-sm:snap-mandatory max-sm:overflow-x-auto max-sm:px-[clamp(1rem,4vw,4rem)] max-sm:pb-4 sm:grid sm:grid-cols-3 lg:grid-cols-6",
   watch: "grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6",
   tv: "grid sm:grid-cols-2",
+  tablet: "grid sm:grid-cols-2",
   browser: "grid sm:grid-cols-2",
   render: "grid sm:grid-cols-2",
 }
@@ -45,6 +47,7 @@ const ITEM: Record<GalleryFrame, string> = {
   phone: "max-sm:w-[68vw] max-sm:shrink-0 max-sm:snap-center",
   watch: "",
   tv: "",
+  tablet: "",
   browser: "",
   render: "",
 }
@@ -57,6 +60,8 @@ function Frame({ frame, src, alt, url }: { frame: GalleryFrame; src: string; alt
       return <WatchFrame src={src} alt={alt} />
     case "tv":
       return <TvFrame src={src} alt={alt} />
+    case "tablet":
+      return <TabletFrame src={src} alt={alt} />
     case "render":
       return <RenderFrame src={src} alt={alt} />
     default:
@@ -68,7 +73,7 @@ export function MediaGallery({ images, frame, title, url, leadWide = true }: Med
   const [open, setOpen] = useState<number | null>(null)
   const dialogRef = useRef<HTMLDialogElement>(null)
   const touchX = useRef<number | null>(null)
-  const landscape = frame === "tv" || frame === "browser" || frame === "render"
+  const landscape = frame === "tv" || frame === "browser" || frame === "tablet" || frame === "render"
   const altFor = (i: number) => IMAGE_ALT[images[i] ?? ""] ?? `${title} screen ${i + 1}`
 
   const step = useCallback(

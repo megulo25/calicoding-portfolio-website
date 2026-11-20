@@ -555,6 +555,66 @@
       }
     ]
   },
+  "/images/credit_acceptance/icon.jpg": {
+    "width": 512,
+    "height": 512,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/credit_acceptance/icon.w480.webp"
+      }
+    ]
+  },
+  "/images/credit_acceptance/screen-1.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/credit_acceptance/screen-1.w480.webp"
+      }
+    ]
+  },
+  "/images/credit_acceptance/screen-2.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/credit_acceptance/screen-2.w480.webp"
+      }
+    ]
+  },
+  "/images/credit_acceptance/screen-3.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/credit_acceptance/screen-3.w480.webp"
+      }
+    ]
+  },
+  "/images/credit_acceptance/screen-4.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/credit_acceptance/screen-4.w480.webp"
+      }
+    ]
+  },
+  "/images/credit_acceptance/screen-5.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/credit_acceptance/screen-5.w480.webp"
+      }
+    ]
+  },
   "/images/dmaasd/admin-manage.jpg": {
     "width": 1320,
     "height": 2868,
@@ -764,6 +824,76 @@
       {
         "w": 960,
         "src": "/images/dmaasd/wizard-4.w960.webp"
+      }
+    ]
+  },
+  "/images/golfpass/big-break.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/golfpass/big-break.w480.webp"
+      }
+    ]
+  },
+  "/images/golfpass/home.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/golfpass/home.w480.webp"
+      }
+    ]
+  },
+  "/images/golfpass/icon.jpg": {
+    "width": 512,
+    "height": 512,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/golfpass/icon.w480.webp"
+      }
+    ]
+  },
+  "/images/golfpass/shows.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/golfpass/shows.w480.webp"
+      }
+    ]
+  },
+  "/images/golfpass/swing-expedition.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/golfpass/swing-expedition.w480.webp"
+      }
+    ]
+  },
+  "/images/golfpass/tips.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/golfpass/tips.w480.webp"
+      }
+    ]
+  },
+  "/images/golfpass/watch.jpg": {
+    "width": 598,
+    "height": 1300,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/golfpass/watch.w480.webp"
       }
     ]
   },
@@ -1101,6 +1231,86 @@
     "width": 416,
     "height": 496,
     "variants": []
+  },
+  "/images/solar_insight/capabilities.jpg": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/solar_insight/capabilities.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/solar_insight/capabilities.w960.webp"
+      }
+    ]
+  },
+  "/images/solar_insight/dashboard.jpg": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/solar_insight/dashboard.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/solar_insight/dashboard.w960.webp"
+      }
+    ]
+  },
+  "/images/solar_insight/datawatch.jpg": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/solar_insight/datawatch.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/solar_insight/datawatch.w960.webp"
+      }
+    ]
+  },
+  "/images/solar_insight/icon.jpg": {
+    "width": 512,
+    "height": 512,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/solar_insight/icon.w480.webp"
+      }
+    ]
+  },
+  "/images/solar_insight/map.jpg": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/solar_insight/map.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/solar_insight/map.w960.webp"
+      }
+    ]
+  },
+  "/images/solar_insight/notifications.jpg": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/solar_insight/notifications.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/solar_insight/notifications.w960.webp"
+      }
+    ]
   },
   "/images/streamnest/admin-activity.jpg": {
     "width": 2880,

@@ -5,7 +5,7 @@ import type { Reel } from "@/types"
 // =============================================================================
 // Device frames — present screenshots in context instead of cropping them.
 // "phone" for portrait mobile screenshots, "browser" for landscape web ones,
-// "tv" for 16:9 television (tvOS / Fire TV / Roku) screens, "watch" for
+// "tablet" for landscape 4:3 tablet screenshots, "tv" for 16:9 television (tvOS / Fire TV / Roku) screens, "watch" for
 // smartwatch screens, "render" for CAD / 3D renders with no device chrome.
 //
 // Every frame shows either a responsive image or, when `reel` is set, a muted
@@ -123,6 +123,21 @@ export function RenderFrame({ className = "", sizes = "(max-width: 1024px) 100vw
       className={`overflow-hidden rounded-[var(--radius-md)] border border-canvas/10 bg-obsidian-lighter shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
     >
       <ScreenMedia {...media} sizes={sizes} className="block h-auto w-full" />
+    </div>
+  )
+}
+
+/** Landscape 4:3 screenshot inside a minimal tablet bezel. */
+export function TabletFrame({ className = "", sizes = "(max-width: 1024px) 100vw, 1024px", ...media }: FrameProps) {
+  return (
+    <div
+      className={`overflow-hidden rounded-[1.25rem] border-[8px] border-[#1c1c1c] bg-[#1c1c1c] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(242,240,233,0.08)] ${className}`}
+    >
+      <ScreenMedia
+        {...media}
+        sizes={sizes}
+        className="block aspect-[4/3] w-full rounded-[0.75rem] object-cover object-top"
+      />
     </div>
   )
 }
