@@ -14,7 +14,7 @@ export const EXPERIENCE: readonly Experience[] = [
     title: "Software Engineer II",
     titleNote: "Hired as the React Native expert",
     location: "Remote",
-    start: "2025",
+    start: "Oct 2025",
     end: "Present",
     summary:
       "Leading an AI-native rewrite of the Credit Acceptance Mobile app and Customer Portal from Flutter to Expo / React Native — one codebase, one unified experience across iOS, Android, and the web. I orchestrate a team of autonomous AI coding agents that do much of the build, and I own the architecture, the guardrails, and every line that ships.",
@@ -36,7 +36,7 @@ export const EXPERIENCE: readonly Experience[] = [
     title: "Software Engineer II",
     location: "San Diego, CA",
     start: "Jan 2023",
-    end: "2025",
+    end: "Nov 2025",
     summary:
       "Primary mobile engineer for the GolfPass streaming apps across iOS, Android, Apple TV, Fire TV, and Roku — serving 100K+ monthly active users at a 99% crash-free rate.",
     highlights: [
