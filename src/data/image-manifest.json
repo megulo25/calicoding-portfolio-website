@@ -1312,6 +1312,20 @@
       }
     ]
   },
+  "/images/solar_insight/phone.jpg": {
+    "width": 1242,
+    "height": 2208,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/images/solar_insight/phone.w480.webp"
+      },
+      {
+        "w": 960,
+        "src": "/images/solar_insight/phone.w960.webp"
+      }
+    ]
+  },
   "/images/streamnest/admin-activity.jpg": {
     "width": 2880,
     "height": 1800,

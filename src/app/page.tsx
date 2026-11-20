@@ -102,7 +102,7 @@ export default function Home() {
             <div className="absolute inset-x-0 top-[9%] flex justify-center gap-[4%]">
               <PhoneFrame src="/images/golfpass/home.jpg" alt="" eager sizes="200px" className="mt-[10%] w-[27%]" />
               <PhoneFrame src="/images/credit_acceptance/screen-1.jpg" alt="" eager sizes="240px" className="z-10 w-[33%]" />
-              <PhoneFrame src="/images/dmaasd/home.jpg" alt="" eager sizes="200px" className="mt-[10%] w-[27%]" />
+              <PhoneFrame src="/images/solar_insight/phone.jpg" alt="" eager sizes="200px" fit="contain" className="mt-[10%] w-[27%]" />
             </div>
           </div>
         </div>

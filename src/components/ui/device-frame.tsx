@@ -53,12 +53,31 @@ function ScreenMedia({
 }
 
 /** Portrait screenshot inside a minimal phone bezel (≈ 9:19.5). */
-export function PhoneFrame({ className = "", sizes = "(max-width: 640px) 70vw, 320px", ...media }: FrameProps) {
+export function PhoneFrame({
+  className = "",
+  sizes = "(max-width: 640px) 70vw, 320px",
+  fit = "cover",
+  ...media
+}: FrameProps & {
+  /**
+   * "cover" fills the screen (modern ~9:19.5 screenshots). "contain" shows an
+   * older 16:9 screenshot whole, with the bezel filling above and below.
+   */
+  fit?: "cover" | "contain"
+}) {
   return (
     <div
       className={`relative aspect-[9/19.5] overflow-hidden rounded-[2rem] border-[6px] border-[#1c1c1c] bg-[#1c1c1c] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(242,240,233,0.08)] ${className}`}
     >
-      <ScreenMedia {...media} sizes={sizes} className="h-full w-full rounded-[1.6rem] object-cover object-top" />
+      <ScreenMedia
+        {...media}
+        sizes={sizes}
+        className={
+          fit === "contain"
+            ? "h-full w-full object-contain object-center"
+            : "h-full w-full rounded-[1.6rem] object-cover object-top"
+        }
+      />
     </div>
   )
 }
