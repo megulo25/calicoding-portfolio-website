@@ -20,6 +20,14 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Mobile", "Web"],
     origin: "Professional",
     description: "An AI-native rewrite of Credit Acceptance's customer app and portal from Flutter to Expo / React Native — one universal codebase delivering a unified experience on iOS, Android, and the web, built by a team of AI agents I orchestrate.",
+    tagline: "Leading an AI-native Flutter → Expo rewrite of a fintech app and portal",
+    accent: "#f58220",
+    period: "2025 – Now",
+    metrics: [
+      { value: "1", label: "codebase for iOS, Android & web" },
+      { value: "4.4★", label: "App Store · 5,000+ ratings (Nov 2026)" },
+      { value: "AI-native", label: "agent-driven rewrite, human-reviewed" },
+    ],
     thumbnail: "/images/credit_acceptance/screen-1.jpg",
     techStack: [
       "AI-Native Engineering",
@@ -69,6 +77,15 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Mobile", "TV"],
     origin: "Professional",
     description: "NBC Sports Next's golf streaming service — Golf Channel originals, shows, and thousands of on-demand lessons. I was the primary mobile engineer across iOS, Android, Apple TV, Fire TV, and Roku.",
+    tagline: "Golf streaming on five platforms for 100K+ monthly users",
+    accent: "#2a7de1",
+    period: "2023 – 2025",
+    metrics: [
+      { value: "100K+", label: "monthly active users" },
+      { value: "45%", label: "faster cold start" },
+      { value: "99%", label: "crash-free sessions" },
+      { value: "3×", label: "release cadence" },
+    ],
     thumbnail: "/images/golfpass/home.jpg",
     techStack: [
       "React Native",
@@ -121,6 +138,14 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Mobile", "IoT"],
     origin: "Professional",
     description: "The connected-equipment app Solar Turbines (a Caterpillar company) gives customers and field technicians to monitor gas-turbine fleets — reliability, alerts, diagnostics, and live equipment data. I built v2.0 in React Native.",
+    tagline: "Monitoring gas-turbine fleets for 1,200 field technicians",
+    accent: "#e8b400",
+    period: "2020 – 2021",
+    metrics: [
+      { value: "0.8%", label: "crash rate, down from 2.4%" },
+      { value: "35%", label: "fewer frame drops on low-end devices" },
+      { value: "1,200", label: "field technicians" },
+    ],
     thumbnail: "/images/solar_insight/dashboard.jpg",
     techStack: [
       "React Native",
@@ -169,6 +194,13 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Mobile"],
     origin: "Personal",
     description: "The official iOS and Android app for the Dir Byabir Edir Mutual Assistance Association in San Diego — delivering obituary announcements, memorial service details, and community notices to members the moment they're published.",
+    tagline: "Community announcements app with passwordless sign-in and push alerts",
+    accent: "#3f6fb5",
+    metrics: [
+      { value: "60+", label: "App Store & Google Play builds" },
+      { value: "Since 2023", label: "live in production" },
+      { value: "Same day", label: "fixes via over-the-air updates" },
+    ],
     thumbnail: "/images/dmaasd/obituary.jpg",
     ogImage: "/images/dmaasd/og.jpg",
     reel: {
@@ -261,6 +293,13 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Mobile"],
     origin: "Personal",
     description: "A credit-tab manager for neighborhood businesses — merchants record what customers owe and pay, and customers see their own balance in real time, replacing the paper ledger behind the counter.",
+    tagline: "Replacing a store's paper credit ledger with a shared, live record",
+    accent: "#2e9e6b",
+    metrics: [
+      { value: "100s", label: "customer tabs managed daily" },
+      { value: "2", label: "experiences: merchant & customer" },
+      { value: "Offline", label: "first, with conflict-safe sync" },
+    ],
     thumbnail: "/images/addis_tab/customer-tab.jpg",
     ogImage: "/images/addis_tab/og.jpg",
     reel: {
@@ -342,6 +381,12 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Web"],
     origin: "Personal",
     description: "The website for Addis Ethiopian Restaurant in San Diego — full menu, the owners' story, hours, directions and online ordering — designed in WordPress and published as a zero-cost static site.",
+    tagline: "A family restaurant's site, designed in WordPress and hosted for $0",
+    accent: "#c2410c",
+    metrics: [
+      { value: "$0", label: "hosting cost" },
+      { value: "30+", label: "dishes on the menu" },
+    ],
     thumbnail: "/images/addis_restaurant/desktop-hero.jpg",
     ogImage: "/images/addis_restaurant/og.jpg",
     reel: {
@@ -401,6 +446,8 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["TV", "Mobile", "Web"],
     origin: "Personal",
     description: "A Netflix-grade streaming platform for Apple TV and iPhone — billboard heroes, focus-driven rows, profiles and Continue Watching — rebuilt screen by screen to match the experience people already know.",
+    tagline: "A Netflix-grade streaming service for Apple TV and iPhone",
+    accent: "#d7263d",
     thumbnail: "/images/streamnest/tv-home.jpg",
     ogImage: "/images/streamnest/og.jpg",
     reel: {
@@ -518,6 +565,11 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["Mobile", "TV"],
     origin: "Personal",
     description: "A Spotify-style music streaming app across iPhone, Apple Watch, Apple TV and Mac — playlists, Liked Songs, lock-screen controls and offline downloads, all powered by a private music library.",
+    tagline: "Music streaming across iPhone, Apple Watch, Apple TV and Mac",
+    accent: "#1fa463",
+    metrics: [
+      { value: "4", label: "Apple platforms, one backend" },
+    ],
     thumbnail: "/images/nexus/iphone-now-playing.jpg",
     ogImage: "/images/nexus/og.jpg",
     reel: {
@@ -631,6 +683,8 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["IoT"],
     origin: "Personal",
     description: "A computer-vision cat deterrent — a Raspberry Pi watches the counter, recognizes a cat in real time, and triggers a servo-driven puff of air from a 3D-printed, fully parametric stand.",
+    tagline: "A Raspberry Pi that spots cats on the counter and fires a puff of air",
+    accent: "#7c5cff",
     thumbnail: "/images/cat-countermeasure/detect-poster.jpg",
     ogImage: "/images/cat-countermeasure/og.jpg",
     techStack: [
@@ -727,6 +781,8 @@ export const PROJECTS: readonly Project[] = [
     platforms: ["IoT"],
     origin: "Personal",
     description: "A hardware mouse jiggler — your mouse sits on a 3D-printed stand while an Arduino-driven servo twitches a textured disk under its sensor, keeping the computer awake with no software installed.",
+    tagline: "A 3D-printed, Arduino-driven mouse jiggler — no software required",
+    accent: "#0ea5e9",
     thumbnail: "/images/awake-jiggler/assembled.jpg",
     ogImage: "/images/awake-jiggler/og.jpg",
     techStack: [
@@ -780,7 +836,6 @@ export const PROJECTS: readonly Project[] = [
 ] as const
 
 /**
- * Projects shown in "Selected Work" on the home page, in order.
- * The first one is shown large.
+ * Company projects featured as large rows on the home page, in order.
  */
-export const HOME_FEATURED_SLUGS: readonly string[] = ["streamnest", "nexus", "cat-countermeasure"]
+export const HOME_FEATURED_SLUGS: readonly string[] = ["credit-acceptance-mobile", "golfpass", "solar-turbines-insight"]

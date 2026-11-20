@@ -161,8 +161,8 @@ Open `http://localhost:3000` (or the port `serve` reports) and verify:
 - All pages render correctly.
 - Images load.
 - Navigation between pages works.
-- 3D canvas (Three.js) initializes.
-- Page transitions animate.
+- Project reels play (and show a pause button) on case-study pages.
+- Light and dark mode both look right (toggle your OS appearance).
 
 ---
 

@@ -6,22 +6,19 @@ import { COMPANY, SOCIAL_LINKS } from "@/data/company"
 import type { Project } from "@/types"
 
 /**
- * Organization schema — appears on all pages via root layout.
+ * Person schema — appears on all pages via root layout.
  */
-export function organizationJsonLd() {
+export function personJsonLd() {
   return {
     "@context": "https://schema.org" as const,
-    "@type": "Organization" as const,
+    "@type": "Person" as const,
     name: COMPANY.name,
     url: COMPANY.url,
-    logo: `${COMPANY.url}/images/logo.png`,
+    jobTitle: COMPANY.tagline,
     description: COMPANY.description,
+    image: `${COMPANY.url.replace(/\/$/, "")}/images/team/megulo.jpg`,
+    address: { "@type": "PostalAddress" as const, addressLocality: COMPANY.location },
     sameAs: SOCIAL_LINKS.map((link) => link.url),
-    contactPoint: {
-      "@type": "ContactPoint" as const,
-      email: COMPANY.email,
-      contactType: "customer service",
-    },
   }
 }
 

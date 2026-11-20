@@ -123,7 +123,7 @@ export function AutoplayVideo({ reel, label, className = "", hideControl = false
             setUserPaused(!paused)
           }}
           aria-label={paused ? `Play: ${label}` : `Pause: ${label}`}
-          className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-obsidian/70 text-canvas backdrop-blur-sm transition-colors hover:bg-copper hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper"
+          className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-bg/70 text-ink backdrop-blur-sm transition-colors hover:bg-accent hover:text-bg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           {paused ? (
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">

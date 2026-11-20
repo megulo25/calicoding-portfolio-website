@@ -72,14 +72,14 @@ export function BrowserFrame({
 }: FrameProps & { url?: string | undefined }) {
   return (
     <div
-      className={`overflow-hidden rounded-[var(--radius-md)] border border-canvas/10 bg-obsidian-lighter shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
+      className={`overflow-hidden rounded-[var(--radius-md)] border border-ink/10 bg-surface-2 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
     >
-      <div className="flex items-center gap-1.5 border-b border-canvas/6 px-3 py-2">
-        <span className="h-2 w-2 rounded-full bg-canvas/15" />
-        <span className="h-2 w-2 rounded-full bg-canvas/15" />
-        <span className="h-2 w-2 rounded-full bg-canvas/15" />
+      <div className="flex items-center gap-1.5 border-b border-ink/6 px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-ink/15" />
+        <span className="h-2 w-2 rounded-full bg-ink/15" />
+        <span className="h-2 w-2 rounded-full bg-ink/15" />
         {url && (
-          <span className="ml-3 truncate rounded-full bg-obsidian/60 px-3 py-0.5 font-mono text-[0.625rem] text-canvas-dim/70">
+          <span className="ml-3 truncate rounded-full bg-bg/60 px-3 py-0.5 font-mono text-[0.625rem] text-ink-muted/70">
             {url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
           </span>
         )}
@@ -120,7 +120,7 @@ export function WatchFrame({ className = "", sizes = "(max-width: 640px) 45vw, 2
 export function RenderFrame({ className = "", sizes = "(max-width: 1024px) 100vw, 1024px", ...media }: FrameProps) {
   return (
     <div
-      className={`overflow-hidden rounded-[var(--radius-md)] border border-canvas/10 bg-obsidian-lighter shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
+      className={`overflow-hidden rounded-[var(--radius-md)] border border-ink/10 bg-surface-2 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] ${className}`}
     >
       <ScreenMedia {...media} sizes={sizes} className="block h-auto w-full" />
     </div>

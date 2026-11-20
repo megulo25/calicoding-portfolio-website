@@ -1,14 +1,11 @@
 /**
- * SkipLink — accessible "Skip to main content" link.
- *
- * Hidden by default, becomes visible on focus (keyboard navigation).
- * Jumps focus to main content area, bypassing header navigation.
+ * SkipLink — "Skip to main content", visible only when focused by keyboard.
  */
 export function SkipLink() {
   return (
     <a
       href="#main-content"
-      className="fixed left-4 top-4 z-[10000] -translate-y-[calc(100%+2rem)] rounded-[var(--radius-md)] bg-copper px-6 py-3 font-mono text-[0.8125rem] uppercase tracking-[0.15em] text-obsidian transition-transform duration-200 focus:translate-y-0"
+      className="fixed left-4 top-4 z-[1000] -translate-y-[calc(100%+2rem)] rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-bg transition-transform duration-200 focus:translate-y-0"
     >
       Skip to main content
     </a>

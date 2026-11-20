@@ -1,123 +1,59 @@
 import Link from "next/link"
 import { COMPANY, SOCIAL_LINKS } from "@/data/company"
-import type { NavItem } from "@/types"
-
-// ---------------------------------------------------------------------------
-// Data
-// ---------------------------------------------------------------------------
-
-const [BRAND_FIRST, ...BRAND_PARTS] = COMPANY.name.split(" ")
-const BRAND_REST = BRAND_PARTS.join(" ")
-
-const NAV_ITEMS: NavItem[] = [
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-]
-
-// ---------------------------------------------------------------------------
-// Footer
-// ---------------------------------------------------------------------------
 
 /**
- * Footer — site-wide footer using the Architect's Grid.
- *
- * Layout (desktop):
- * ┌──────────────────────────────────────────────────────────────┐
- * │  ─────────────── thin ruled line ──────────────────────────  │
- * │                                                              │
- * │  MEGULO ABEBE            Navigation        Connect           │
- * │  We Build What's Next.   Work              GitHub            │
- * │                          About             LinkedIn          │
- * │                          Contact           X / Twitter       │
- * │                                                              │
- * │  ─────────────── thin ruled line ──────────────────────────  │
- * │  © 2026 Megulo Abebe. All rights reserved.                   │
- * └──────────────────────────────────────────────────────────────┘
+ * Footer — a closing call to action, then contact links and copyright.
  */
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const year = new Date().getFullYear()
 
   return (
-    <footer
-      className="mt-auto border-t border-canvas/6"
-      role="contentinfo"
-    >
-      {/* Upper section — branding, nav, social */}
-      <div className="grid-architect mx-auto max-w-[1440px] py-16 md:py-20">
-        {/* Branding block */}
-        <div className="col-span-full mb-10 md:col-span-4 md:mb-0 lg:col-span-5">
-          <Link
-            href="/"
-            aria-label={`${COMPANY.name} — Home`}
-            className="group mb-4 inline-flex items-baseline gap-2"
-          >
-            <span className="font-headline text-[1.35rem] font-bold uppercase tracking-[0.08em] text-canvas transition-colors duration-300 group-hover:text-copper">
-              {BRAND_FIRST}
-            </span>
-            <span className="font-mono text-[0.6875rem] font-light uppercase tracking-[0.2em] text-canvas-dim transition-colors duration-300 group-hover:text-copper-light">
-              {BRAND_REST}
-            </span>
-          </Link>
-          <p className="mt-3 max-w-xs font-mono text-[0.8125rem] leading-relaxed text-canvas-dim">
-            We Build What&apos;s Next&nbsp;&mdash; Mobile, Web, TV&nbsp;&amp;&nbsp;IoT.
+    <footer className="mt-24 border-t border-line" role="contentinfo">
+      <div className="shell py-16 md:py-24">
+        <p className="eyebrow">Let&apos;s talk</p>
+        <h2 className="mt-4 max-w-3xl text-[clamp(2rem,5vw,3.5rem)]">
+          Have an app to build, rebuild, or <span className="serif-accent">rescue</span>?
+        </h2>
+        <p className="mt-4 max-w-xl text-lg text-ink-muted">
+          I&apos;m happy to talk about roles, contract work, or a second opinion on your mobile or web
+          codebase.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a href={`mailto:${COMPANY.email}`} className="btn btn-primary">
+            {COMPANY.email}
+          </a>
+          {SOCIAL_LINKS.filter((l) => l.platform === "LinkedIn").map((l) => (
+            <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+              LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t border-line">
+        <div className="shell flex flex-col gap-4 py-6 text-sm text-ink-faint sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {year} {COMPANY.name} · {COMPANY.location}
           </p>
-        </div>
-
-        {/* Navigation column */}
-        <div className="col-span-2 md:col-span-2 lg:col-span-3">
-          <h3 className="mb-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-canvas-dim">
-            Navigation
-          </h3>
-          <ul className="flex flex-col gap-3">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-canvas/70 transition-colors duration-300 hover:text-copper"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Social / Connect column */}
-        <div className="col-span-2 md:col-span-2 lg:col-span-4">
-          <h3 className="mb-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-canvas-dim">
-            Connect
-          </h3>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            <li>
+              <Link href="/work" className="hover:text-ink">
+                Work
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="hover:text-ink">
+                About
+              </Link>
+            </li>
             {SOCIAL_LINKS.map((link) => (
               <li key={link.url}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-canvas/70 transition-colors duration-300 hover:text-copper"
-                >
+                <a href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
                   {link.label}
-                  {/* External link arrow */}
-                  <span
-                    className="text-[0.625rem] text-canvas-dim transition-transform duration-300 group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  >
-                    ↗
-                  </span>
                 </a>
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-
-      {/* Bottom bar — copyright */}
-      <div className="border-t border-canvas/6">
-        <div className="grid-architect mx-auto max-w-[1440px] py-6">
-          <p className="col-span-full text-center font-mono text-[0.6875rem] tracking-[0.1em] text-canvas-dim/60 md:text-left">
-            &copy; {currentYear} {COMPANY.name}. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

@@ -113,8 +113,8 @@ export function MediaGallery({ images, frame, title, url, leadWide = true }: Med
               type="button"
               onClick={() => setOpen(i)}
               aria-label={`Enlarge: ${altFor(i)}`}
-              className="block w-full cursor-zoom-in rounded-[var(--radius-md)] text-left transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-copper"
-              data-cursor="hover"
+              className="block w-full cursor-zoom-in rounded-[var(--radius-md)] text-left transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+             
             >
               <Frame frame={frame} src={src} alt="" url={url} />
             </button>
@@ -122,7 +122,7 @@ export function MediaGallery({ images, frame, title, url, leadWide = true }: Med
         ))}
       </ul>
       {frame === "phone" && images.length > 1 && (
-        <p className="mt-2 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-canvas-dim/60 sm:hidden">
+        <p className="mt-2 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-ink-muted/60 sm:hidden">
           Swipe for more · Tap to enlarge
         </p>
       )}
@@ -144,7 +144,7 @@ export function MediaGallery({ images, frame, title, url, leadWide = true }: Med
           if (Math.abs(end - start) > 50) step(end < start ? 1 : -1)
         }}
         aria-label={`${title} gallery`}
-        className="m-0 h-dvh max-h-none w-screen max-w-none bg-obsidian/95 p-0 backdrop:bg-obsidian/80"
+        className="m-0 h-dvh max-h-none w-screen max-w-none bg-bg/95 p-0 backdrop:bg-bg/80"
       >
         {current && open !== null && (
           <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4 sm:p-10" onClick={(e) => {
@@ -156,9 +156,9 @@ export function MediaGallery({ images, frame, title, url, leadWide = true }: Med
               alt={altFor(open)}
               className={`max-h-[82dvh] w-auto max-w-full object-contain shadow-2xl ${frame === "phone" ? "rounded-[2rem]" : "rounded-[var(--radius-md)]"}`}
             />
-            <div className="flex items-center gap-6 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-canvas-dim">
+            <div className="flex items-center gap-6 font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-ink-muted">
               {images.length > 1 && (
-                <button type="button" onClick={() => step(-1)} className="px-3 py-2 hover:text-copper" aria-label="Previous image">
+                <button type="button" onClick={() => step(-1)} className="px-3 py-2 hover:text-accent" aria-label="Previous image">
                   ← Prev
                 </button>
               )}
@@ -166,7 +166,7 @@ export function MediaGallery({ images, frame, title, url, leadWide = true }: Med
                 {open + 1} / {images.length}
               </span>
               {images.length > 1 && (
-                <button type="button" onClick={() => step(1)} className="px-3 py-2 hover:text-copper" aria-label="Next image">
+                <button type="button" onClick={() => step(1)} className="px-3 py-2 hover:text-accent" aria-label="Next image">
                   Next →
                 </button>
               )}
@@ -177,7 +177,7 @@ export function MediaGallery({ images, frame, title, url, leadWide = true }: Med
           type="button"
           onClick={() => setOpen(null)}
           aria-label="Close gallery"
-          className="fixed right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-obsidian-light text-canvas hover:bg-copper hover:text-obsidian focus-visible:outline-2 focus-visible:outline-copper"
+          className="fixed right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-surface text-ink hover:bg-accent hover:text-bg focus-visible:outline-2 focus-visible:outline-accent"
         >
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
             <path d="M6 6l12 12M18 6L6 18" />

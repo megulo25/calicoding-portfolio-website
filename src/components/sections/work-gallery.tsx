@@ -1,60 +1,42 @@
 "use client"
 
 import { useState } from "react"
-import { AnimatePresence, LayoutGroup } from "framer-motion"
 import { PROJECTS } from "@/data/projects"
-import {
-  CategoryFilter,
-  OriginFilter,
-  type FilterValue,
-  type OriginFilterValue,
-} from "@/components/ui/category-filter"
-import { ProjectCard } from "@/components/ui/project-card"
-
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
+import { CategoryFilter, OriginFilter, type FilterValue, type OriginFilterValue } from "@/components/ui/category-filter"
+import { ProjectTile } from "@/components/ui/project-tile"
 
 /**
- * WorkGallery — client-side filterable project grid.
- *
- * Renders origin + platform filter bars and an animated grid of ProjectCards.
- * Uses Framer Motion `layout` + `AnimatePresence` for smooth filter
- * transitions.
+ * WorkGallery — every project in the shared tile system, filterable by origin
+ * (company / independent) and platform.
  */
 export function WorkGallery() {
-  const [active, setActive] = useState<FilterValue>("All")
+  const [platform, setPlatform] = useState<FilterValue>("All")
   const [origin, setOrigin] = useState<OriginFilterValue>("All Work")
 
   const filtered = PROJECTS.filter(
-    (p) =>
-      (active === "All" || p.platforms.includes(active)) &&
-      (origin === "All Work" || p.origin === origin),
+    (p) => (platform === "All" || p.platforms.includes(platform)) && (origin === "All Work" || p.origin === origin),
   )
 
   return (
-    <LayoutGroup>
-      {/* Filter bar */}
-      <div className="mb-10 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <>
+      <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <OriginFilter active={origin} onSelect={setOrigin} />
-        <CategoryFilter active={active} onSelect={setActive} />
+        <CategoryFilter active={platform} onSelect={setPlatform} />
       </div>
 
-      {/* Project grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <AnimatePresence mode="popLayout">
-          {filtered.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </AnimatePresence>
+      <p className="sr-only" aria-live="polite">
+        Showing {filtered.length} {filtered.length === 1 ? "project" : "projects"}
+      </p>
+
+      <div className="grid gap-x-8 gap-y-14 md:grid-cols-2 xl:grid-cols-3">
+        {filtered.map((project, i) => (
+          <ProjectTile key={project.slug} project={project} eager={i < 3} />
+        ))}
       </div>
 
-      {/* Empty state */}
       {filtered.length === 0 && (
-        <p className="mt-12 text-center font-mono text-[0.75rem] uppercase tracking-[0.2em] text-canvas-dim/40">
-          No projects in this category yet.
-        </p>
+        <p className="mt-12 text-center text-ink-muted">Nothing here yet for that combination.</p>
       )}
-    </LayoutGroup>
+    </>
   )
 }

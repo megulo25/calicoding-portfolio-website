@@ -47,6 +47,14 @@ export interface Project {
   origin: ProjectOrigin
   /** Short description (1–2 sentences) */
   description: string
+  /** One-line hook shown on tiles (≤ ~90 characters) */
+  tagline: string
+  /** Brand-ish tint (hex) for the stage the project's media sits on */
+  accent: string
+  /** Display period for company work (e.g. "2023 – 2025") */
+  period?: string
+  /** Headline numbers for the case study (3–4, verifiable) */
+  metrics?: ProjectMetric[]
   /** Path to thumbnail image relative to `/public` */
   thumbnail: string
   /** Technologies used */
@@ -134,6 +142,16 @@ export interface Experience {
   logo: string | null
   /** Marks the current role for emphasis */
   current?: boolean
+}
+
+/**
+ * A headline number on a case study.
+ */
+export interface ProjectMetric {
+  /** The number or short value (e.g. "45%", "4.8★") */
+  value: string
+  /** What it measures (e.g. "faster cold start") */
+  label: string
 }
 
 /**

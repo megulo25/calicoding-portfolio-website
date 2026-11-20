@@ -1,279 +1,137 @@
 /* =============================================================================
-   Foundry Tech — Global Styles & Design Tokens
-   The Architect's Framework: Industrial Futurism, Dark-Mode First
+   Megulo Abebe — Global styles & design tokens
+   Editorial, work-first. Light by default, dark when the system asks for it.
    ============================================================================= */
 
 @import "tailwindcss";
 
 /* -----------------------------------------------------------------------------
-   1. CSS Custom Properties (non-Tailwind, used by @theme below)
+   1. Tokens
    ----------------------------------------------------------------------------- */
 
 :root {
-  /* ---- Color Palette ---- */
-  --color-obsidian: #0a0a0a;
-  --color-obsidian-light: #141414;
-  --color-obsidian-lighter: #1e1e1e;
-  --color-canvas: #f2f0e9;
-  --color-canvas-dim: #a8a49c;
-  --color-copper: #b87333;
-  --color-copper-light: #d4956a;
-  --color-copper-dark: #8b5a2b;
-  --color-safety-orange: #ff6700;
-  --color-grid-line: rgba(242, 240, 233, 0.06);
+  color-scheme: light;
 
-  /* ---- Spacing Scale (4px base unit) ---- */
-  --space-1: 0.25rem;
-  /*  4px */
-  --space-2: 0.5rem;
-  /*  8px */
-  --space-3: 0.75rem;
-  /* 12px */
-  --space-4: 1rem;
-  /* 16px */
-  --space-5: 1.25rem;
-  /* 20px */
-  --space-6: 1.5rem;
-  /* 24px */
-  --space-8: 2rem;
-  /* 32px */
-  --space-10: 2.5rem;
-  /* 40px */
-  --space-12: 3rem;
-  /* 48px */
-  --space-16: 4rem;
-  /* 64px */
-  --space-20: 5rem;
-  /* 80px */
-  --space-24: 6rem;
-  /* 96px */
-  --space-32: 8rem;
-  /* 128px */
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-2: #ecebe6;
+  --ink: #151514;
+  --ink-muted: #58564f;
+  --ink-faint: #8a877f;
+  --line: rgb(21 21 20 / 0.1);
+  --accent: #2d4bf0;
+  --accent-ink: #ffffff;
+  --positive: #1f8a4c;
 
-  /* ---- Border Radii (sharp / industrial) ---- */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 
-  /* ---- Z-Index Scale ---- */
-  --z-base: 0;
   --z-nav: 100;
   --z-modal: 200;
-  --z-cursor: 9998;
-  --z-grid: 9999;
 
-  /* ---- Transition Tokens ---- */
-  --duration-fast: 150ms;
-  --duration-base: 300ms;
-  --duration-slow: 600ms;
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* ---- Fluid Typographic Scale ---- */
-  --text-display: clamp(3rem, 8vw, 7rem);
-  /* Hero headlines */
-  --text-h1: clamp(2.25rem, 5vw, 4rem);
-  /* Page titles */
-  --text-h2: clamp(1.75rem, 3.5vw, 2.5rem);
-  /* Section headers */
-  --text-h3: clamp(1.25rem, 2.5vw, 1.75rem);
-  /* Subsection headers */
-  --text-h4: clamp(1.1rem, 1.5vw, 1.25rem);
-  /* Card titles */
-  --text-body: clamp(1rem, 1.2vw, 1.125rem);
-  /* Body text */
-  --text-small: clamp(0.8125rem, 1vw, 0.875rem);
-  /* Secondary text */
-  --text-caption: 0.6875rem;
-  /* Labels, badges */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-device: 0 30px 60px -30px rgb(0 0 0 / 0.45), 0 0 0 1px rgb(0 0 0 / 0.06);
 }
 
-/* -----------------------------------------------------------------------------
-   2. Tailwind v4 @theme — Maps CSS vars to Tailwind utility classes
-   ----------------------------------------------------------------------------- */
+/*
+ * Theme: light by default for every visitor. Choosing dark in the header
+ * switch stores it in localStorage and sets <html data-theme="dark"> before
+ * first paint (see the inline script in layout.tsx).
+ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d0d0c;
+  --surface: #161615;
+  --surface-2: #1d1d1b;
+  --ink: #f1f0eb;
+  --ink-muted: #a7a49c;
+  --ink-faint: #77756f;
+  --line: rgb(241 240 235 / 0.1);
+  --accent: #8c9dff;
+  --accent-ink: #0d0d0c;
+  --positive: #5fd08f;
+  --shadow-device: 0 30px 60px -30px rgb(0 0 0 / 0.9), 0 0 0 1px rgb(255 255 255 / 0.06);
+}
+
 
 @theme inline {
-  /* Colors — usable as bg-obsidian, text-canvas, border-copper, etc. */
-  --color-obsidian: var(--color-obsidian);
-  --color-obsidian-light: var(--color-obsidian-light);
-  --color-obsidian-lighter: var(--color-obsidian-lighter);
-  --color-canvas: var(--color-canvas);
-  --color-canvas-dim: var(--color-canvas-dim);
-  --color-copper: var(--color-copper);
-  --color-copper-light: var(--color-copper-light);
-  --color-copper-dark: var(--color-copper-dark);
-  --color-safety-orange: var(--color-safety-orange);
-  --color-grid-line: var(--color-grid-line);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-positive: var(--positive);
 
-  /* Legacy background/foreground aliases for backward compat */
-  --color-background: var(--color-obsidian);
-  --color-foreground: var(--color-canvas);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
 
-  /* Fonts — Architect's Framework typographic trinity */
-  --font-headline: var(--font-headline);
-  --font-sans: var(--font-body);
-  --font-mono: var(--font-mono);
-
-  /* Spacing — usable as p-space-4, gap-space-6, m-space-8, etc. */
-  --spacing-space-1: var(--space-1);
-  --spacing-space-2: var(--space-2);
-  --spacing-space-3: var(--space-3);
-  --spacing-space-4: var(--space-4);
-  --spacing-space-5: var(--space-5);
-  --spacing-space-6: var(--space-6);
-  --spacing-space-8: var(--space-8);
-  --spacing-space-10: var(--space-10);
-  --spacing-space-12: var(--space-12);
-  --spacing-space-16: var(--space-16);
-  --spacing-space-20: var(--space-20);
-  --spacing-space-24: var(--space-24);
-  --spacing-space-32: var(--space-32);
-
-  /* Border Radius */
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
 }
 
 /* -----------------------------------------------------------------------------
-   3. Global Base Styles
+   2. Base
    ----------------------------------------------------------------------------- */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: var(--color-obsidian);
-  color: var(--color-canvas);
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-body);
-  line-height: 1.65;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
-
-/* -----------------------------------------------------------------------------
-   4. Typography — Base Element Styles
-   ----------------------------------------------------------------------------- */
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-headline), Georgia, serif;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--color-canvas);
-}
-
-h1 {
-  font-size: var(--text-h1);
-}
-
-h2 {
-  font-size: var(--text-h2);
-}
-
-h3 {
-  font-size: var(--text-h3);
-}
-
 h4 {
-  font-size: var(--text-h4);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 p {
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: var(--text-body);
-  line-height: 1.65;
-}
-
-code,
-pre {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: var(--text-small);
-}
-
-pre {
-  background-color: var(--color-obsidian-lighter);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
+  text-wrap: pretty;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-in-out);
 }
 
-a:hover {
-  color: var(--color-copper);
-}
-
-/* Selection */
 ::selection {
-  background: var(--color-copper);
-  color: var(--color-obsidian);
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
-/* Scrollbar (WebKit) */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-obsidian);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-copper-dark);
-  border-radius: var(--radius-sm);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-copper);
-}
-
-/* Scrollbar (Firefox) */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-copper-dark) var(--color-obsidian);
-}
-
-/* Focus visible — copper accent ring for keyboard navigation */
 :focus-visible {
-  outline: 2px solid var(--color-copper);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* Horizontal rule */
-hr {
-  border: none;
-  border-top: 0.5px solid var(--color-grid-line);
-}
-
-/* Custom cursor — hide native cursor on fine-pointer (desktop) devices */
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
-
-/* Utility: hide on coarse-pointer (touch) devices */
-@media (pointer: coarse) {
-  .coarse-pointer\:hidden {
-    display: none !important;
-  }
-}
-
-/* A11y: Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
   *,
   *::before,
@@ -281,11 +139,9 @@ hr {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
 
-/* Utility: visually hidden but accessible to screen readers */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -299,115 +155,144 @@ hr {
 }
 
 /* -----------------------------------------------------------------------------
-   5. Layout — The Architect's Grid System
+   3. Components
    ----------------------------------------------------------------------------- */
 
-/**
- * .grid-architect — 12-column asymmetric grid foundation.
- *
- * Responsive breakdowns:
- *   Mobile  (< 768px):   4 columns, 1rem gap, 1rem inline padding
- *   Tablet  (768–1023):  8 columns, 1.25rem gap, 2rem inline padding
- *   Desktop (≥ 1024px): 12 columns, 1.5rem gap, fluid inline padding
- *
- * Named grid area patterns (use via grid-column on children):
- *   content-full:    1 / -1          (all columns)
- *   content-wide:    1 / 9           (cols 1–8 on desktop)
- *   content-narrow:  2 / 8           (cols 2–7, centered-ish)
- *   content-offset:  2 / 11          (cols 2–10, offset start)
- *   sidebar:         9 / -1          (cols 9–12)
- *   content-left:    1 / 7           (cols 1–6)
- *   content-right:   7 / -1          (cols 7–12)
- */
-.grid-architect {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 1rem;
-  padding-inline: clamp(1rem, 4vw, 4rem);
+/** Page gutter + max width. */
+.shell {
   width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
 }
 
-@media (min-width: 768px) {
-  .grid-architect {
-    grid-template-columns: repeat(8, 1fr);
-    column-gap: 1.25rem;
+/** Small uppercase label. */
+.eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/** Serif italic accent inside headlines. */
+.serif-accent {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/** Tinted "stage" a device sits on. Set --tint on the element. */
+.stage {
+  --tint: var(--ink-faint);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% 0%, color-mix(in oklab, var(--tint) 30%, transparent), transparent 70%),
+    color-mix(in oklab, var(--tint) 12%, var(--surface-2));
+}
+
+/** Primary / secondary buttons. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  padding-inline: 1.25rem;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition:
+    background-color 200ms var(--ease-out),
+    color 200ms var(--ease-out),
+    border-color 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--ink);
+}
+
+/** Underlined text link with an arrow that nudges on hover. */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.link-arrow > span[aria-hidden] {
+  transition: transform 200ms var(--ease-out);
+}
+
+.link-arrow:hover {
+  color: var(--accent);
+}
+
+.link-arrow:hover > span[aria-hidden] {
+  transform: translateX(3px);
+}
+
+/* -----------------------------------------------------------------------------
+   4. Scroll reveal — CSS scroll-driven animation, progressive enhancement.
+      Browsers without support (or with reduced motion) just show content.
+   ----------------------------------------------------------------------------- */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
-@media (min-width: 1024px) {
-  .grid-architect {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 1.5rem;
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
   }
 }
 
-/* Utility: span all columns */
-.col-full {
-  grid-column: 1 / -1;
-}
-
-/* Utility: content area spanning cols 1–8 (desktop), full on mobile */
-.col-wide {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 1024px) {
-  .col-wide {
-    grid-column: 1 / 9;
+/**
+ * One-shot entrance for above-the-fold content. Movement only — never starts
+ * invisible, so the hero text paints (and counts as LCP) immediately.
+ */
+@keyframes fade-up {
+  from {
+    transform: translateY(10px);
   }
 }
 
-/* Utility: offset content spanning cols 2–10 (desktop), full on mobile */
-.col-offset {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 1024px) {
-  .col-offset {
-    grid-column: 2 / 11;
-  }
-}
-
-/* Utility: narrow centered content cols 2–7 (desktop), full on mobile */
-.col-narrow {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 1024px) {
-  .col-narrow {
-    grid-column: 2 / 8;
-  }
-}
-
-/* Utility: sidebar area cols 9–12 (desktop), full on mobile */
-.col-sidebar {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 1024px) {
-  .col-sidebar {
-    grid-column: 9 / -1;
-  }
-}
-
-/* Utility: left half cols 1–6 (desktop), full on mobile */
-.col-left {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 1024px) {
-  .col-left {
-    grid-column: 1 / 7;
-  }
-}
-
-/* Utility: right half cols 7–12 (desktop), full on mobile */
-.col-right {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 1024px) {
-  .col-right {
-    grid-column: 7 / -1;
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    animation: fade-up 700ms var(--ease-out) both;
+    animation-delay: var(--delay, 0ms);
   }
 }
