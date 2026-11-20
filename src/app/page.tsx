@@ -100,8 +100,8 @@ export default function Home() {
         <div className="enter relative lg:col-span-5" style={{ ["--delay" as string]: "200ms" }} aria-hidden="true">
           <div className="stage mx-auto aspect-[5/4] max-w-xl rounded-[var(--radius-xl)] lg:aspect-[4/5]" style={{ ["--tint" as string]: "#5b6cff" }}>
             <div className="absolute inset-x-0 top-[9%] flex justify-center gap-[4%]">
-              <PhoneFrame src="/images/credit_acceptance/screen-2.jpg" alt="" eager sizes="200px" className="mt-[10%] w-[27%]" />
-              <PhoneFrame src="/images/golfpass/home.jpg" alt="" eager sizes="240px" className="z-10 w-[33%]" />
+              <PhoneFrame src="/images/golfpass/home.jpg" alt="" eager sizes="200px" className="mt-[10%] w-[27%]" />
+              <PhoneFrame src="/images/credit_acceptance/screen-1.jpg" alt="" eager sizes="240px" className="z-10 w-[33%]" />
               <PhoneFrame src="/images/dmaasd/home.jpg" alt="" eager sizes="200px" className="mt-[10%] w-[27%]" />
             </div>
           </div>
